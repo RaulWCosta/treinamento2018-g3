@@ -5,19 +5,27 @@ using UnityEngine;
 /* Basic player attack */
 public class PlayerAttack : MonoBehaviour {
 
+    public GameObject bulletPrefab; 
+
     Animator weaponAnimator;
-    int weaponDamage;
     bool meleeWeapon;
     bool attacked = false;
+    Transform bulletExitPosition;
+    WeaponProperties equippedWeaponProperties;
 
 	// Use this for initialization
 	void Start () {
-        WeaponProperties equippedWeaponProperties = GetComponent<WeaponProperties>();
-        weaponDamage = equippedWeaponProperties.weaponDamage;
+        equippedWeaponProperties = GetComponent<WeaponProperties>();
         meleeWeapon = equippedWeaponProperties.meleeWeapon;
         weaponAnimator = GetComponent<Animator>();
-		
-	}
+
+        //if this is a ranged weapon
+        //BulletExit should be an empty GameObject placed at where the bullet should first appear on the gun
+        bulletExitPosition = transform.Find("BulletExit");
+       
+      
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -32,6 +40,10 @@ public class PlayerAttack : MonoBehaviour {
                 //turn on attack and reset "already attacked" bool
                 weaponAnimator.SetBool("attacking", true);
                 attacked = false;
+
+                //if it's a ranged weapon, shoot
+                if (!meleeWeapon)
+                    ShootWeapon();
             }
 
         }
@@ -58,12 +70,26 @@ public class PlayerAttack : MonoBehaviour {
             if (weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
             {
                 //make enemy take damage
-                other.GetComponent<EnemyController>().LevouDano(weaponDamage);
+                other.GetComponent<EnemyController>().LevouDano(equippedWeaponProperties.weaponDamage);
                 attacked = true; //already attacked the enemy
                 
             }
         }
       
             
+    }
+
+    void ShootWeapon()
+    {
+        //instantiate shot out of bullet exit
+        GameObject bullet = Instantiate(bulletPrefab, bulletExitPosition.position, bulletExitPosition.rotation);
+        bullet.transform.localScale = transform.localScale;
+
+     
+        //shot should have the damage and the range of the weapon
+        bullet.GetComponent<ProjectileControl>().InitiateBulletParameters(equippedWeaponProperties.bulletSpeed ,
+            equippedWeaponProperties.range, equippedWeaponProperties.weaponDamage);
+
+
     }
 }
