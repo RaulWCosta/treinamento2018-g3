@@ -1,33 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour {
 
-    public Transform Alvo;
-    public float HP;
-    public float Velocidade;
-    public float Dano;
-    public bool CombateProximo;
-    
-	
-	void Start () {
-       // NavMeshAgent Agente = gameObject.GetComponent<NavMeshAgent>();
-       // Agente.destination = Alvo.position;
+    [Range(1, 100)]
+    public int hpMax;
+    private float currentHp;
+    private float range;
+    [Range(1.0f, 10.0f)]
+    private float movimentVelocity;
+    private int level;
+    private int damage;
+
+    // Use this for initialization
+    void Start () {
+        currentHp = hpMax + level * 10;
+        damage = 10 * level / 2;
 	}
 	
-	
-    public void LevouDano(float DanoRecebido)
+	// Update is called once per frame
+	void Update () {
+
+	}
+
+    public void EnemyTakeDamage(float amount)
     {
-        HP -= DanoRecebido;
-        if(HP <= 0)
-        {
+        currentHp -= amount;
+        if (currentHp <= 0)
             Destroy(gameObject);
-        }
+        /*healthBar.value = currentHp/hpMax * 100; // Diminuir a barra de vida de acordo com o currentHp*/
     }
 
-	void Update () {
-		
-	}
+    public void EnemyGainHp(float amount)
+    {
+        if (currentHp + amount <= hpMax)
+            currentHp += amount;
+        else
+            currentHp = hpMax;
+    }
 }

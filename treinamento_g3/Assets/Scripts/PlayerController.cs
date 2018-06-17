@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public int hpMax;
     [Range(1.0f, 10.0f)]
     public float movimentVelocity;
-    /*public x healthBar;                     // Faz referência a barra de vida*/
+    /*public x healthBar;                           // Faz referência a barra de vida*/
     public Text totalMoney;                         // Faz referência ao texto da quantidade de dinheiro. 
     public Text totalLevel;                         // Faz referência ao texto do level
 
@@ -36,9 +36,15 @@ public class PlayerController : MonoBehaviour
         if (experience > requiredExperience)        // Level up!
         {
             LevelUp();
-            experience -= requiredExperience;
-            requiredExperience += 1000;
         }
+    }
+
+    public void GainHp(float amount)
+    {
+        if (hpCurrent + amount <= hpMax)
+            hpCurrent += amount;
+        else
+            hpCurrent = hpMax;
     }
 
     public void TakeDamage(float amount)
@@ -48,6 +54,8 @@ public class PlayerController : MonoBehaviour
             hpCurrent -= amount;
             /*healthBar.value = hpCurrent/hpMax * 100; // Diminuir a barra de vida de acordo com o hpCurrent*/
        }
+       if (currentHp <= 0)
+       	    Destroy(gameObject);
     }
 
     public void TakeMoney(int amount)
@@ -59,6 +67,10 @@ public class PlayerController : MonoBehaviour
     void LevelUp()
     {
         level += 1;
+        hpMax = 100;
+        hpMax += level * 5;
+        experience -= requiredExperience;
+        requiredExperience += 1000;
         totalLevel.text = level.ToString();         // Mostra o level de acordo com o level
     }
 }
