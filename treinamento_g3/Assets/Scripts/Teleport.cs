@@ -23,10 +23,11 @@ public class Teleport : MonoBehaviour {
         //Quando apertar o shift esquerdo, esquiva
         if (Input.GetKeyDown(KeyCode.LeftShift) && teleporting == false && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
         {
+            Debug.Log("Teste");
             teleporting = true;                                                                                                           //Esa varíávle impede que o teleporte possa ser feito varias vezes
             invencible = true;                                                                                                            //Fica invencível
             animator.SetTrigger("teleport");
-            Invoke("NotInvencible", timeBetweenDodges / 2);                                                                                 //Tempo pra deixar de ficar invencível
+            Invoke("NotInvencible", timeBetweenDodges / 2);                                                                               //Tempo pra deixar de ficar invencível
             Invoke("AllowTeleport", timeBetweenDodges);                                                                                   //Tempo pra permitir o teletransporte novamente
         }
     }
