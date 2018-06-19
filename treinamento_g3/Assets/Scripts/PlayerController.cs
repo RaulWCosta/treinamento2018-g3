@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
             hpCurrent -= amount;
             /*healthBar.value = hpCurrent/hpMax * 100; // Diminuir a barra de vida de acordo com o hpCurrent*/
        }
-       if (currentHp <= 0)
+       if (hpCurrent <= 0)
        	    Destroy(gameObject);
     }
 
