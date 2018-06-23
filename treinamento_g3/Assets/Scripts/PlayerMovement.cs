@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour {
         //if there is an selected object, follow it
         if (selected != null)
         {
-            float delta = 2f;
+            float delta = 1.5f;
             float distanceToItem = (this.transform.position - selected.transform.position).sqrMagnitude;
             if (oldPos != transform.position)
             {
@@ -111,7 +111,7 @@ public class PlayerMovement : MonoBehaviour {
             {
                 //if it does, select the object
                 selected = objectHitted;
-                Debug.Log("Ray casted and object selected");
+                //Debug.Log("Ray casted and object selected");
             }
         }
     }
@@ -120,6 +120,6 @@ public class PlayerMovement : MonoBehaviour {
     void StopFollowingObject()
     {
         selected = null;
-        Debug.Log("Stopped Following");
+        //Debug.Log("Stopped Following");
     }
 }
