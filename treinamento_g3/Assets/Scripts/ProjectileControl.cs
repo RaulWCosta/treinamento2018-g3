@@ -20,7 +20,7 @@ public class ProjectileControl : MonoBehaviour {
         //check if range has been reached, if so, destroy itself
         transform.Translate(new Vector3(speed, 0, 0) * UnityEngine.Time.deltaTime*transform.localScale.x * -1);
         distance += speed * UnityEngine.Time.deltaTime;
-        Debug.Log(distance);
+    
         if (distance >= range)
             Destroy(this.gameObject);
 
@@ -34,7 +34,7 @@ public class ProjectileControl : MonoBehaviour {
         this.damage = damage;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if(collision.tag != "Player")
         {

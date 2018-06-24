@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour {
 
         //moves player on screen
         Vector3 oldPos = transform.position;
-        transform.position += Vector3.up * Input.GetAxis("Vertical") * speed;
+        transform.position += Vector3.forward * Input.GetAxis("Vertical") * speed;
         transform.position += Vector3.right * Input.GetAxis("Horizontal") * speed;
 
         //if player moved, turn on walk animation
@@ -42,9 +42,9 @@ public class PlayerMovement : MonoBehaviour {
     void FollowMouse() {
 
         //gets relative distance from player to camera
-        float z = transform.position.z - Camera.main.transform.position.z;
+        float y = transform.position.y - Camera.main.transform.position.y;
         //mouse pointer position
-        Vector3 p = new Vector3(Input.mousePosition.x, Input.mousePosition.y, z); 
+        Vector3 p = new Vector3(Input.mousePosition.x, y, Input.mousePosition.z); 
 
         //transforms mouse position coordinates to world coordinates
         p = Camera.main.ScreenToWorldPoint(p);

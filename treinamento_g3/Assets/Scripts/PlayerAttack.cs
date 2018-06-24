@@ -60,19 +60,19 @@ public class PlayerAttack : MonoBehaviour {
   
 	}
 
-    void OnTriggerStay2D(Collider2D other)
+    void OnTriggerStay(Collider other)
     {
-
+    
         //if attacking and collider has tag Enemy
         if (meleeWeapon && other.tag == "Enemy" && !attacked)
         {
+            
             //if attack is in progress
             if (weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
             {
                 //make enemy take damage
                 other.GetComponent<EnemyController>().LevouDano(equippedWeaponProperties.weaponDamage);
                 attacked = true; //already attacked the enemy
-                
             }
         }
       

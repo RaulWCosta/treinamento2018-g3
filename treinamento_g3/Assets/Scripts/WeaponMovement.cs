@@ -28,8 +28,13 @@ public class WeaponMovement : MonoBehaviour {
 
         //transforms mouse position coordinates to world coordinates
         p = Camera.main.ScreenToWorldPoint(p);
+
         //gets relative distance from mouse to weapon
         p = p - transform.position;
+        
+        //switches y and z to account for 90 degree rotation of player
+        p.y = p.z;
+        p.z = 0;
 
         //player is facing right
         if (playerAnimator.GetBool("faceRight"))
@@ -40,7 +45,8 @@ public class WeaponMovement : MonoBehaviour {
                 transform.localScale = new Vector3(newXScale, transform.localScale.y, transform.localScale.z);
                 transform.localPosition = new Vector3(transform.localPosition.x * -1, transform.localPosition.y, transform.localPosition.z);
             }
-             transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.x, Vector3.SignedAngle(Vector3.right, p, Vector3.forward));
+
+           transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, Vector3.SignedAngle(Vector3.right, p, Vector3.forward));
         }
         else //player is facing left
         {
@@ -53,7 +59,8 @@ public class WeaponMovement : MonoBehaviour {
                 transform.localPosition = new Vector3(transform.localPosition.x * -1, transform.localPosition.y, transform.localPosition.z);
 
             }
-            transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.x, Vector3.SignedAngle(Vector3.left, p, Vector3.forward));
+            //Debug.Log(Vector3.SignedAngle(Vector3.left, p, Vector3.up));
+            transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, Vector3.SignedAngle(Vector3.left, p, Vector3.forward));
 
         }
     }
