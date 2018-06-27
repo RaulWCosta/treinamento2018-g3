@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e864d6c8f33c18c48826fd90902d61b7, type: 3}
+  m_Name: Chave Inglesa
+  m_EditorClassIdentifier: 
+  name: Chave Inglesa
+  sprite: {fileID: 21300006, guid: 608bcc04ecac77147af6cb6e82de7894, type: 3}
+  item: {fileID: 1552631522126390, guid: 0af963691efa7de418b48f207b9b8222, type: 2}
+  equipable: 1
+  weaponDamage: 1
+  meleeWeapon: 1
+  range: 0
