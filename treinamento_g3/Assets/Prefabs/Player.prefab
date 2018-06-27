@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114739465318010138}
   - component: {fileID: 95630445258032090}
   - component: {fileID: 54049201115126214}
-  - component: {fileID: 136248527763350136}
+  - component: {fileID: 65159035873108500}
   m_Layer: 0
   m_Name: ChaveInglesa
   m_TagString: Untagged
@@ -86,7 +86,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4405373374115680
 Transform:
   m_ObjectHideFlags: 1
@@ -108,7 +108,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1149129841624528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.14, y: -0.29, z: -0.14}
+  m_LocalPosition: {x: 0.164, y: -0.311, z: -0.14}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4619995631162392}
@@ -121,7 +121,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1378901169910488}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -10.58}
+  m_LocalPosition: {x: 0, y: 0, z: -10.559}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4405373374115680}
@@ -157,6 +157,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65159035873108500
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1149129841624528}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.64917046, y: 0.9017683, z: 0.3910794}
+  m_Center: {x: -0.24033198, y: -0.015966594, z: 0.017813332}
 --- !u!65 &65516031609078086
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -265,7 +277,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1149129841624528}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc309a0679c53ad4eb50cf08c2b1453d, type: 3}
   m_Name: 
@@ -312,19 +324,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 0}
---- !u!136 &136248527763350136
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1149129841624528}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.25242147
-  m_Height: 0.5345145
-  m_Direction: 2
-  m_Center: {x: -0.18134323, y: 0.04385701, z: 0.04084161}
 --- !u!212 &212312835337430788
 SpriteRenderer:
   m_ObjectHideFlags: 1

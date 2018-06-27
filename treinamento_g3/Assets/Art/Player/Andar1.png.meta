@@ -14,6 +14,7 @@ TextureImporter:
     21300018: Andar1_9
     21300020: Andar1_10
     21300022: Andar1_11
+    21300024: Andar1_12
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -119,7 +120,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1800ecd28fdabe64f9fbeb45f35c8f82
+      spriteID: d2eaaf50568f964458142c2774c2c9c5
       vertices: []
       indices: 
       edges: []
@@ -139,7 +140,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24bdd114cfdd0da4a88017266d80eac3
+      spriteID: 3885ba8639a2cd14fb526d0d53d43dd2
       vertices: []
       indices: 
       edges: []
@@ -159,7 +160,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ed324436628d254d881ff2f006250cb
+      spriteID: a7cc1088c0430084fb8cb7560764e40e
       vertices: []
       indices: 
       edges: []
@@ -179,7 +180,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a5cbbe4c456668438f8eff938ae08b9
+      spriteID: 5fd087706e0b85f4ca51f55321db888a
       vertices: []
       indices: 
       edges: []
@@ -199,7 +200,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0d97f118d602114b8808da316d7d0e1
+      spriteID: 0caacb4ecce8d7d4c834bd2d14201a84
       vertices: []
       indices: 
       edges: []
@@ -219,7 +220,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb5c9bcaddd26d5428dc1da9016feba3
+      spriteID: 6aa871d10c9cec1408c56b2696a6d9c3
       vertices: []
       indices: 
       edges: []
@@ -239,7 +240,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d499d7ebbf9d8a499be0b6eba09db5e
+      spriteID: 2a35090527b2ff240a2ad17b572f7c44
       vertices: []
       indices: 
       edges: []
@@ -259,7 +260,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f4757c6c521010418118576d32f7f75
+      spriteID: 1d37fae1476d2244c8fde8f5f891fdee
       vertices: []
       indices: 
       edges: []
@@ -279,7 +280,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6bab81e06010b7641ba7051b3440cc40
+      spriteID: 5078a659fd782a84ca7f0d255564751d
       vertices: []
       indices: 
       edges: []
@@ -299,7 +300,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1b641b56a7f40946b95ece10e185ca4
+      spriteID: 1d2eb20afb9e54a4897993df025b0b82
       vertices: []
       indices: 
       edges: []
@@ -319,7 +320,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29a1b01173904454eaab6b03cb5a5e97
+      spriteID: 1908a288166264543a786f1d53e2ea6b
       vertices: []
       indices: 
       edges: []
@@ -339,7 +340,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb635bbaa68949547990c0b958459286
+      spriteID: 8620faa007678a74eab63031fdc1fb84
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Andar1_12
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 571f3263bce5189458ec25e123f38e4b
       vertices: []
       indices: 
       edges: []
