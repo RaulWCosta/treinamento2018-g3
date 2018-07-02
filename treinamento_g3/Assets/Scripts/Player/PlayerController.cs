@@ -23,19 +23,26 @@ public class PlayerController : MonoBehaviour
     private int experience = 0;                     // experiência do player
     private int requiredExperience = 1000;          // experiência requerida para passar de nível
     private int money = 100;
+    private Animator animator;
 
     void Start ()
     {
         hpCurrent = hpMax;
-        totalMoney.text = money.ToString();         // Dinheiro a ser mostrado no HUD
-        totalLevel.text = level.ToString();         // Level a ser mostrado no HUD
+        //totalMoney.text = money.ToString();         // Dinheiro a ser mostrado no HUD
+        //totalLevel.text = level.ToString();         // Level a ser mostrado no HUD
+        animator = GetComponent<Animator>();
     }
-	
-	void Update ()
+
+    void Update()
     {
         if (experience > requiredExperience)        // Level up!
         {
             LevelUp();
+        }
+
+        if (Input.GetMouseButton(1) &&  !(animator.GetCurrentAnimatorStateInfo(0).IsName("HitRight")))
+        {
+            animator.SetTrigger("hit");
         }
     }
 

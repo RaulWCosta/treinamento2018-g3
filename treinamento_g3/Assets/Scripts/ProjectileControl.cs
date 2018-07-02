@@ -41,7 +41,7 @@ public class ProjectileControl : MonoBehaviour {
             //damage to enemy
             if (collision.tag == "Enemy")
             {
-                collision.GetComponent<EnemyController>().LevouDano(damage);
+                collision.GetComponent<EnemyController>().EnemyTakeDamage(damage);
             }
 
             //gets destroyed if it hits anything

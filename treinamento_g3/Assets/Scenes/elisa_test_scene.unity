@@ -395,11 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 915990ecceae9fe48b182f1c39a89df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Alvo: {fileID: 0}
-  HP: 2
-  Velocidade: 0
-  Dano: 0
-  CombateProximo: 0
+  hpMax: 0
 --- !u!136 &1322054333
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -451,14 +447,6 @@ Prefab:
     - target: {fileID: 4619995631162392, guid: 6922de99dccf38b4fa33f812c9fc1a27, type: 2}
       propertyPath: m_RootOrder
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4605694167125544, guid: 6922de99dccf38b4fa33f812c9fc1a27, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 4605694167125544, guid: 6922de99dccf38b4fa33f812c9fc1a27, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6922de99dccf38b4fa33f812c9fc1a27, type: 2}

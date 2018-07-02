@@ -60,6 +60,8 @@ GameObject:
   - component: {fileID: 114426446967788718}
   - component: {fileID: 95785404557339990}
   - component: {fileID: 65516031609078086}
+  - component: {fileID: 114349997992581236}
+  - component: {fileID: 114053242596639632}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -108,7 +110,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1149129841624528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.164, y: -0.311, z: -0.14}
+  m_LocalPosition: {x: 0.22, y: -0.35, z: -0.14}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4619995631162392}
@@ -208,7 +210,7 @@ Animator:
   m_GameObject: {fileID: 1149129841624528}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: abac05136ea79b94eb01203c913cc657, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2974d27409570ed4d880d9402a29099e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -235,6 +237,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114053242596639632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1378901169910488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac079c31e101cd94a9f5bac78c802385, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpMax: 24
+  movimentVelocity: 0
+  totalMoney: {fileID: 0}
+  totalLevel: {fileID: 0}
 --- !u!114 &114054862973794580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -248,6 +265,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1756009342916810, guid: e715828114e9410478d92ae36db91ecf,
     type: 2}
+--- !u!114 &114349997992581236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1378901169910488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e209396e0f42d7f40a5fdc64c508e91c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invencible: 0
 --- !u!114 &114397366438034914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -271,6 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1
+  selected: {fileID: 0}
 --- !u!114 &114604987545408722
 MonoBehaviour:
   m_ObjectHideFlags: 1

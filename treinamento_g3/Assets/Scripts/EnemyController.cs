@@ -10,7 +10,7 @@ public class EnemyController : MonoBehaviour {
     private float range;
     [Range(1.0f, 10.0f)]
     private float movimentVelocity;
-    private int level;
+    private int level = 0;
     private int damage;
 
     // Use this for initialization

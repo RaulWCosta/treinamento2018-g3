@@ -23,7 +23,6 @@ public class Teleport : MonoBehaviour {
         //Quando apertar o shift esquerdo, esquiva
         if (Input.GetKeyDown(KeyCode.LeftShift) && teleporting == false && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
         {
-            //Debug.Log("Teste");
             teleporting = true;                                                                                                           //Esa varíávle impede que o teleporte possa ser feito varias vezes
             invencible = true;                                                                                                            //Fica invencível
             animator.SetTrigger("teleport");
@@ -36,7 +35,7 @@ public class Teleport : MonoBehaviour {
     {
         teleport = Vector3.right * Input.GetAxis("Horizontal") * teleportRange;
         transform.position += teleport;
-        teleport = Vector3.up * Input.GetAxis("Vertical") * teleportRange;
+        teleport = Vector3.forward * Input.GetAxis("Vertical") * teleportRange;
         transform.position += teleport;
         animator.SetBool("walk", false);
     }

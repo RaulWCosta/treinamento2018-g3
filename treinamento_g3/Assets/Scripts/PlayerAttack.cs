@@ -33,7 +33,7 @@ public class PlayerAttack : MonoBehaviour {
 
         //left mouse click
         if (Input.GetMouseButton(0))
-        {   
+        {
             //if player isn't already attacking
             if (weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
