@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour {
     #region UniqueInvetory
     //this was copyed from internet and is usefull to refering to this script from another one
     public static Inventory instance;
+
     private void Awake ()
     {
         if (instance != null)
@@ -53,6 +54,7 @@ public class Inventory : MonoBehaviour {
     public void Remove(Item item)
     {
         items.Remove(item);
+        Instantiate(item.item, this.gameObject.transform.position, this.gameObject.transform.rotation);
         // calls the delegate function
         if (onItemChangedCallBack != null)
             onItemChangedCallBack.Invoke();
