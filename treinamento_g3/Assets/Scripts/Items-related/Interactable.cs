@@ -7,7 +7,7 @@ public class Interactable : MonoBehaviour {
     //radius for taking interacting with an object
     public float radius = 2f;
     //If there is an selected item, this varible will receive true;
-    private bool itemSelected = false;
+    protected bool itemSelected = false;
     private GameObject player;
 
     private void Start()
@@ -16,9 +16,8 @@ public class Interactable : MonoBehaviour {
         player = GameObject.Find("Player");
     }
 
-    private void Update()
+    protected void Update()
     {
-
         float dist = GetClosestItem(player.transform);
 
         //If there is an selected item, itemSelected receives true;
@@ -51,7 +50,7 @@ public class Interactable : MonoBehaviour {
         }
     }
 
-    //Virtual for genelarizing this interact option for any type of things: Chests, doors, items.
+    //Virtual for generalizing this interact option for any type of things: Chests, doors, items.
     public virtual void Interact ()
     {
         //Debug.Log("Interacting with " + this.name);

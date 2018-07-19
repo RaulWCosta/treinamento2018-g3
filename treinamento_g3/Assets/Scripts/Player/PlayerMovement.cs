@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour {
         if (oldPos != transform.position)
         {
             animator.SetBool("walk", true);
+            selected = null; //turns off selected item if player decides to move somewhere else
         }
         else //turn off walk animation
         {
@@ -62,7 +63,7 @@ public class PlayerMovement : MonoBehaviour {
             else if (distanceToItem > delta * delta)
             {
                 //else follows the player
-                this.transform.position = Vector3.MoveTowards(this.transform.position, selected.transform.position, .06f);
+                this.transform.position = Vector3.MoveTowards(this.transform.position, selected.transform.position, speed);
                 //Debug.Log("Following...");
                 animator.SetBool("walk", true);
             }
@@ -107,7 +108,7 @@ public class PlayerMovement : MonoBehaviour {
         //If the ray hits
         if (Physics.Raycast(origin, out hit))
         {
-            //creates and checks if the hitted object is Interactable (has a Interactable Component)
+            //creates and checks if the hit object is Interactable (has a Interactable Component)
             Interactable objectHitted = hit.collider.GetComponent<Interactable>();
             if (objectHitted != null)
             {

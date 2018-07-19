@@ -40,10 +40,7 @@ public class PlayerController : MonoBehaviour
             LevelUp();
         }
 
-        if (Input.GetMouseButton(1) &&  !(animator.GetCurrentAnimatorStateInfo(0).IsName("HitRight")))
-        {
-            animator.SetTrigger("hit");
-        }
+      
     }
 
     public void GainHp(float amount)
@@ -59,8 +56,12 @@ public class PlayerController : MonoBehaviour
        if (this.GetComponent<Teleport>().invencible == false)
        {
             hpCurrent -= amount;
+            animator.SetTrigger("hit");
             /*healthBar.value = hpCurrent/hpMax * 100; // Diminuir a barra de vida de acordo com o hpCurrent*/
-       }
+        }
+
+       //player death
+       //should trigger game over screen?
        if (hpCurrent <= 0)
        	    Destroy(gameObject);
     }

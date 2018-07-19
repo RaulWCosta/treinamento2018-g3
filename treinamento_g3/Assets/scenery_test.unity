@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 599041341}
   m_Layer: 0
   m_Name: Mapa
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -562,6 +562,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1214391302}
   - component: {fileID: 1214391301}
+  - component: {fileID: 1214391303}
+  - component: {fileID: 1214391304}
   m_Layer: 0
   m_Name: Engrenagem1
   m_TagString: Untagged
@@ -627,6 +629,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1214391303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1214391300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d4d5f3a82f74944eae7ac17d8c11ab5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.5
+--- !u!65 &1214391304
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1214391300}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.0000002, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1243222948
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,6 +884,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1470769750}
   - component: {fileID: 1470769749}
+  - component: {fileID: 1470769751}
+  - component: {fileID: 1470769752}
   m_Layer: 0
   m_Name: "Drag\xE3o_0"
   m_TagString: Untagged
@@ -923,6 +951,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1470769751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1470769748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d4d5f3a82f74944eae7ac17d8c11ab5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 2
+--- !u!65 &1470769752
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1470769748}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4892616, y: 1.689117, z: 0.20000005}
+  m_Center: {x: 0.07772112, y: 0.0000004172325, z: -8.4703133e-22}
 --- !u!1 &1860015352
 GameObject:
   m_ObjectHideFlags: 0
