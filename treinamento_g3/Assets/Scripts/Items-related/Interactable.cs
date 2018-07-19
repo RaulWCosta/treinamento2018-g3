@@ -42,7 +42,7 @@ public class Interactable : MonoBehaviour {
         //if there is an selected object,
         if (itemSelected == true && dist <= radius * radius)
         {
-            if (Input.GetKeyDown("e"))
+            if (Input.GetKeyDown("e") || Input.GetMouseButtonUp(1))
             {
                 Interact();
                 Debug.Log("Interact");

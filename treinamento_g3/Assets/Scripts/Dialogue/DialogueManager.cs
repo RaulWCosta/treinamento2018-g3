@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /**
  * Controls dialogue.
@@ -9,8 +10,11 @@ using UnityEngine;
 public class DialogueManager : MonoBehaviour {
 
     private Queue<string> sentences;
-    private string name;
+    private string dialogueName;
     private bool inDialogue;
+    public Text nameText;
+    public Text dialogueText;
+    public Animator dialogueBox;
 
 	// Use this for initialization
 	void Start () {
@@ -21,17 +25,20 @@ public class DialogueManager : MonoBehaviour {
     //Starts or continues dialogue
     public void StartDialogue (Dialogue dialogue)
     {
+        dialogueBox.SetBool("DialogueOpen", true);
         //If the current dialogue isn't the one given
         //changes dialogue
-        if (name != dialogue.name)
+        if (dialogueName != dialogue.name)
         {
+            
             sentences.Clear();
 
             foreach (string sentence in dialogue.sentences)
             {
                 sentences.Enqueue(sentence);
             }
-            name = dialogue.name;
+            dialogueName = dialogue.name;
+            nameText.text = dialogue.name;
 
         }
 
@@ -45,24 +52,26 @@ public class DialogueManager : MonoBehaviour {
     {
         if (sentences.Count == 0)
         {
-            EndDialogue(this.name);
+            EndDialogue(this.dialogueName);
             return;
         }
 
         string sentence = sentences.Dequeue();
-        Debug.Log(sentence);
+        dialogueText.text = sentence;
+        
     }
 
 
-    public void EndDialogue(string name)
+    public void EndDialogue(string dialogueName)
     {
-        if (this.name == name)
+        if (this.dialogueName == dialogueName)
         {
+            //remove sentences and set name to null
             sentences.Clear();
-            this.name = null;
+            this.dialogueName = null;
 
             //close dialogue box
-            Debug.Log("End of conversation");
+            dialogueBox.SetBool("DialogueOpen", false);
         }
     }
 }
