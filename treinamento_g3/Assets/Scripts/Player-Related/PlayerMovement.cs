@@ -38,9 +38,7 @@ public class PlayerMovement : MonoBehaviour {
 
         //if left click on an interactable item, go to it and then take it
         if (Input.GetMouseButton(1))
-        {
             TakeObject();
-        }
 
         //if there is an selected object, follow it
         if (selected != null)
@@ -101,15 +99,18 @@ public class PlayerMovement : MonoBehaviour {
         Ray origin = Camera.main.ScreenPointToRay(Input.mousePosition);
         //a reference to a object that may be hit by the ray
         RaycastHit hit;
+        Debug.Log("Raycast");
 
         //If the ray hits
         if (Physics.Raycast(origin, out hit))
         {
             //creates and checks if the hitted object is Interactable (has a Interactable Component)
             Interactable objectHitted = hit.collider.GetComponent<Interactable>();
+            Debug.Log("Almost Selected" + objectHitted);
             if (objectHitted != null)
             {
                 //if it does, select the object
+                Debug.Log("Selected");
                 selected = objectHitted;
                 //Debug.Log("Ray casted and object selected");
             }

@@ -19,6 +19,7 @@ public class ItemPickUp : Interactable {
         //Debug.Log("Picking up " + item.name);
         //true if the item was picked, false if not
         bool wasPickedUp = Inventory.instance.Add(item);
+        //bool wasPickedUp = GameObject.Find("Player").GetComponent<Inventory>().Add(item);
         //if it was picked, destroy it
         if (wasPickedUp == true)
             Destroy(this.gameObject);
