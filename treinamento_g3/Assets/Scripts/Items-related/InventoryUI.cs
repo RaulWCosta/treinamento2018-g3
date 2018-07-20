@@ -33,6 +33,7 @@ public class InventoryUI : MonoBehaviour {
         }
 	}
 
+    //Maintain the inventory panel updated
     void UpdateUI ()
     {
         //checks all slots

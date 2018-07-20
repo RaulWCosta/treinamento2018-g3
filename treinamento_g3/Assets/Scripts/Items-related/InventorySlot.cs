@@ -35,7 +35,7 @@ public class InventorySlot : MonoBehaviour {
         //removes the removebutton
         removeButton.interactable = false;
     }
-    //THIS FUNCTION IS CALLED THROUGH THE BUTTON INSPECTOR
+    //THIS FUNCTION IS CALLED THROUGH THE BUTTON INSPECTOR (this functions )
     public void OnRemoveButton()
     {
         //removes an item from the inventory
