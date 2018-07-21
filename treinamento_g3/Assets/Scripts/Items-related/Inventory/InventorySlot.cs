@@ -39,7 +39,9 @@ public class InventorySlot : MonoBehaviour {
     public void OnRemoveButton()
     {
         //removes an item from the inventory
+        Instantiate(item.item, GameObject.Find("Player").transform.position, GameObject.Find("Player").transform.rotation);
         Inventory.instance.Remove(item);
+
     }
     //THIS FUNCTION IS CALLED THROUGH THE BUTTON INSPECTOR
     public void UseItem()

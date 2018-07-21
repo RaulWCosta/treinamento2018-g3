@@ -14,6 +14,6 @@ public class Item : ScriptableObject {
     //If an item may be used, then this function shall be overrided with its use
     public virtual void Use()
     {
-        //Debug.Log("Using" + name);
+        Debug.Log("Using " + name);
     }
 }

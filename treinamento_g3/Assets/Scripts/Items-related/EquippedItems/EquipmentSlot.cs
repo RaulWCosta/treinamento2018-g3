@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EquippedItemsSlot : MonoBehaviour {
+public class EquipmentSlot : MonoBehaviour {
 
     //A reference to the item
-    Item item;
+    Weapons item;
     //A reference to the iten's image
     public Image icon;
     //A reference to the iten's remove button
     public Button removeButton;
 
-    //Adds an item
-    public void AddItem(Item newItem)
+    public void AddItem(Weapons newItem)
     {
         //the item to be added
         item = newItem;
@@ -23,7 +22,6 @@ public class EquippedItemsSlot : MonoBehaviour {
         icon.enabled = true;
         //actives the remove button
         removeButton.interactable = true;
-
     }
 
     public void ClearSlot()
@@ -35,10 +33,16 @@ public class EquippedItemsSlot : MonoBehaviour {
         //removes the removebutton
         removeButton.interactable = false;
     }
-    //THIS FUNCTION IS CALLED THROUGH THE BUTTON INSPECTOR (this functions )
-    public void OnRemoveButton()
+
+    public void Unequip(int slotIndex)
     {
-        //removes an item from the inventory
-        EquippedItems.instance.Remove(item);
+        if (EquipmentManager.instance.currentEquipment[slotIndex] != null)
+        {
+            Inventory.instance.Add(EquipmentManager.instance.currentEquipment[slotIndex]);
+            EquipmentManager.instance.currentEquipment[slotIndex] = null;
+            //this.GetComponent<EquipmentManager>().slots[this.GetComponent<EquipmentManager>().slotIndex].ClearSlot();
+            //if (EquipmentManager.instance.onItemChangedCallBackEquipped != null)
+                //EquipmentManager.instance.onItemChangedCallBackEquipped.Invoke();
+        }
     }
 }

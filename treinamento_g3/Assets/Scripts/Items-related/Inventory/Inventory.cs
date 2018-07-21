@@ -54,7 +54,6 @@ public class Inventory : MonoBehaviour {
     public void Remove(Item item)
     {
         items.Remove(item);
-        Instantiate(item.item, this.gameObject.transform.position, this.gameObject.transform.rotation);
         // calls the delegate function
         if (onItemChangedCallBack != null)
             onItemChangedCallBack.Invoke();
