@@ -10,7 +10,7 @@ public class Interactable : MonoBehaviour {
     protected bool itemSelected = false;
     private GameObject player;
 
-    private void Start()
+    protected void Start()
     {
         //Finds the player
         player = GameObject.Find("Player");
@@ -22,8 +22,9 @@ public class Interactable : MonoBehaviour {
 
         //If there is an selected item, itemSelected receives true;
         if (player.GetComponent<PlayerMovement>().selected != null)
-        {
-            itemSelected = true;
+        {   
+            //commented this because it made two items be selected at the same time
+            //itemSelected = true;
         }
         else if (dist <= radius * radius)
         {
@@ -42,10 +43,10 @@ public class Interactable : MonoBehaviour {
         //if there is an selected object,
         if (itemSelected == true && dist <= radius * radius)
         {
-            if (Input.GetKeyDown("e") || Input.GetMouseButtonUp(1))
+            if (Input.GetKeyDown("e"))
             {
                 Interact();
-                Debug.Log("Interact");
+                //Debug.Log("Interact");
             }
         }
     }
