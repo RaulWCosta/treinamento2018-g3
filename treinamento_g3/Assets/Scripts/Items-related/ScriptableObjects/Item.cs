@@ -7,7 +7,7 @@ using UnityEngine;
 public class Item : ScriptableObject {
     //these are the properties of general items for the invetory;
     new public string name = "New Item";
-    public Sprite sprite= null;
+    public Sprite sprite = null;
     public GameObject item = null;
     public bool equipable = false;
 

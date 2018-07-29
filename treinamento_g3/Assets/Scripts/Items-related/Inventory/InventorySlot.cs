@@ -7,9 +7,9 @@ public class InventorySlot : MonoBehaviour {
 
     //A reference to the item
     Item item;
-    //A reference to the iten's image
+    //A reference to the item's image
     public Image icon;
-    //A reference to the iten's remove button
+    //A reference to the item's remove button
     public Button removeButton;
 
     //Adds an item
@@ -23,7 +23,6 @@ public class InventorySlot : MonoBehaviour {
         icon.enabled = true;
         //actives the remove button
         removeButton.interactable = true;
-
     }
 
     public void ClearSlot()
@@ -35,7 +34,7 @@ public class InventorySlot : MonoBehaviour {
         //removes the removebutton
         removeButton.interactable = false;
     }
-    //THIS FUNCTION IS CALLED THROUGH THE BUTTON INSPECTOR (this functions )
+    //THIS FUNCTION IS CALLED THROUGH THE BUTTON INSPECTOR
     public void OnRemoveButton()
     {
         //removes an item from the inventory

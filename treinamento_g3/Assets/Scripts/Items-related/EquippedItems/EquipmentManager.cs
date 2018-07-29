@@ -14,36 +14,44 @@ public class EquipmentManager : MonoBehaviour {
     }
 
     #endregion
+    //An transform for refering to the parent of all items slots
     public Transform itemsParent;
+    //An array refering to all equipped items
     public Weapons[] currentEquipment;
+    //Equipped items pannel
     public GameObject equipmentUI;
-    public EquipmentSlot[] slots;
     public int slotIndex;
-    //public delegate void OnItemChanged();
-    //public OnItemChanged onItemChangedCallBackEquipped;
+    //Reference to the quantity of equipment slots
     int numSlots;
-    
+
+
+
+    //Equipped items slots
+    EquipmentSlot[] slots;
+
 
     private void Start()
     {
+        //Here it gets the number of equipment slots
         numSlots = System.Enum.GetNames(typeof(EquipmentSlotIndex)).Length;
+        //an array with the size of equipment slots
         currentEquipment = new Weapons[numSlots];
-        //this.onItemChangedCallBackEquipped += UpdateUI;
+
+
+
         slots = itemsParent.GetComponentsInChildren<EquipmentSlot>();
     }
 
     public void Equip (Weapons newItem)
     {
+        //slotIndex receives the position of the given weapon, if melee, 0, else 1.
         slotIndex = (int) newItem.equipSlot;
-
+        //If there is an item already equipped, add it to the inventory before changing equipped items
         if (currentEquipment[slotIndex] != null)
             Inventory.instance.Add(currentEquipment[slotIndex]);
 
+        //equip the item
         currentEquipment[slotIndex] = newItem;
-
-        /*if (onItemChangedCallBackEquipped != null)
-            // calls the delegate function
-            onItemChangedCallBackEquipped.Invoke();*/
     }
 
     // Update is called once per frame
@@ -57,20 +65,21 @@ public class EquipmentManager : MonoBehaviour {
         }
     }
 
-    //Maintain the inventory panel updated
-    /*void UpdateUI()
+    public void UpdateUI()
     {
         //checks all slots
-        for (int i = 0; i < numSlots; i++)
+        for (int i = 0; i < slots.Length; i++)
         {
             //adds the items from the inventory
-            if (currentEquipment[i] != null)
+            if (i < numSlots)
             {
                 slots[i].AddItem(currentEquipment[i]);
             }
+            //else, clear the slot
             else
-                currentEquipment[slotIndex] = null;
+            {
+                slots[i].ClearSlot();
+            }
         }
-        
-    }*/
+    }
 }

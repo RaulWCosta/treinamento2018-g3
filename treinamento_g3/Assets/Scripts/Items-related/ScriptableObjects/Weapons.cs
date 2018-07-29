@@ -5,6 +5,7 @@ using UnityEngine;
 public class Weapons : Item {
     //these are the specific properties for weapons
     public int weaponDamage;
+    //this enum separetes melee and renged weapons
     public EquipmentSlotIndex equipSlot;
     public float range;
 
@@ -13,6 +14,8 @@ public class Weapons : Item {
         base.Use();
         EquipmentManager.instance.Equip(this);
         Inventory.instance.Remove(this);
+        //AddItem equipment Slot
+        EquipmentManager.instance.UpdateUI();
     }
 }
 

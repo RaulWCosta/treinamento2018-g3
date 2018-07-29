@@ -12,6 +12,7 @@ public class EquipmentSlot : MonoBehaviour {
     //A reference to the iten's remove button
     public Button removeButton;
 
+    //Adds an item
     public void AddItem(Weapons newItem)
     {
         //the item to be added
@@ -34,15 +35,20 @@ public class EquipmentSlot : MonoBehaviour {
         removeButton.interactable = false;
     }
 
-    public void Unequip(int slotIndex)
+    //THIS FUNCTION IS CALLED THROUGH THE BUTTON INSPECTOR
+    public void Unequip()
     {
+        int slotIndex = (int)item.equipSlot;
         if (EquipmentManager.instance.currentEquipment[slotIndex] != null)
         {
+            //Adds the item to the inventory
             Inventory.instance.Add(EquipmentManager.instance.currentEquipment[slotIndex]);
+            //Removes the item from the array of equipped items
             EquipmentManager.instance.currentEquipment[slotIndex] = null;
             //this.GetComponent<EquipmentManager>().slots[this.GetComponent<EquipmentManager>().slotIndex].ClearSlot();
             //if (EquipmentManager.instance.onItemChangedCallBackEquipped != null)
                 //EquipmentManager.instance.onItemChangedCallBackEquipped.Invoke();
+            ClearSlot();
         }
     }
 }
