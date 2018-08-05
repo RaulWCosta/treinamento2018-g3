@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdb2626575575c944b1fde0da6fb0806, type: 3}
   m_Name: ManaPotion
   m_EditorClassIdentifier: 
-  name: New Item
-  sprite: {fileID: 0}
-  item: {fileID: 0}
+  name: ManaPotion
+  sprite: {fileID: 21300000, guid: 42fce1b1c00abe640abab3be383c8f45, type: 3}
+  item: {fileID: 1258023641819378, guid: 2c4a232bac8c30640b61beb08017c21b, type: 2}
   equipable: 0
-  type: 0
-  bonus: 0
+  type: 1
+  bonus: 30
