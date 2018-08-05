@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     //Public
     [Range(1, 100)]
     public int hpMax;
+    public float hpCurrent;
     [Range(1.0f, 10.0f)]
     public float movimentVelocity;
     /*public x healthBar;                           // Faz referência a barra de vida*/
@@ -18,7 +19,6 @@ public class PlayerController : MonoBehaviour
     public Text totalLevel;                         // Faz referência ao texto do level
 
     //Private
-    private float hpCurrent;
     private int level = 1;
     private int experience = 0;                     // experiência do player
     private int requiredExperience = 1000;          // experiência requerida para passar de nível

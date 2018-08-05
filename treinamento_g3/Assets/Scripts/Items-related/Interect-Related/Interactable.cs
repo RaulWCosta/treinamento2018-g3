@@ -41,8 +41,8 @@ public class Interactable : MonoBehaviour {
             player.GetComponent<PlayerMovement>().selected = null;
         }
 
-        Debug.Log("itemSelected = " + itemSelected);
-        Debug.Log("distância/raio = " + dist + "/" + radius*radius);
+        //Debug.Log("itemSelected = " + itemSelected);
+        //Debug.Log("distância/raio = " + dist + "/" + radius*radius);
         //if there is an selected object,
         if (itemSelected == true && dist <= radius * radius)
         {

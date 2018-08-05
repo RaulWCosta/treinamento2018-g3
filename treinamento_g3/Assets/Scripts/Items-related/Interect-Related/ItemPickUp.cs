@@ -11,7 +11,22 @@ public class ItemPickUp : Interactable {
     {
         //Debug.Log("Interact2");
         base.Interact();
-        PickUp();
+        /*if (item.packable == true)
+        {
+            if (item.quantity == 0)
+            {
+                item.quantity++;
+                PickUp();
+                item.sprite = item.quantitySprites[item.quantity - 1];
+            }
+            else
+            {
+                item.quantity++;
+                Destroy(this.gameObject);
+            }
+        }
+        else*/
+            PickUp();
     }
 
     private void PickUp()
