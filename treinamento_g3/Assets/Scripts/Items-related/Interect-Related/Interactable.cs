@@ -29,7 +29,6 @@ public class Interactable : MonoBehaviour {
         }
         else if (dist <= radius * radius)
         {
-            //Debug.Log("Item selected through interactable");
             player.GetComponent<PlayerMovement>().selected = this.GetComponent<Interactable>();
             itemSelected = true;
         }
@@ -40,9 +39,6 @@ public class Interactable : MonoBehaviour {
             itemSelected = false;
             player.GetComponent<PlayerMovement>().selected = null;
         }
-
-        //Debug.Log("itemSelected = " + itemSelected);
-        //Debug.Log("distância/raio = " + dist + "/" + radius*radius);
         //if there is an selected object,
         if (itemSelected == true && dist <= radius * radius)
         {
@@ -57,7 +53,7 @@ public class Interactable : MonoBehaviour {
     //Virtual for genelarizing this interact option for any type of things: Chests, doors, items.
     public virtual void Interact ()
     {
-        //Debug.Log("Interacting with " + this.name);
+
     }
 
     //this function return the distance between the player and the object of this component

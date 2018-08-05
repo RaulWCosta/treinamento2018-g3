@@ -99,20 +99,16 @@ public class PlayerMovement : MonoBehaviour {
         Ray origin = Camera.main.ScreenPointToRay(Input.mousePosition);
         //a reference to a object that may be hit by the ray
         RaycastHit hit;
-        Debug.Log("Raycast");
 
         //If the ray hits
         if (Physics.Raycast(origin, out hit))
         {
             //creates and checks if the hitted object is Interactable (has a Interactable Component)
             Interactable objectHitted = hit.collider.GetComponent<Interactable>();
-            Debug.Log("Almost Selected" + objectHitted);
             if (objectHitted != null)
             {
                 //if it does, select the object
-                Debug.Log("Selected");
                 selected = objectHitted;
-                //Debug.Log("Ray casted and object selected");
             }
         }
     }
@@ -121,6 +117,5 @@ public class PlayerMovement : MonoBehaviour {
     void StopFollowingObject()
     {
         selected = null;
-        //Debug.Log("Stopped Following");
     }
 }

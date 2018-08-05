@@ -16,13 +16,7 @@ public class Potions : Item {
 
     public override void Use ()
     {
-        //if (quantity == 1)
-            Inventory.instance.Remove(this);
-        /*else
-        {
-            quantity--;
-            sprite = quantitySprites[quantity - 1];
-        }*/
+        Inventory.instance.Remove(this);
 
         if ((int)type == 0)
         {

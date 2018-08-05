@@ -27,7 +27,15 @@ public class Inventory : MonoBehaviour {
 
 
     //Creates a list of items
+    /*public struct _item
+    {
+        public Item element;
+        public int amount;
+    };
+    public List<_item> items = new List<_item>();
+    public _item aux;*/
     public List<Item> items = new List<Item>();
+    private int index = 0;
 
     //Adds items
     public bool Add (Item item)
@@ -39,6 +47,12 @@ public class Inventory : MonoBehaviour {
             Debug.Log("Not enough room!");
             return false;
         }
+        /*else if (item.packable == true && (index = SearchItem(item.name)) != -1)
+        {
+            
+
+            return true;
+        }*/
         else
         {
             //else, adds the item and destroys it
@@ -58,4 +72,18 @@ public class Inventory : MonoBehaviour {
         if (onItemChangedCallBack != null)
             onItemChangedCallBack.Invoke();
     }
+
+    /*public int SearchItem(string name)
+    {
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (name.Equals(items[i].name, System.StringComparison.Ordinal))
+            {
+                Debug.Log("Objeto já no invetario");
+                return i;
+            }
+        }
+
+        return -1;
+    }*/
 }

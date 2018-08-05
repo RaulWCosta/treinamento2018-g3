@@ -27,10 +27,8 @@ public class InventoryUI : MonoBehaviour {
 	void Update () {
         //If you press "i", the inventory is hidden
         if (Input.GetKeyDown("i"))
-        {
             //this transform the inventory active property into its opposite
             inventoryUI.SetActive(!inventoryUI.activeSelf);
-        }
 	}
 
     //Maintain the inventory panel updated
@@ -41,14 +39,10 @@ public class InventoryUI : MonoBehaviour {
         {
             //adds the items from the inventory
             if (i < inventory.items.Count)
-            {
                 slots[i].AddItem(inventory.items[i]);
-            }
             //else, clear the slot
             else
-            {
                 slots[i].ClearSlot();
-            }
         }
     }
 }
