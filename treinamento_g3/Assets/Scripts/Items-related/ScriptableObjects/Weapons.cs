@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+
 [CreateAssetMenu(fileName = "New Item", menuName = "Invetory/Weapon")]
 public class Weapons : Item {
     //these are the specific properties for weapons
@@ -13,7 +15,6 @@ public class Weapons : Item {
     {
         base.Use();
         EquipmentManager.instance.Equip(this);
-        Inventory.instance.Remove(this);
         //AddItem equipment Slot
         EquipmentManager.instance.UpdateUI();
     }

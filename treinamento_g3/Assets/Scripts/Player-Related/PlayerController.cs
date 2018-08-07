@@ -27,8 +27,8 @@ public class PlayerController : MonoBehaviour
     void Start ()
     {
         hpCurrent = hpMax;
-        totalMoney.text = money.ToString();         // Dinheiro a ser mostrado no HUD
-        totalLevel.text = level.ToString();         // Level a ser mostrado no HUD
+        //totalMoney.text = money.ToString();         // Dinheiro a ser mostrado no HUD
+        //totalLevel.text = level.ToString();         // Level a ser mostrado no HUD
     }
 	
 	void Update ()

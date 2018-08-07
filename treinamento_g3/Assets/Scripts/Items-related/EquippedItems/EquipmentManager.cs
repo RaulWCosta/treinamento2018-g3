@@ -23,7 +23,7 @@ public class EquipmentManager : MonoBehaviour {
     public int slotIndex;
     //Reference to the quantity of equipment slots
     int numSlots;
-
+    _item aux = new _item();
 
 
     //Equipped items slots
@@ -36,9 +36,6 @@ public class EquipmentManager : MonoBehaviour {
         numSlots = System.Enum.GetNames(typeof(EquipmentSlotIndex)).Length;
         //an array with the size of equipment slots
         currentEquipment = new Weapons[numSlots];
-
-
-
         slots = itemsParent.GetComponentsInChildren<EquipmentSlot>();
     }
 
@@ -48,7 +45,11 @@ public class EquipmentManager : MonoBehaviour {
         slotIndex = (int) newItem.equipSlot;
         //If there is an item already equipped, add it to the inventory before changing equipped items
         if (currentEquipment[slotIndex] != null)
-            Inventory.instance.Add(currentEquipment[slotIndex]);
+        {
+            aux.element = currentEquipment[slotIndex];
+            Inventory.instance.Add(aux);
+            aux = new _item();
+        }
 
         //equip the item
         currentEquipment[slotIndex] = newItem;
@@ -71,15 +72,11 @@ public class EquipmentManager : MonoBehaviour {
         for (int i = 0; i < slots.Length; i++)
         {
             //adds the items from the inventory
-            if (i < numSlots)
-            {
+            if (i < numSlots && currentEquipment[i] != null)
                 slots[i].AddItem(currentEquipment[i]);
-            }
             //else, clear the slot
             else
-            {
                 slots[i].ClearSlot();
-            }
         }
     }
 }

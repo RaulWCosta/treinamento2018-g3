@@ -16,16 +16,14 @@ public class Potions : Item {
 
     public override void Use ()
     {
-        Inventory.instance.Remove(this);
-
-        if ((int)type == 0)
+        /*if ((int)type == 0)
         {
-            player.hpCurrent += bonus;
+            //player.hpCurrent += bonus;
         }
-        else;
+        else
         {
             //player.Mana += bonus;
-        }
+        }*/
     }
 
 }

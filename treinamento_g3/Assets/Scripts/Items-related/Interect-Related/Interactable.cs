@@ -24,9 +24,7 @@ public class Interactable : MonoBehaviour {
 
         //If there is an selected item, itemSelected receives true;
         if (player.GetComponent<PlayerMovement>().selected != null)
-        {
             itemSelected = true;
-        }
         else if (dist <= radius * radius)
         {
             player.GetComponent<PlayerMovement>().selected = this.GetComponent<Interactable>();
@@ -41,13 +39,8 @@ public class Interactable : MonoBehaviour {
         }
         //if there is an selected object,
         if (itemSelected == true && dist <= radius * radius)
-        {
             if (Input.GetKeyDown("e"))
-            {
                 Interact();
-                Debug.Log("Interact");
-            }
-        }
     }
 
     //Virtual for genelarizing this interact option for any type of things: Chests, doors, items.

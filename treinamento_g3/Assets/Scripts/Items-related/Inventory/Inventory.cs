@@ -27,35 +27,30 @@ public class Inventory : MonoBehaviour {
 
 
     //Creates a list of items
-    /*public struct _item
-    {
-        public Item element;
-        public int amount;
-    };
     public List<_item> items = new List<_item>();
-    public _item aux;*/
-    public List<Item> items = new List<Item>();
+    //public List<Item> items = new List<Item>();
     private int index = 0;
 
     //Adds items
-    public bool Add (Item item)
+    public bool Add (_item item)
     {
         //checks if there is enough space
         if (items.Count >= space)
-        {
             // if not, returns false so that the item is not destroyed
-            Debug.Log("Not enough room!");
             return false;
-        }
-        /*else if (item.packable == true && (index = SearchItem(item.name)) != -1)
+        else if (item.element.packable == true && (index = SearchItem(item.element.name)) != -1)
         {
-            
+            items[index].amount += 1;
+
+            if (onItemChangedCallBack != null)
+                onItemChangedCallBack.Invoke();
 
             return true;
-        }*/
+        }
         else
         {
             //else, adds the item and destroys it
+            item.amount += 1;
             items.Add(item);
             if (onItemChangedCallBack != null)
                 // calls the delegate function
@@ -65,25 +60,22 @@ public class Inventory : MonoBehaviour {
     }
 
     //Removes items
-    public void Remove(Item item)
+    public void Remove(_item item)
     {
-        items.Remove(item);
+        if ((index = SearchItem(item.element.name)) != -1 && items[index].amount != 1)
+            items[index].amount--;
+        else
+            items.Remove(item);
         // calls the delegate function
         if (onItemChangedCallBack != null)
             onItemChangedCallBack.Invoke();
     }
 
-    /*public int SearchItem(string name)
+    public int SearchItem(string name)
     {
         for (int i = 0; i < items.Count; i++)
-        {
-            if (name.Equals(items[i].name, System.StringComparison.Ordinal))
-            {
-                Debug.Log("Objeto já no invetario");
+            if (name.Equals(items[i].element.name, System.StringComparison.Ordinal))
                 return i;
-            }
-        }
-
         return -1;
-    }*/
+    }
 }
