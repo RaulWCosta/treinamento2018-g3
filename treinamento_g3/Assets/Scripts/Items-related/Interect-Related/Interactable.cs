@@ -14,6 +14,7 @@ public class Interactable : MonoBehaviour {
     {
         //Finds the player
         player = GameObject.Find("Player");
+        itemSelected = true;
     }
 
     protected void Update()
@@ -22,13 +23,10 @@ public class Interactable : MonoBehaviour {
 
         //If there is an selected item, itemSelected receives true;
         if (player.GetComponent<PlayerMovement>().selected != null)
-        {   
-            //commented this because it made two items be selected at the same time
-            //itemSelected = true;
-        }
+            itemSelected = true;
+
         else if (dist <= radius * radius)
         {
-            //Debug.Log("Item selected through interactable");
             player.GetComponent<PlayerMovement>().selected = this.GetComponent<Interactable>();
             itemSelected = true;
         }
@@ -39,22 +37,17 @@ public class Interactable : MonoBehaviour {
             itemSelected = false;
             player.GetComponent<PlayerMovement>().selected = null;
         }
-
         //if there is an selected object,
         if (itemSelected == true && dist <= radius * radius)
-        {
             if (Input.GetKeyDown("e"))
-            {
                 Interact();
-                //Debug.Log("Interact");
-            }
-        }
+
     }
 
     //Virtual for generalizing this interact option for any type of things: Chests, doors, items.
     public virtual void Interact ()
     {
-        //Debug.Log("Interacting with " + this.name);
+
     }
 
     //this function return the distance between the player and the object of this component

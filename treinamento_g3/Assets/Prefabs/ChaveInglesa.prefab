@@ -20,11 +20,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4739833353946264}
   - component: {fileID: 212635502696413998}
-  - component: {fileID: 70752060492987052}
+  - component: {fileID: 114122379670536044}
   - component: {fileID: 114796081307525616}
   - component: {fileID: 114876008869902666}
   - component: {fileID: 114118645003052420}
   - component: {fileID: 95613479653079262}
+  - component: {fileID: 65135510572306546}
+  - component: {fileID: 114016107929271192}
   m_Layer: 0
   m_Name: ChaveInglesa
   m_TagString: Untagged
@@ -45,21 +47,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &70752060492987052
-CapsuleCollider2D:
+--- !u!65 &65135510572306546
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1552631522126390}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.19204065, y: 0.012803435}
-  m_Size: {x: 0.5134985, y: 0.5903148}
-  m_Direction: 0
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95613479653079262
 Animator:
   serializedVersion: 3
@@ -78,6 +77,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114016107929271192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1552631522126390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5ba41b2c4dccd34ea4dade6fcb60e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114118645003052420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -89,6 +99,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e510c52602cc4f6449d46b409e0ef0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114122379670536044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1552631522126390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68489d2b69d44ac42bfa736d272f6d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 2
+  item: {fileID: 11400000, guid: 299aeaf5000001c419afa1906dba97f3, type: 2}
 --- !u!114 &114796081307525616
 MonoBehaviour:
   m_ObjectHideFlags: 1
