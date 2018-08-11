@@ -7,6 +7,7 @@ using System.Linq;
 public class Weapons : Item {
     //these are the specific properties for weapons
     public int weaponDamage;
+    public float bulletSpeed;
     //this enum separetes melee and renged weapons
     public EquipmentSlotIndex equipSlot;
     public float range;

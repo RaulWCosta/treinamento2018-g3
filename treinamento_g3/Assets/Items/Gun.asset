@@ -9,13 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e864d6c8f33c18c48826fd90902d61b7, type: 3}
-  m_Name: Chave Inglesa
+  m_Name: Gun
   m_EditorClassIdentifier: 
-  name: Chave Inglesa
-  sprite: {fileID: 21300006, guid: 608bcc04ecac77147af6cb6e82de7894, type: 3}
-  item: {fileID: 1552631522126390, guid: 0af963691efa7de418b48f207b9b8222, type: 2}
+  name: "Rev\xF3lver"
+  sprite: {fileID: 21300000, guid: d4bdcaa25936c014a80e28d53f166d30, type: 3}
+  item: {fileID: 1105185382921288, guid: 0aeedd67a3eade54d906b8593b51bfd1, type: 2}
   equipable: 1
   packable: 0
   weaponDamage: 1
-  equipSlot: 0
-  range: 0
+  equipSlot: 1
+  range: 5

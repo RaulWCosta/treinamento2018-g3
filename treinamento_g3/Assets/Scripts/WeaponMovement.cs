@@ -8,13 +8,15 @@ public class WeaponMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		playerAnimator = transform.parent.gameObject.GetComponent<Animator>();
+        if(transform.parent != null)
+		    playerAnimator = transform.parent.gameObject.GetComponent<Animator>();
 
     }
 	
 	// Update is called once per frame
 	void Update () {
-        FollowMouse();
+        if (playerAnimator != null)
+            FollowMouse();
 	}
 
     //Make the weapon face the mouse pointer

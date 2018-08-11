@@ -36,7 +36,7 @@ public class ProjectileControl : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collision)
     {
-        if(collision.tag != "Player")
+        if(collision.tag != "Player" && collision.tag != "Weapon")
         {
             //damage to enemy
             if (collision.tag == "Enemy")
