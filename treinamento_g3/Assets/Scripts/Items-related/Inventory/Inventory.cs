@@ -62,7 +62,7 @@ public class Inventory : MonoBehaviour {
     //Removes items
     public void Remove(_item item)
     {
-        if ((index = SearchItem(item.element.name)) != -1 && items[index].amount != 1)
+        if ((index = SearchItemToRemove(item)) != -1 && items[index].amount != 1)
             items[index].amount--;
         else
             items.Remove(item);
@@ -74,7 +74,15 @@ public class Inventory : MonoBehaviour {
     public int SearchItem(string name)
     {
         for (int i = 0; i < items.Count; i++)
-            if (name.Equals(items[i].element.name, System.StringComparison.Ordinal))
+            if (name.Equals(items[i].element.name, System.StringComparison.Ordinal) && items[i].amount < 5)
+                return i;
+        return -1;
+    }
+
+    public int SearchItemToRemove(_item item)
+    {
+        for (int i = 0; i < items.Count; i++)
+            if (items[i] == item)
                 return i;
         return -1;
     }
