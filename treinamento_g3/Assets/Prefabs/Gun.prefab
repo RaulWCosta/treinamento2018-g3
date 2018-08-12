@@ -29,7 +29,7 @@ GameObject:
   - component: {fileID: 114385937474096222}
   m_Layer: 0
   m_Name: Gun
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   weaponDamage: 1
   meleeWeapon: 0
   range: 10
-  bulletSpeed: 0
+  bulletSpeed: 10
 --- !u!114 &114650990498024704
 MonoBehaviour:
   m_ObjectHideFlags: 1

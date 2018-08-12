@@ -11,6 +11,9 @@ public class EquipmentSlot : MonoBehaviour {
     public Image icon;
     //A reference to the iten's remove button
     public Button removeButton;
+    //Player script responsible for updating the weapon on the player
+    public PlayerEquip playerEquip;
+
     _item aux = new _item();
 
     //Adds an item
@@ -52,6 +55,9 @@ public class EquipmentSlot : MonoBehaviour {
             //if (EquipmentManager.instance.onItemChangedCallBackEquipped != null)
                 //EquipmentManager.instance.onItemChangedCallBackEquipped.Invoke();
             ClearSlot();
+            playerEquip.UpdateWeapon();
+
+           
         }
     }
 }

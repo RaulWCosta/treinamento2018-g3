@@ -17,5 +17,6 @@ MonoBehaviour:
   equipable: 1
   packable: 0
   weaponDamage: 1
+  bulletSpeed: 5
   equipSlot: 1
-  range: 5
+  range: 10

@@ -18,6 +18,8 @@ public class EquipmentManager : MonoBehaviour {
     public Transform itemsParent;
     //An array refering to all equipped items
     public Weapons[] currentEquipment;
+    //Player script responsible for updating the weapon on the player
+    public PlayerEquip playerEquip;
     //Equipped items pannel
     public GameObject equipmentUI;
     public int slotIndex;
@@ -50,9 +52,10 @@ public class EquipmentManager : MonoBehaviour {
             Inventory.instance.Add(aux);
             aux = new _item();
         }
-
         //equip the item
         currentEquipment[slotIndex] = newItem;
+        playerEquip.UpdateWeapon();
+
     }
 
     // Update is called once per frame

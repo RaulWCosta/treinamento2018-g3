@@ -17,5 +17,6 @@ MonoBehaviour:
   equipable: 1
   packable: 0
   weaponDamage: 1
+  bulletSpeed: 0
   equipSlot: 0
   range: 0
