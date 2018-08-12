@@ -8,6 +8,22 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    #region PlayerController
+    //this was copyed from internet and is usefull to refering to this script from another one
+    public static PlayerController instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("WARNING! More than one inventory found!");
+            return;
+        }
+        instance = this;
+
+    }
+    #endregion
+
     //Public
     [Range(1, 100)]
     public int hpMax;
