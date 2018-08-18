@@ -46,21 +46,18 @@ public class InventorySlot : MonoBehaviour {
     //THIS FUNCTION IS CALLED THROUGH THE BUTTON INSPECTOR
     public void OnRemoveButton()
     {
-        /*_item removeItem = Inventory.instance.items.FirstOrDefault(items => items.element.name.Equals(item.element.name, System.StringComparison.Ordinal));
-        if (removeItem != null)
-        {*/
-            Instantiate(item.element.item, player.position, player.rotation);
-            Inventory.instance.Remove(item);
-        //}
+        Debug.Log("Hi.");
+        Instantiate(item.element.item, player.position, player.rotation);
+        Inventory.instance.Remove(item);
+        
     }
     //THIS FUNCTION IS CALLED THROUGH THE BUTTON INSPECTOR
     public void UseItem()
     {
-        Debug.Log("Qualquer coisa1");
         //if there is an item in the slot, use it
         if (item.element != null)
         {
-            Debug.Log("Qualquer coisa");
+      
             item.element.Use();
             Inventory.instance.Remove(item);
         }
