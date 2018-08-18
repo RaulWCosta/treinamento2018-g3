@@ -56,9 +56,11 @@ public class InventorySlot : MonoBehaviour {
     //THIS FUNCTION IS CALLED THROUGH THE BUTTON INSPECTOR
     public void UseItem()
     {
+        Debug.Log("Qualquer coisa1");
         //if there is an item in the slot, use it
         if (item.element != null)
         {
+            Debug.Log("Qualquer coisa");
             item.element.Use();
             Inventory.instance.Remove(item);
         }
