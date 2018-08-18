@@ -2393,6 +2393,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1586486321520794, guid: d93a70d64d32a4943b8e9372047cd6e4, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d93a70d64d32a4943b8e9372047cd6e4, type: 2}
   m_IsPrefabAsset: 0
@@ -2723,6 +2727,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1.0000001}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2131358537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1586486321520794, guid: d93a70d64d32a4943b8e9372047cd6e4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1974541537}
+--- !u!95 &2131358538
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2131358537}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2138108913 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1934258473501356, guid: 3f27623f101b4fd4d860d60ff014610e,
