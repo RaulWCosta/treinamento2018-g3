@@ -5,13 +5,13 @@ using UnityEngine;
 public class InventoryUI : MonoBehaviour {
 
     //An transform for refering to the parent of all items slots
-    public Transform itemsParent;
+    private Transform itemsParent;
     //An array for refering to all the slots in itemsParent
     InventorySlot[] slots;
     //A reference to our inventory
     Inventory inventory;
     //references to the entire inventory
-    public GameObject inventoryUI;
+    private GameObject inventoryUI;
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +19,8 @@ public class InventoryUI : MonoBehaviour {
         inventory = Inventory.instance;
         //If an item was changed, update the UI
         inventory.onItemChangedCallBack += UpdateUI;
+        itemsParent = this.gameObject.transform.GetChild(0);
+        inventoryUI = itemsParent.gameObject;
         //The array of slots receives the slots
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
 	}

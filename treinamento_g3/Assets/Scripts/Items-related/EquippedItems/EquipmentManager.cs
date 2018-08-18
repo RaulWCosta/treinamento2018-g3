@@ -4,24 +4,15 @@ using UnityEngine;
 
 public class EquipmentManager : MonoBehaviour {
 
-    #region Singleton
-
-    public static EquipmentManager instance;
-
-    private void Awake()
-    {
-        instance = this;
-    }
-
-    #endregion
     //An transform for refering to the parent of all items slots
     public Transform itemsParent;
     //An array refering to all equipped items
     public Weapons[] currentEquipment;
     //Player script responsible for updating the weapon on the player
+    [HideInInspector]
     public PlayerEquip playerEquip;
     //Equipped items pannel
-    public GameObject equipmentUI;
+    private GameObject equipmentUI;
     public int slotIndex;
     //Reference to the quantity of equipment slots
     int numSlots;
@@ -31,9 +22,21 @@ public class EquipmentManager : MonoBehaviour {
     //Equipped items slots
     EquipmentSlot[] slots;
 
+    #region Singleton
+
+    public static EquipmentManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+        playerEquip = GameObject.FindWithTag("Player").GetComponent<PlayerEquip>();
+    }
+
+    #endregion
 
     private void Start()
     {
+        equipmentUI = this.gameObject.transform.GetChild(0).gameObject;
         //Here it gets the number of equipment slots
         numSlots = System.Enum.GetNames(typeof(EquipmentSlotIndex)).Length;
         //an array with the size of equipment slots

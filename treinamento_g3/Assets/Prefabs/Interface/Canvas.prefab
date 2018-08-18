@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 114927583410877314}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Inventory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3203,8 +3203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b976b7a1b70c14f8fceebee00fe364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemsParent: {fileID: 224868155891599038}
-  inventoryUI: {fileID: 1296396121762144}
 --- !u!114 &114249556033532704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3925,7 +3923,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 114593662819217694}
   removeButton: {fileID: 114949241155421090}
-  playerEquip: {fileID: 0}
 --- !u!114 &114362598883783294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4489,7 +4486,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 114932786396243464}
   removeButton: {fileID: 114694606626199604}
-  playerEquip: {fileID: 0}
 --- !u!114 &114491887899500554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4775,7 +4771,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300002, guid: 6827c61efb82c3c4bbf2060d52aa4ab2, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5141,7 +5137,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300006, guid: 608bcc04ecac77147af6cb6e82de7894, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5190,7 +5186,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: dd90aba687a2ae34b8f1851c276ca541, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5967,7 +5963,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   playerEquip: {fileID: 0}
-  equipmentUI: {fileID: 1806875470609368}
   slotIndex: 0
 --- !u!114 &114803195112805122
 MonoBehaviour:
