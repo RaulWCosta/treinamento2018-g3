@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class DamageScript : MonoBehaviour {
 
-    public float damage;
-    public float speed;
-    private Rigidbody2D rigidBody;
+    public float Damage;
+    public float Velocity;
+    private Rigidbody2D RB;
 
 	void Start () {
-        rigidBody = gameObject.GetComponent<Rigidbody2D>();
-        rigidBody.velocity += new Vector2(-speed, 0);
+        RB = gameObject.GetComponent<Rigidbody2D>();
+        RB.velocity += new Vector2(-Velocity, 0);
 	}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Enemy")
         {
-            collision.GetComponent<EnemyController>().EnemyTakeDamage(damage);
+            collision.GetComponent<EnemyController>().ReceivedDamage(Damage);
             Destroy(gameObject);
         }
     }

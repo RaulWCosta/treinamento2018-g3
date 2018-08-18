@@ -71,7 +71,7 @@ public class PlayerAttack : MonoBehaviour {
             if (weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
             {
                 //make enemy take damage
-                other.GetComponent<EnemyController>().EnemyTakeDamage(equippedWeaponProperties.weaponDamage);
+                other.GetComponent<EnemyController>().ReceivedDamage(equippedWeaponProperties.weaponDamage);
 
                 attacked = true; //already attacked the enemy
             }
