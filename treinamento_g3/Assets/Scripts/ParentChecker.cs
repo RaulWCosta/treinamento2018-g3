@@ -18,9 +18,4 @@ public class ParentChecker : MonoBehaviour {
             GetComponent<ItemPickUp>().enabled = false;
         }
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
