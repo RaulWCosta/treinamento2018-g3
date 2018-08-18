@@ -1319,6 +1319,48 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f27623f101b4fd4d860d60ff014610e, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1001 &1228863660
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4023459795776870, guid: e5921e3c0df5380408716077d989790d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023459795776870, guid: e5921e3c0df5380408716077d989790d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023459795776870, guid: e5921e3c0df5380408716077d989790d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023459795776870, guid: e5921e3c0df5380408716077d989790d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023459795776870, guid: e5921e3c0df5380408716077d989790d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023459795776870, guid: e5921e3c0df5380408716077d989790d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023459795776870, guid: e5921e3c0df5380408716077d989790d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023459795776870, guid: e5921e3c0df5380408716077d989790d, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5921e3c0df5380408716077d989790d, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1263353498 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1858525379497390, guid: e587e953c2d010547990e5fbf9e9d116,
@@ -1508,6 +1550,26 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 224319509967862860, guid: 10a10e8f3a253a74cb89440af55b7c16,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224911356144096400, guid: 10a10e8f3a253a74cb89440af55b7c16,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114359496032921096, guid: 10a10e8f3a253a74cb89440af55b7c16,
+        type: 2}
+      propertyPath: playerEquip
+      value: 
+      objectReference: {fileID: 219037878}
+    - target: {fileID: 114485778979705000, guid: 10a10e8f3a253a74cb89440af55b7c16,
+        type: 2}
+      propertyPath: playerEquip
+      value: 
+      objectReference: {fileID: 219037878}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10a10e8f3a253a74cb89440af55b7c16, type: 2}
   m_IsPrefabAsset: 0
