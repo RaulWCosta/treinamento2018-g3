@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     public GameObject Vision;
     public NavMeshAgent Agent;                                 //O agente do inimigo, entidade que controla a movimentação do inimigo no navmesh
     public Transform Target;                                    //O "Alvo" a posição atual do jogador
+    public Item[] drops;                                        //Items dropáveis
     public float HP;                                            //Vida do inimigo
     public float Velocity;                                      //Velocidade do inimigo
     public float HuntingTime;                                   //O tempo que o inimigo continuará perseguindo o jogador caso ele o perca de vista
@@ -142,5 +143,11 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void Drop()
+    {
+        if (Random.Range(1, 2) > 1)
+            Instantiate(drops[Random.Range(0, drops.Length)], this.transform.position, this.transform.rotation);
     }
 }

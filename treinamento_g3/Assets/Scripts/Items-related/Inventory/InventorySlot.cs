@@ -46,7 +46,6 @@ public class InventorySlot : MonoBehaviour {
     //THIS FUNCTION IS CALLED THROUGH THE BUTTON INSPECTOR
     public void OnRemoveButton()
     {
-        Debug.Log("Hi.");
         Instantiate(item.element.item, player.position, player.rotation);
         Inventory.instance.Remove(item);
         
