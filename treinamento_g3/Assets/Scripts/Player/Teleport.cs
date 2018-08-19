@@ -10,9 +10,10 @@ public class Teleport : MonoBehaviour {
     private Vector3 teleport;
     private bool teleporting;
     private Animator animator;
+    private float realTeleportRange;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         animator = this.GetComponent<Animator>();
         teleportRange = 3f;
         timeBetweenDodges = 1f;
@@ -21,7 +22,7 @@ public class Teleport : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Quando apertar o shift esquerdo, esquiva
-        if (Input.GetKeyDown(KeyCode.LeftShift) && teleporting == false && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && teleporting == false && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) && (realTeleportRange = RayCast()) > 0)
         {
             teleporting = true;                                                                                                           //Esa varíávle impede que o teleporte possa ser feito varias vezes
             invencible = true;                                                                                                            //Fica invencível
@@ -33,9 +34,10 @@ public class Teleport : MonoBehaviour {
 
     void Dodge()
     {
-        teleport = Vector3.right * Input.GetAxis("Horizontal") * teleportRange;
+        Debug.Log(realTeleportRange);
+        teleport = Vector3.right * Input.GetAxis("Horizontal") * realTeleportRange;
         transform.position += teleport;
-        teleport = Vector3.forward * Input.GetAxis("Vertical") * teleportRange;
+        teleport = Vector3.forward * Input.GetAxis("Vertical") * realTeleportRange;
         transform.position += teleport;
         animator.SetBool("walk", false);
     }
@@ -47,5 +49,13 @@ public class Teleport : MonoBehaviour {
     void NotInvencible()
     {
         invencible = false;
+    }
+
+    float RayCast()
+    {
+        RaycastHit ray;
+        Vector3 direction = gameObject.GetComponent<CharacterController>().velocity;
+        Physics.Raycast(this.transform.position, direction, out ray, teleportRange, 2);
+        return ray.distance;
     }
 }

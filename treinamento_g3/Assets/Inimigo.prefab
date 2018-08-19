@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4293401999640278}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: VisionReference
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 114234874513718886}
   - component: {fileID: 114191991992292864}
   - component: {fileID: 108963724483163484}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Vision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 195651305718141058}
   - component: {fileID: 114889615240088620}
   - component: {fileID: 65287040095539126}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Inimigo
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4504246116599510}
   - component: {fileID: 212513051041111478}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1478994714645480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.34, y: 0.8, z: -5.06}
+  m_LocalPosition: {x: -3.74, y: 0.8, z: 7.07}
   m_LocalScale: {x: 1, y: 0.8, z: 1}
   m_Children:
   - {fileID: 4504246116599510}
@@ -266,6 +266,7 @@ MonoBehaviour:
   Vision: {fileID: 1183221127468358}
   Agent: {fileID: 195651305718141058}
   Target: {fileID: 0}
+  drops: []
   HP: 5
   Velocity: 2.5
   HuntingTime: 8
