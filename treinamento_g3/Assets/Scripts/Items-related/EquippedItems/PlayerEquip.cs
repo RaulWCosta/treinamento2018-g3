@@ -55,11 +55,6 @@ public class PlayerEquip : MonoBehaviour {
             if (equipmentManager.currentEquipment[currentSlot])
             {
                 currentItem = Instantiate(equipmentManager.currentEquipment[currentSlot].item, spawnPoint.transform.position, spawnPoint.transform.rotation, this.transform);
-                if (currentItem.GetComponent<SelectNPC>())
-                {
-                    Debug.Log("Disabling it");
-                    currentItem.GetComponent<SelectNPC>().enabled = false;
-                }
                     
             }
 

@@ -16,6 +16,29 @@ public class ParentChecker : MonoBehaviour {
         else
         {
             GetComponent<ItemPickUp>().enabled = false;
+            
         }
 	}
+
+    private void Update()
+    {
+        
+        if (this.transform.parent != null)
+        {
+            Debug.Log("Hi! I should be disabled!");
+            if (GetComponent<SelectNPC>() != null)
+            {
+                Debug.Log("Hi! I am not null.");
+                GetComponent<SelectNPC>().enabled = false;
+            }
+                
+        }
+        
+        else
+        {
+            if (GetComponent<SelectNPC>() != null)
+                GetComponent<SelectNPC>().enabled = true;
+        }
+            
+    }
 }
