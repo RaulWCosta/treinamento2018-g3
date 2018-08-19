@@ -22,8 +22,6 @@ public class PlayerAttack : MonoBehaviour {
         //if this is a ranged weapon
         //BulletExit should be an empty GameObject placed at where the bullet should first appear on the gun
         bulletExitPosition = transform.Find("BulletExit");
-       
-      
 
     }
 	
