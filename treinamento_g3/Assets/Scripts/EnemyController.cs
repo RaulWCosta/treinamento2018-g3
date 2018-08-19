@@ -26,23 +26,28 @@ public class EnemyController : MonoBehaviour
     private Vector3 PatrolPosition;
     private Vector3 TargetPosition;
     private NavMeshPath cam;
+    private EnemyAnimation enemyAnimation;
+    private bool dead;
+    
 
     void Start()
     {
         HuntingPlayer = false;                               
         DetectedPlayer = false;
         Idle = true;
+        dead = false;
         PatrolTimer = 7;
         PatrolChance = 850;
         LastPatrol = 0;
         Player = GameObject.FindWithTag("Player");              //Find the player with the tag "Player                          //O alvo é a posição do jogador
         Agent = gameObject.GetComponent<NavMeshAgent>();        //Get the agent of the Enemy
         Agent.speed = Velocity;
+        enemyAnimation = gameObject.GetComponent<EnemyAnimation>();
     }
 
      void Update()
     {
-        if (Idle)
+        if (Idle && !dead)
         {
             Collider [] ColliderList;
             ColliderList =  Physics.OverlapSphere(gameObject.transform.position, DetectRadius);
@@ -140,7 +145,19 @@ public class EnemyController : MonoBehaviour
         HP -= DamageTaken;
         if (HP <= 0)
         {
-            Destroy(gameObject);
+            //call death animation
+            enemyAnimation.DeathAnimation();
+
+            //disactivates enemies
+            Destroy(Vision);
+            Idle = false;
+            Patrol = false;
+            HuntingPlayer = false;
+            dead = true;
+            Agent.destination = transform.position;
+
         }
+        //call damage animation
+        enemyAnimation.DamageAnimation();
     }
 }

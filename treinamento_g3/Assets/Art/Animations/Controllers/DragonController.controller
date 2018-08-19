@@ -8,19 +8,7 @@ AnimatorController:
   m_Name: DragonController
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: attacked
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
   - m_Name: turnedOn
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 1
-    m_Controller: {fileID: 0}
-  - m_Name: faceRight
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -28,6 +16,12 @@ AnimatorController:
     m_Controller: {fileID: 0}
   - m_Name: dead
     m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: attacked
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -91,7 +85,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -118,7 +112,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -145,7 +139,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -181,9 +175,6 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: attacked
-    m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: dead
     m_EventTreshold: 0
@@ -247,7 +238,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -259,7 +250,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Death
-  m_Speed: 0.2
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -274,7 +265,7 @@ AnimatorState:
   m_Motion: {fileID: 7400000, guid: d13b538f923a33245a8ef865596d9da0, type: 2}
   m_Tag: 
   m_SpeedParameter: 
-  m_MirrorParameter: 
+  m_MirrorParameter: faceRight
   m_CycleOffsetParameter: 
   m_TimeParameter: 
 --- !u!1102 &1102502510445174604
@@ -302,7 +293,7 @@ AnimatorState:
   m_Motion: {fileID: 7400000, guid: 2df65b552837bcc429ab09b8bd8f1d54, type: 2}
   m_Tag: 
   m_SpeedParameter: 
-  m_MirrorParameter: 
+  m_MirrorParameter: faceRight
   m_CycleOffsetParameter: 
   m_TimeParameter: 
 --- !u!1102 &1102565206374035128
@@ -312,7 +303,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Damaged
-  m_Speed: 1
+  m_Speed: 0.25
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101652358776848034}
@@ -323,7 +314,7 @@ AnimatorState:
   m_WriteDefaultValues: 1
   m_Mirror: 0
   m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 1
+  m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 54439ce9216fd9c458320c903afa160e, type: 2}
@@ -354,10 +345,10 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 960460c7c194318478aeb8b76c6d8fd9, type: 2}
+  m_Motion: {fileID: 7400000, guid: 263c8c7fcf52fdb41be5a08bc10153f1, type: 2}
   m_Tag: 
   m_SpeedParameter: 
-  m_MirrorParameter: 
+  m_MirrorParameter: faceRight
   m_CycleOffsetParameter: 
   m_TimeParameter: 
 --- !u!1107 &1107318617423174460
