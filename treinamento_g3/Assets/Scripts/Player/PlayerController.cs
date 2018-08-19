@@ -73,7 +73,6 @@ public class PlayerController : MonoBehaviour
        {
             hpCurrent -= amount;
             animator.SetTrigger("hit");
-            /*healthBar.value = hpCurrent/hpMax * 100; // Diminuir a barra de vida de acordo com o hpCurrent*/
         }
 
        //player death

@@ -7,9 +7,7 @@ using UnityEngine;
  * game object at the player's hands
  **/
 public class PlayerEquip : MonoBehaviour {
-
-    //the game object that manages items
-    public GameObject EquipmentManager;
+    
     //gameobject attached to player which gives you the position where weapon should be spawned
     public Transform spawnPoint; 
     //item that is currently in use (melee or ranged weapon)
@@ -24,7 +22,7 @@ public class PlayerEquip : MonoBehaviour {
         //equips initial weapon
         UpdateWeapon();
         //gets equipmentManager script
-        equipmentManager = EquipmentManager.GetComponent<EquipmentManager>();
+        equipmentManager = GameObject.FindWithTag("Inventory").GetComponentInChildren<EquipmentManager>();
 	}
 
     void Update()
@@ -52,9 +50,12 @@ public class PlayerEquip : MonoBehaviour {
         //get weapon from inventory
         //spawn gameObject stored in currentItem
         if (equipmentManager)
-            if(equipmentManager.currentEquipment[currentSlot])
+            if (equipmentManager.currentEquipment[currentSlot])
+            {
                 currentItem = Instantiate(equipmentManager.currentEquipment[currentSlot].item, spawnPoint.transform.position, spawnPoint.transform.rotation, this.transform);
-       
+                    
+            }
+
     }
 
     /**

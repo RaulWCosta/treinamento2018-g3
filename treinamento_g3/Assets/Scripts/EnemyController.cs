@@ -19,15 +19,18 @@ public class EnemyController : MonoBehaviour
     private GameObject Player;                                              //O objeto do jogador
     private float HuntingStart;                                             //O tempo inicial em que o inimigo perdeu de vista o jogador
     private float PatrolChance;                                             //A probabilidade dos inimigos entrarem em modo de patrulha
-    private float PatrolWill;                                               //A varaiavel que armazena qual a vontade do inimigo patrulhar no momento
     private float PatrolTimer;                                              //O tempo que o inimigo leva para tentar começar uma nova patrulha
+    private float PatrolWill;                                               //A varaiavel que armazena qual a vontade do inimigo patrulhar no momento
     private float LastPatrol;                                               //O tempo que iniciou a ultima patrulha
-    private bool MemoryController;                                          //Booleana que controla se o inimigo lembra da posição do jogador 
     private bool SignedCorrection;
+    private bool MemoryController;                                          //Booleana que controla se o inimigo lembra da posição do jogador 
     private Vector3 PatrolPosition;                                         //A posição atual que será o destino de patrulha do inimigo
     private Vector3 TargetPosition;                                         //A posição do alvo do inimigo, o ultimo valor de posição do jogador que o inimigo se lembra
-    private Vector3 Delta;
     private Vector3 SignedDelta;
+    private Vector3 Delta;
+    public Item[] drops;                                        //Items dropáveis
+    private bool dead;
+    private EnemyAnimation enemyAnimation;
 
     void Start()
     {
@@ -41,64 +44,68 @@ public class EnemyController : MonoBehaviour
         Player = GameObject.FindWithTag("Player");                          //Find the player with the tag "Player                          //O alvo é a posição do jogador
         Agent = gameObject.GetComponent<NavMeshAgent>();                    //Get the agent of the Enemy
         Agent.speed = Velocity;
+        enemyAnimation = gameObject.GetComponent<EnemyAnimation>();
     }
 
     void Update()
     {
-        if (Idle)                                                           //Enquanto o inimigo estiver no modo idle
+        if (!dead)
         {
-            Collider[] ColliderList;
-            ColliderList = Physics.OverlapSphere(gameObject.transform.position, DetectRadius); //Faz um cast esférico com raio DetectRadius
-            Agent.avoidancePriority = Random.Range(40, 50);                 //Enqunto parado o agente inimigo tem prioridade menor para os que estão em movimento
-            foreach (Collider element in ColliderList)
+            if (Idle)
             {
-                if (element.gameObject.tag == "Player")
+                Collider[] ColliderList;
+                ColliderList = Physics.OverlapSphere(gameObject.transform.position, DetectRadius); //Faz um cast esférico com raio DetectRadius
+                Agent.avoidancePriority = Random.Range(40, 50);     //Enqunto parado o agente inimigo tem prioridade menor para os que estão em movimento
+                foreach (Collider element in ColliderList)
                 {
-                    DetectedPlayer = true;
+                    if (element.gameObject.tag == "Player")
+                    {
+                        DetectedPlayer = true;
+                    }
+                }
+
+                if (PatrolTimer + LastPatrol < Time.time)
+                {
+                    LastPatrol = Time.time;
+                    PatrolWill = Random.Range(0, 1000);
+                    if (PatrolWill > PatrolChance)
+                    {
+                        StartCoroutine(StartPatrol());
+                    }
                 }
             }
 
-            if (PatrolTimer + LastPatrol < Time.time)
+            if (Patrol)                                                         //Rotina da patrulha
             {
-                LastPatrol = Time.time;
-                PatrolWill = Random.Range(0, 1000);
-                if (PatrolWill > PatrolChance)
-                {
-                    StartCoroutine(StartPatrol());
-                }
+                Agent.destination = PatrolPosition;
+                Agent.avoidancePriority = 5;
             }
-        }
 
-        if (Patrol)                                                         //Rotina da patrulha
-        {
-            Agent.destination = PatrolPosition;
-            Agent.avoidancePriority = 5;
-        }
+            if (DetectedPlayer)                                                 //Caso o jogador foi encontrado
+            {
+                HuntingPlayer = true;                                           //Começa a caçar o jogador
+                HuntingStart = Time.time;                                       //Inica o contador para o fim da caçada
+                Patrol = false;
+                Idle = false;
+                MemoryController = true;
+                StartCoroutine(Memory());
+                Target = Player.transform;
+                TargetPosition = Player.transform.position;
+            }
 
-        if (DetectedPlayer)                                                 //Caso o jogador foi encontrado
-        {
-            HuntingPlayer = true;                                           //Começa a caçar o jogador
-            HuntingStart = Time.time;                                       //Inica o contador para o fim da caçada
-            Patrol = false;
-            Idle = false;
-            MemoryController = true;
-            StartCoroutine(Memory());
-            Target = Player.transform;
-            TargetPosition = Player.transform.position;
-        }
-
-        if (HuntingStart + HuntingTime < Time.time && !Patrol)              //Se passou "HuntingTime" que o inimigo não encontrou o jogador, o inimigo para de caçar o jogador
-        {
-            HuntingPlayer = false;                                          //Termina a caçada do jogador
-            Idle = true;
-        }
+            if (HuntingStart + HuntingTime < Time.time && !Patrol)              //Se passou "HuntingTime" que o inimigo não encontrou o jogador, o inimigo para de caçar o jogador
+            {
+                HuntingPlayer = false;                                          //Termina a caçada do jogador
+                Idle = true;
+            }
 
         if (HuntingPlayer)                                                  //Se está caçando o jogador corre na direção dele
         {
             Agent.speed = Velocity;
             if (MemoryController) Agent.destination = Target.position;
-            else Agent.destination = TargetPosition;            
+            else Agent.destination = TargetPosition;
         }
+        
     }
 
     Vector3 CartesianCoords(float Radius,float Angle)
@@ -150,7 +157,26 @@ public class EnemyController : MonoBehaviour
         HP -= DamageTaken;
         if (HP <= 0)
         {
-            Destroy(gameObject);
+            //call death animation
+            enemyAnimation.DeathAnimation();
+
+            //disactivates enemies
+            Destroy(Vision);
+            Idle = false;
+            Patrol = false;
+            DetectedPlayer = false;
+            HuntingPlayer = false;
+            dead = true;
+            Agent.destination = transform.position;
+
         }
+        //call damage animation
+        enemyAnimation.DamageAnimation();
+    }
+
+    public void Drop()
+    {
+        if (Random.Range(1, 2) > 1)
+            Instantiate(drops[Random.Range(0, drops.Length)], this.transform.position, this.transform.rotation);
     }
 }

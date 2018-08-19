@@ -14,8 +14,24 @@ public class ParentChecker : MonoBehaviour {
             GetComponent<Animator>().enabled = false;
         }
         else
-        {
             GetComponent<ItemPickUp>().enabled = false;
-        }
 	}
+
+    private void Update()
+    {
+        
+        if (this.transform.parent != null)
+        {
+            if (GetComponent<SelectNPC>() != null)
+            {
+                GetComponent<SelectNPC>().enabled = false;
+            }       
+        }
+        else
+        {
+            if (GetComponent<SelectNPC>() != null)
+                GetComponent<SelectNPC>().enabled = true;
+        }
+            
+    }
 }

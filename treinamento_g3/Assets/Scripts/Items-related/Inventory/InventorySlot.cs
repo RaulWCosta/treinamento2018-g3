@@ -8,14 +8,30 @@ public class InventorySlot : MonoBehaviour {
     public _item item = new _item();
     //A reference to the item's and quantity image
     public Image icon;
-    public Image quantity;
+    public Image edge;
     //A reference to the item's remove button
     public Button removeButton;
-    public Sprite[] quantities;
+    public Texture2D texture;
+    private Sprite[] quantities;
     private Transform player;
+
+
+    private Image imageParent;
+    private Image[] thisChildImage;
+
     private void Awake()
     {
-        player = GameObject.Find("Player").transform;
+        player = GameObject.FindWithTag("Player").transform;
+        quantities = Resources.LoadAll<Sprite>(texture.name);
+        imageParent = this.GetComponentInParent<Image>();
+        thisChildImage = this.GetComponentsInChildren<Image>();
+    }
+
+    private void Update()
+    {
+        for (int i = 0; i < thisChildImage.Length; i++)
+            if (thisChildImage[i].enabled != imageParent.enabled && item.element != null)
+                thisChildImage[i].enabled = imageParent.enabled;
     }
 
     //Adds an item
@@ -25,7 +41,8 @@ public class InventorySlot : MonoBehaviour {
         item = newItem;
         //its sprite
         icon.sprite = item.element.sprite;
-        quantity.sprite = QuantitySprite(item);
+        edge.sprite = quantities[item.amount - 1];
+        edge.enabled = true;
         //enable its icon
         icon.enabled = true;
         //actives the remove button
@@ -36,17 +53,16 @@ public class InventorySlot : MonoBehaviour {
     {
         //clears and disable the slot
         item = new _item();
-        icon.sprite = null;
         icon.enabled = false;
-        quantity.sprite = null;
-        quantity.enabled = false;
+        icon.sprite = null;
+        edge.enabled = false;
+        edge.sprite = null;
         //removes the removebutton
         removeButton.interactable = false;
     }
     //THIS FUNCTION IS CALLED THROUGH THE BUTTON INSPECTOR
     public void OnRemoveButton()
     {
-        Debug.Log("Hi.");
         Instantiate(item.element.item, player.position, player.rotation);
         Inventory.instance.Remove(item);
         
@@ -57,35 +73,9 @@ public class InventorySlot : MonoBehaviour {
         //if there is an item in the slot, use it
         if (item.element != null)
         {
-      
+
             item.element.Use();
             Inventory.instance.Remove(item);
         }
-    }
-    public Sprite QuantitySprite(_item element)
-    {
-        if (element.amount == 1)
-            quantity.enabled = false;
-        else if (element.amount == 2)
-        {
-            quantity.enabled = true;
-            return quantities[0];
-        }
-        else if (element.amount == 3)
-        {
-            quantity.enabled = true;
-            return quantities[1];
-        }
-        else if (element.amount == 4)
-        {
-            quantity.enabled = true;
-            return quantities[2];
-        }
-        else if (element.amount == 5)
-        {
-            quantity.enabled = true;
-            return quantities[3];
-        }
-        return null;
     }
 }

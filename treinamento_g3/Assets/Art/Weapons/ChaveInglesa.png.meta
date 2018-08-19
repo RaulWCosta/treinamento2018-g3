@@ -7,7 +7,7 @@ TextureImporter:
     21300004: ChaveInglesa_2
     21300006: ChaveInglesa_3
   externalObjects: {}
-  serializedVersion: 5
+  serializedVersion: 7
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -25,6 +25,8 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -35,7 +37,7 @@ TextureImporter:
     serializedVersion: 2
     filterMode: 0
     aniso: -1
-    mipBias: -1
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: -1
@@ -102,16 +104,16 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 9
-      pivot: {x: 0.6, y: 0.53}
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8871dbcb5468944cae6a901a6cea0f7
+      spriteID: 26c71ab0ce23ff24394c1bae31a45c04
       vertices: []
       indices: 
       edges: []
@@ -120,18 +122,18 @@ TextureImporter:
       name: ChaveInglesa_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 64
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 9
-      pivot: {x: 0.6, y: 0.53}
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cb0517275f7e05459ee6263b4f35786
+      spriteID: af62a98cbe8784f4c909f4186ebcc2f5
       vertices: []
       indices: 
       edges: []
@@ -140,18 +142,18 @@ TextureImporter:
       name: ChaveInglesa_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 128
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 9
-      pivot: {x: 0.6, y: 0.53}
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78596984a30b2464abe38cd486afeb41
+      spriteID: d1c9a7cd8f1261947b4798200824d583
       vertices: []
       indices: 
       edges: []
@@ -160,18 +162,18 @@ TextureImporter:
       name: ChaveInglesa_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 192
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 9
-      pivot: {x: 0.58, y: 0.53}
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62d816a62f6ff704ab3c5048558062b2
+      spriteID: b8b18439cc689854697507b657e1e98a
       vertices: []
       indices: 
       edges: []
@@ -185,6 +187,8 @@ TextureImporter:
     edges: []
     weights: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
