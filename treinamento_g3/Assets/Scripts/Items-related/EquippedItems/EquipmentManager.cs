@@ -61,17 +61,6 @@ public class EquipmentManager : MonoBehaviour {
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //If you press "i", the inventory is hidden
-        if (Input.GetKeyDown("i"))
-        {
-            //this transform the inventory active property into its opposite
-            equipmentUI.SetActive(!equipmentUI.activeSelf);
-        }
-    }
-
     public void UpdateUI()
     {
         //checks all slots

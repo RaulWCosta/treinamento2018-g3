@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour {
 
@@ -10,8 +11,7 @@ public class InventoryUI : MonoBehaviour {
     InventorySlot[] slots;
     //A reference to our inventory
     Inventory inventory;
-    //references to the entire inventory
-    private GameObject inventoryUI;
+    Image inventoryUI;
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +20,7 @@ public class InventoryUI : MonoBehaviour {
         //If an item was changed, update the UI
         inventory.onItemChangedCallBack += UpdateUI;
         itemsParent = this.gameObject.transform.GetChild(0);
-        inventoryUI = itemsParent.gameObject;
+        inventoryUI = itemsParent.GetComponent<Image>();
         //The array of slots receives the slots
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
 	}
@@ -29,8 +29,9 @@ public class InventoryUI : MonoBehaviour {
 	void Update () {
         //If you press "i", the inventory is hidden
         if (Input.GetKeyDown("i"))
-            //this transform the inventory active property into its opposite
-            inventoryUI.SetActive(!inventoryUI.activeSelf);
+        {
+            inventoryUI.enabled = !inventoryUI.enabled;
+        }
 	}
 
     //Maintain the inventory panel updated
