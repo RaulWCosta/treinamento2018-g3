@@ -61,8 +61,6 @@ public class EquipmentSlot : MonoBehaviour {
                 //EquipmentManager.instance.onItemChangedCallBackEquipped.Invoke();
             ClearSlot();
             playerEquip.UpdateWeapon();
-
-           
         }
     }
 }
