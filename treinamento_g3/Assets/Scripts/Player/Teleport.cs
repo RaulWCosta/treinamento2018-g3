@@ -34,7 +34,6 @@ public class Teleport : MonoBehaviour {
 
     void Dodge()
     {
-        Debug.Log(realTeleportRange);
         teleport = Vector3.right * Input.GetAxis("Horizontal") * realTeleportRange;
         transform.position += teleport;
         teleport = Vector3.forward * Input.GetAxis("Vertical") * realTeleportRange;
@@ -54,8 +53,11 @@ public class Teleport : MonoBehaviour {
     float RayCast()
     {
         RaycastHit ray;
-        Vector3 direction = gameObject.GetComponent<CharacterController>().velocity;
-        Physics.Raycast(this.transform.position, direction, out ray, teleportRange, 2);
-        return ray.distance;
+        Vector3 rotation = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        Vector3 direction = Quaternion.Euler(rotation) * gameObject.transform.forward;
+        if (Physics.Raycast(this.transform.position, direction, out ray, teleportRange, 2))
+            return ray.distance;
+        return 3f;
+        
     }
 }
