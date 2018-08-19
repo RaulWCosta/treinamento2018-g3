@@ -50,6 +50,7 @@ public class EnemyAttack : MonoBehaviour
         {
             // Player.GetComponent<PlayerController>().TakeDamage(Damage);
             print("Player Levou Dano:" + Damage);
+            Player.GetComponent<PlayerController>().hpCurrent -= Damage;
             DamageTimer = Time.time + DamageCooldown;
         }
     }
