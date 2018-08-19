@@ -12,9 +12,14 @@ public class EquipmentSlot : MonoBehaviour {
     //A reference to the iten's remove button
     public Button removeButton;
     //Player script responsible for updating the weapon on the player
-    public PlayerEquip playerEquip;
+    private PlayerEquip playerEquip;
 
     _item aux = new _item();
+
+    private void Start()
+    {
+        playerEquip = this.GetComponentInParent<EquipmentManager>().playerEquip;
+    }
 
     //Adds an item
     public void AddItem(Weapons newItem)

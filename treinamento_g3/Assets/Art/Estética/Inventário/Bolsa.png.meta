@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: e2e16201fc1b1bf498b827bc5ff178f6
+guid: 472e0c3a0d45bde4f97bb775c4d8885b
 TextureImporter:
   fileIDToRecycleName:
-    21300000: "Fuma\xE7a_0"
-    21300002: "Fuma\xE7a_1"
-    21300004: "Fuma\xE7a_2"
-    21300006: "Fuma\xE7a_3"
+    21300000: Bolsa_0
+    21300002: Bolsa_1
+    21300004: Bolsa_2
+    21300006: Bolsa_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -67,7 +67,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -78,7 +78,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -89,7 +89,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -99,13 +99,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Fuma\xE7a_0"
+      name: Bolsa_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 2
-        width: 11
-        height: 13
+        x: 48
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -113,19 +113,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edc8f7babd03eb44e85c3368b341ef7c
+      spriteID: 16ac9fb5cdc633d4fb14f66e56a4c649
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Fuma\xE7a_1"
+      name: Bolsa_1
       rect:
         serializedVersion: 2
-        x: 17
-        y: 2
-        width: 11
-        height: 13
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,19 +133,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e4c4a30f67b53f4c9732625534da4af
+      spriteID: f2293282afb273343a0e015b75de99d6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Fuma\xE7a_2"
+      name: Bolsa_2
       rect:
         serializedVersion: 2
-        x: 50
-        y: 2
-        width: 11
-        height: 13
+        x: 48
+        y: 0
+        width: 32
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,19 +153,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f6c533a307c795458ff414f26254099
+      spriteID: 325f65efdc48ccd4888633a7466818a7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Fuma\xE7a_3"
+      name: Bolsa_3
       rect:
         serializedVersion: 2
-        x: 34
-        y: 2
-        width: 11
-        height: 13
+        x: 96
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,7 +173,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2cf23f0248ffb164d8170f5a9a468528
+      spriteID: c85564baaf099bb4a8dbad81c249d989
       vertices: []
       indices: 
       edges: []
@@ -181,7 +181,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 700f4eb80a8a1644791985b51c788e2b
+    spriteID: 7e14cd8ae94e7d445b2ec8bc1faad9e1
     vertices: []
     indices: 
     edges: []

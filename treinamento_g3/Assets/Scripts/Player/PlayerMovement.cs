@@ -7,12 +7,14 @@ public class PlayerMovement : MonoBehaviour {
 
     public float speed; //movement speed
     public Interactable selected = null;
+    private CharacterController Controller;
     Animator animator;
     Vector3 mouseToPlayer;
 
     // Use this for initialization
     void Start() {
         animator = this.GetComponent<Animator>();
+        Controller = gameObject.GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -20,8 +22,9 @@ public class PlayerMovement : MonoBehaviour {
 
         //moves player on screen
         Vector3 oldPos = transform.position;
-        transform.position += Vector3.forward * Input.GetAxis("Vertical") * speed;
-        transform.position += Vector3.right * Input.GetAxis("Horizontal") * speed;
+        Controller.Move(Vector3.forward * Input.GetAxis("Vertical") * speed);
+        Controller.Move(Vector3.right * Input.GetAxis("Horizontal") * speed);
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x, 1.5f, gameObject.transform.position.z);
 
         //if player moved, turn on walk animation
         if (oldPos != transform.position)

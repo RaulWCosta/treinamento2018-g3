@@ -14,10 +14,7 @@ public class ParentChecker : MonoBehaviour {
             GetComponent<Animator>().enabled = false;
         }
         else
-        {
             GetComponent<ItemPickUp>().enabled = false;
-            
-        }
 	}
 
     private void Update()
