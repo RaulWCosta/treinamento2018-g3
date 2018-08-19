@@ -25,6 +25,7 @@ public class EnemyController : MonoBehaviour
     private bool MemoryController;                              //Booleana que controla se o inimigo lembra da posição do jogador 
     private Vector3 PatrolPosition;                             //A posição atual que será o destino de patrulha do inimigo
     private Vector3 TargetPosition;                             //A posição do alvo do inimigo, o ultimo valor de posição do jogador que o inimigo se lembra
+    private Vector3 Delta;
 
     void Start()
     {
@@ -79,8 +80,12 @@ public class EnemyController : MonoBehaviour
             Idle = false;
             MemoryController = true;
             StartCoroutine(Memory());
-            Target = Player.transform;
-            TargetPosition = Player.transform.position;
+            if(gameObject.GetComponent<EnemyAttack>().MeleeEnemy)
+            {
+                Target = Player.transform;
+                TargetPosition = Player.transform.position;
+            }
+            
         }
 
         if (HuntingStart + HuntingTime < Time.time && !Patrol)              //Se passou "HuntingTime" que o inimigo não encontrou o jogador, o inimigo para de caçar o jogador
@@ -91,13 +96,25 @@ public class EnemyController : MonoBehaviour
 
         if (HuntingPlayer)                                                  //Se está caçando o jogador corre na direção dele
         {
+
             Agent.speed = Velocity;
-            if (MemoryController) Agent.destination = Target.position;
-            else Agent.destination = TargetPosition;
+            if(gameObject.GetComponent<EnemyAttack>().MeleeEnemy)
+            {
+                if (MemoryController) Agent.destination = Target.position;
+                else Agent.destination = TargetPosition;
+            }
+            
         }
     }
 
-    public Vector3 GeometricPath(Vector3 Position)
+    Vector3 CartesianCoords(float Radius,float Angle)
+     {
+        Vector3 cartesian;
+        cartesian = new Vector3(Mathf.Sin(Angle) * Radius,0f, Mathf.Cos(Angle) * Radius);
+        return cartesian;
+     }
+
+public Vector3 GeometricPath(Vector3 Position)
     {
         Vector3 vector = new Vector3();
         float XCoord, ZCoord;                                               //Trajetória Quadrada/Retangular;
@@ -131,7 +148,7 @@ public class EnemyController : MonoBehaviour
     IEnumerator Memory()
     {
         yield return new WaitForSeconds(HuntingTime);
-        if (!DetectedPlayer) MemoryController = false;
+        if (!DetectedPlayer && HuntingStart + HuntingTime < Time.time) MemoryController = false;
     }
 
     public void ReceivedDamage(float DamageTaken)                           //Function to damage the enemy

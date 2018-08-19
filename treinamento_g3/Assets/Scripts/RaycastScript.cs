@@ -19,7 +19,6 @@ public class RaycastScript : MonoBehaviour {
         Look = new Vector3(Agent.destination.x, 0f, Agent.destination.z);
         gameObject.transform.LookAt(Look + new Vector3(Agent.velocity.x * 10,0f, Agent.velocity.z * 10));
 
-
         Vector3 Rotatation;
         Vector3 Direction;
 
@@ -32,7 +31,7 @@ public class RaycastScript : MonoBehaviour {
 
             if (Physics.Raycast(Enemy.transform.position, Direction, out Hit, Enemy.GetComponent<EnemyAttack>().VisionRange))
             {
-                //Debug.DrawLine(gameObject.transform.position, Hit.point,Color.red,0.5f);
+                Debug.DrawLine(gameObject.transform.position, Hit.point,Color.red,0.5f);
                 if (Hit.collider.gameObject.tag == "Player")
                 {
                     Enemy.GetComponent<EnemyController>().DetectedPlayer = true;
