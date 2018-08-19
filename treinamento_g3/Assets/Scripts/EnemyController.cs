@@ -85,7 +85,6 @@ public class EnemyController : MonoBehaviour
             StartCoroutine(Memory());
             Target = Player.transform;
             TargetPosition = Player.transform.position;
-    
         }
 
         if (HuntingStart + HuntingTime < Time.time && !Patrol)              //Se passou "HuntingTime" que o inimigo não encontrou o jogador, o inimigo para de caçar o jogador
