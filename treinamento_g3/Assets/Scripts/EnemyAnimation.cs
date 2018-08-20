@@ -9,7 +9,7 @@ public class EnemyAnimation : MonoBehaviour {
     Animator animator;
     Transform sprite;
     public bool flipped = false;
-    public NavMeshAgent agent;
+    NavMeshAgent agent;
     float deathTime;
     private float deathDuration = 3;
     private float timeforAlpha = 1;
@@ -94,7 +94,6 @@ public class EnemyAnimation : MonoBehaviour {
     //Runs damage animation
     public void DamageAnimation()
     {
-        Debug.Log("I1m hit");
         animator.SetTrigger("attacked");
     }
 

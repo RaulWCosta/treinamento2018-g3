@@ -23,7 +23,10 @@ public class HpControl : MonoBehaviour {
 	void Update () {
         if (player.hpCurrent - lastHp >= 2 || player.hpCurrent - lastHp <= -2)                      //If there was an significant change in the player's life, change the sprite
         {
-            icon.sprite = quantities[50 - (int) player.hpCurrent / 2];
+            if (player.hpCurrent <= 0)
+                icon.sprite = quantities[49];
+            else
+                icon.sprite = quantities[50 - (int) player.hpCurrent / 2];
             lastHp = player.hpCurrent;
         }
 	}

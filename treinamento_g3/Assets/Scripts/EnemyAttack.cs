@@ -48,9 +48,9 @@ public class EnemyAttack : MonoBehaviour
     {
         if (DamageTimer < Time.time)
         {
-            // Player.GetComponent<PlayerController>().TakeDamage(Damage);
-            print("Player Levou Dano:" + Damage);
-            Player.GetComponent<PlayerController>().hpCurrent -= Damage;
+            //use take damage instead of changing hp directly so animation and death work correctly
+            Player.GetComponent<PlayerController>().TakeDamage(Damage);
+            
             DamageTimer = Time.time + DamageCooldown;
         }
     }
