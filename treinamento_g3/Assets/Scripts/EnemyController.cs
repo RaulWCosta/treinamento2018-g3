@@ -99,15 +99,15 @@ public class EnemyController : MonoBehaviour
                 Idle = true;
             }
 
-        if (HuntingPlayer)                                                  //Se está caçando o jogador corre na direção dele
-        {
-            Agent.speed = Velocity;
-            if (MemoryController) Agent.destination = Target.position;
-            else Agent.destination = TargetPosition;
-        }
-        
-    }
+            if (HuntingPlayer)                                                  //Se está caçando o jogador corre na direção dele
+            {
+                Agent.speed = Velocity;
+                if (MemoryController) Agent.destination = Target.position;
+                else Agent.destination = TargetPosition;
+            }
 
+        }
+    }
     Vector3 CartesianCoords(float Radius,float Angle)
      {
         Vector3 cartesian;
