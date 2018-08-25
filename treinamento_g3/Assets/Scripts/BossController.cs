@@ -15,7 +15,7 @@ public class BossController : MonoBehaviour {
     public int ShotNumber;
     public GameObject WeaponAxis;
     public GameObject ShotSpawn;
-    public GameObject
+    public GameObject Projectile;
     public bool Dash;
     public bool Fire;
     public bool Idle;
