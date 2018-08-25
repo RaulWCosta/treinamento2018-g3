@@ -29,7 +29,7 @@ public class EnemyController : MonoBehaviour
     private Vector3 SignedDelta;
     private Vector3 Delta;
     public Item[] drops;                                        //Items dropáveis
-    private bool dead;
+    public bool dead;
     private EnemyAnimation enemyAnimation;
 
     void Start()

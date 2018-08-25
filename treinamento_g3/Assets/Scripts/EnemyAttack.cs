@@ -52,7 +52,7 @@ public class EnemyAttack : MonoBehaviour
 
     public void MeleeAttack()
     {
-        if (DamageTimer < Time.time)
+        if (DamageTimer < Time.time && gameObject.GetComponent<EnemyController>().dead)
         {
             Player.GetComponent<PlayerController>().TakeDamage(Damage);
             Player.GetComponent<PlayerController>().hpCurrent -= Damage;
