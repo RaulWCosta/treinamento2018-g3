@@ -348,12 +348,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 340a1add1b55a8d4a9ce1ebddf377f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MeleeEnemy: 1
+  MeleeEnemy: 0
   Damage: 5
-  Range: 0.9
-  VisionRange: 10
+  Range: 9.5
+  VisionRange: 20
   DamageCooldown: 0.5
-  ProjectileSpeed: 5
+  ProjectileSpeed: 4.5
   RangedAttackObject: {fileID: 1766688838521598, guid: c80631f81ace25e43bd720973131e2a7,
     type: 2}
   RangedAttackSpawner: {fileID: 1930991125448552}

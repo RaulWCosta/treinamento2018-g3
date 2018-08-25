@@ -150,8 +150,8 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator Memory()
     {
-        yield return new WaitForSeconds(HuntingTime);
-        if (!DetectedPlayer && HuntingStart + HuntingTime < Time.time) MemoryController = false;
+        yield return new WaitForSeconds(HuntingTime/2);
+        if (!DetectedPlayer && HuntingStart + HuntingTime/2 < Time.time) MemoryController = false;
     }
 
     public void ReceivedDamage(float DamageTaken)                           //Function to damage the enemy

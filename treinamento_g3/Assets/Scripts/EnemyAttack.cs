@@ -42,7 +42,7 @@ public class EnemyAttack : MonoBehaviour
         {
             float Dist;
             Dist = Distance(gameObject.transform.position, Player.transform.position);
-            if (Dist < Range) //Ataque o joagador caso ele esteja dentro do raio de ataque
+            if (Dist < Range)                                   //Ataque o joagador caso ele esteja dentro do raio de ataque
             {
                 MeleeAttack();
                 gameObject.GetComponent<EnemyController>().Agent.isStopped = true;
@@ -55,7 +55,6 @@ public class EnemyAttack : MonoBehaviour
         if (DamageTimer < Time.time)
         {
             Player.GetComponent<PlayerController>().TakeDamage(Damage);
-            print("Player Levou Dano:" + Damage);
             Player.GetComponent<PlayerController>().hpCurrent -= Damage;
             DamageTimer = Time.time + DamageCooldown;
         }
@@ -66,7 +65,6 @@ public class EnemyAttack : MonoBehaviour
         float Distance;
         Vector3 Delta = VectorX - VectorY;
         Distance = Delta.magnitude;
-
         return Distance;
     }
 

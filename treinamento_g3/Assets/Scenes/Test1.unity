@@ -9332,12 +9332,12 @@ Prefab:
     - target: {fileID: 114889615240088620, guid: d93a70d64d32a4943b8e9372047cd6e4,
         type: 2}
       propertyPath: MeleeEnemy
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114889615240088620, guid: d93a70d64d32a4943b8e9372047cd6e4,
         type: 2}
       propertyPath: Range
-      value: 0.9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114772181855008986, guid: d93a70d64d32a4943b8e9372047cd6e4,
         type: 2}

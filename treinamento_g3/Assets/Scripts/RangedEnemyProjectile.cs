@@ -15,11 +15,11 @@ public class RangedEnemyProjectile : MonoBehaviour
         range = Range;
         speed = ProjectileSpeed;
         damage = Damage;
+        transform.parent = null;
 
     }
         
-    
-
+   
     // Update is called once per frame
     void Update()
     {
