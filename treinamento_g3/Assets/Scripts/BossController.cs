@@ -15,7 +15,6 @@ public class BossController : MonoBehaviour {
     public int ShotNumber;
     public GameObject WeaponAxis;
     public GameObject ShotSpawn;
-    public GameObject
     public bool Dash;
     public bool Fire;
     public bool Idle;
@@ -80,7 +79,7 @@ public class BossController : MonoBehaviour {
             {
                 GameObject Bullet;
                 Shot = false;
-                Bullet = Instantiate();
+               // Bullet = Instantiate();
             }
 
             if(ShotCounter > ShotNumber)
