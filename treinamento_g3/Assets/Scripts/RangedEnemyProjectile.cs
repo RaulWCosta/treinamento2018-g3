@@ -36,9 +36,12 @@ public class RangedEnemyProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        print("AKI");
         if (collision.tag != "Enemy")
         {
+            if(collision.tag == "Wall")
+            {
+                Destroy(gameObject);
+            }
             //damage to enemy
             if (collision.tag == "Player")
             {

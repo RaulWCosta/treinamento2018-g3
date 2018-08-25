@@ -60,7 +60,6 @@ public class PlayerAttack : MonoBehaviour {
 
     void OnTriggerStay(Collider other)
     {
-        Debug.Log("Colliders collided");
         //if attacking and collider has tag Enemy
         if (meleeWeapon && other.tag == "Enemy" && !attacked)
         {
