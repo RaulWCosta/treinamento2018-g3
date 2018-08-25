@@ -98,11 +98,11 @@ public class EnemyController : MonoBehaviour
             {
                 HuntingPlayer = false;                                          //Termina a caçada do jogador
                 Idle = true;
+                Agent.isStopped = false;
             }
 
             if (HuntingPlayer)                                                  //Se está caçando o jogador corre na direção dele
             {
-                Agent.isStopped = false;
                 Agent.speed = Velocity;
                 if (MemoryController) Agent.destination = Target.position;
                 else Agent.SetDestination(TargetPosition);
