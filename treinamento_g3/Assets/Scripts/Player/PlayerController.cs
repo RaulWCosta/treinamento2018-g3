@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     private int requiredExperience = 1000;          // experiência requerida para passar de nível
     private int money = 100;
     private Animator animator;
+    private MenuManager menuManager;
 
     void Start ()
     {
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
         //totalMoney.text = money.ToString();         // Dinheiro a ser mostrado no HUD
         //totalLevel.text = level.ToString();         // Level a ser mostrado no HUD
         animator = GetComponent<Animator>();
+        menuManager = GameObject.Find("MenuManager").GetComponent<MenuManager>();
     }
 
     void Update()
@@ -75,10 +77,10 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("hit");
         }
 
-       //player death
-       //should trigger game over screen?
-       if (hpCurrent <= 0)
-       	    Destroy(gameObject);
+        //player death
+        //should trigger game over screen
+        if (hpCurrent <= 0)
+            menuManager.LoadGameOver();
     }
 
     public void TakeMoney(int amount)

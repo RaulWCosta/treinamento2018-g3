@@ -104,7 +104,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1478994714645480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3102419, y: 0.8, z: 2.2782998}
+  m_LocalPosition: {x: -2.94, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4504246116599510}
@@ -159,13 +159,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1930991125448552}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4076582257309176}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!20 &20372057571967212
 Camera:
   m_ObjectHideFlags: 1
@@ -285,7 +285,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flipped: 0
-  agent: {fileID: 0}
 --- !u!114 &114191991992292864
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -353,7 +352,7 @@ MonoBehaviour:
   Range: 9.5
   VisionRange: 20
   DamageCooldown: 0.5
-  ProjectileSpeed: 4.5
+  ProjectileSpeed: 6
   RangedAttackObject: {fileID: 1766688838521598, guid: c80631f81ace25e43bd720973131e2a7,
     type: 2}
   RangedAttackSpawner: {fileID: 1930991125448552}
