@@ -79,6 +79,7 @@ public class EnemyController : MonoBehaviour
             {
                 Agent.destination = PatrolPosition;
                 Agent.avoidancePriority = 5;
+                Agent.isStopped = false;
             }
 
             if (DetectedPlayer)                                                 //Caso o jogador foi encontrado
@@ -101,9 +102,10 @@ public class EnemyController : MonoBehaviour
 
             if (HuntingPlayer)                                                  //Se está caçando o jogador corre na direção dele
             {
+                Agent.isStopped = false;
                 Agent.speed = Velocity;
                 if (MemoryController) Agent.destination = Target.position;
-                else Agent.destination = TargetPosition;
+                else Agent.SetDestination(TargetPosition);
             }
 
         }

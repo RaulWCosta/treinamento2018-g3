@@ -10,11 +10,12 @@ public class EnemyAttack : MonoBehaviour
     public float Range;                                         //A distancia que o inimigo pode atacar
     public float VisionRange;                                   //A distancia que o inimigo pode detectar o jogador
     public float DamageCooldown;                                //o tempo que leva para o inimigo desferir outro golpe
+    public float ProjectileSpeed;                               //Velocidade dos ataques do inimigo
     private float DamageTimer;                                  //Contador que controla o tempo de recarga do ataque
     public GameObject RangedAttackObject;                       //O objeto que será atirado pelo inimigo
     public GameObject RangedAttackSpawner;                      //O local aonde o inimigo irá utilizar para disparar os projéteis
     private GameObject Player;                                  //O objeto do jogador
-
+    private GameObject Projectile;
 
     void Start()
     {
@@ -30,7 +31,11 @@ public class EnemyAttack : MonoBehaviour
             Dist = Distance(gameObject.transform.position, Player.transform.position);
             if (Dist < Range && gameObject.GetComponent<EnemyController>().DetectedPlayer)                                   //Ataque o joagador caso ele esteja dentro do raio de ataque e esteja vendo o jogador
             {
-                RangedAttack();                                       
+                RangedAttack();      
+                if(Dist < 0.9f)
+                {
+                    gameObject.GetComponent<EnemyController>().Agent.isStopped = true;
+                }
             }
         }
         else if(MeleeEnemy)                                      //Caso for um inimigo corpo a corpo 
@@ -40,6 +45,7 @@ public class EnemyAttack : MonoBehaviour
             if (Dist < Range) //Ataque o joagador caso ele esteja dentro do raio de ataque
             {
                 MeleeAttack();
+                gameObject.GetComponent<EnemyController>().Agent.isStopped = true;
             }
         }
     }
@@ -48,7 +54,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if (DamageTimer < Time.time)
         {
-            // Player.GetComponent<PlayerController>().TakeDamage(Damage);
+            Player.GetComponent<PlayerController>().TakeDamage(Damage);
             print("Player Levou Dano:" + Damage);
             Player.GetComponent<PlayerController>().hpCurrent -= Damage;
             DamageTimer = Time.time + DamageCooldown;
@@ -59,7 +65,7 @@ public class EnemyAttack : MonoBehaviour
     {
         float Distance;
         Vector3 Delta = VectorX - VectorY;
-        Distance = Mathf.Sqrt((Delta.x * Delta.x) + (Delta.z * Delta.z));
+        Distance = Delta.magnitude;
 
         return Distance;
     }
@@ -68,8 +74,10 @@ public class EnemyAttack : MonoBehaviour
     {
         if (DamageTimer < Time.time)
         {
+            RangedAttackSpawner.transform.LookAt(Player.transform);
             DamageTimer = Time.time + DamageCooldown;
-            Instantiate(RangedAttackObject, RangedAttackSpawner.transform);
+            Projectile = Instantiate(RangedAttackObject, RangedAttackSpawner.transform);
+            Projectile.GetComponent<RangedEnemyProjectile>().InitiateProjectile(Range, ProjectileSpeed,Damage);
         }
     }
 }
