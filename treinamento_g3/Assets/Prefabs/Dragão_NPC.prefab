@@ -8,15 +8,15 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
+  m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1272765010411166}
-  m_IsPrefabParent: 1
+  m_IsPrefabAsset: 1
 --- !u!1 &1272765010411166
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4593664849365294}
   - component: {fileID: 212888455517476396}
@@ -33,9 +33,9 @@ GameObject:
 --- !u!1 &1633763139720888
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4048291992731170}
   - component: {fileID: 23900571795575730}
@@ -50,11 +50,11 @@ GameObject:
 --- !u!4 &4048291992731170
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1633763139720888}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 1.05, y: 1.28, z: -0}
+  m_LocalPosition: {x: 0.53, y: 0.92, z: -0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 4593664849365294}
@@ -63,11 +63,11 @@ Transform:
 --- !u!4 &4593664849365294
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1272765010411166}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -5.328066, y: 5.16, z: -11.178338}
+  m_LocalPosition: {x: 3.18, y: 0.8, z: 5.01}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 4048291992731170}
@@ -77,7 +77,7 @@ Transform:
 --- !u!23 &23900571795575730
 MeshRenderer:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1633763139720888}
   m_Enabled: 1
@@ -112,23 +112,23 @@ MeshRenderer:
 --- !u!65 &65163893231632226
 BoxCollider:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1272765010411166}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.4892616, y: 1.689117, z: 0.20000005}
-  m_Center: {x: 0.07772112, y: 0.0000004172325, z: -8.4703133e-22}
+  m_Size: {x: 0.49458408, y: 1.0013733, z: 0.20000005}
+  m_Center: {x: -0.037786007, y: 0.008665204, z: 1.211768e-17}
 --- !u!102 &102249932022159738
 TextMesh:
   serializedVersion: 3
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1633763139720888}
-  m_Text: "Drag\xE3o Dorminhoco"
+  m_Text: Srta. Hera
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -145,7 +145,7 @@ TextMesh:
 --- !u!114 &114696399124980760
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1272765010411166}
   m_Enabled: 1
@@ -155,16 +155,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 2
   dialogue:
-    name: "Drag\xE3o Dorminhoco"
+    name: Srta. Hera
+    type: 0
     sentences:
-    - Zzzzz....
-    - Huh... Visitas?!
-    - "N\xE3o, deve ser um sonho..."
+    - "Resolveu explorar a Caverna de Drag\xF5es, \xE9? "
+    - "As leis do pa\xEDs dizem que eu tenho que ler o guia para voc\xEA. Vamos l\xE1..."
+    - "\"Pressione E para coletar... Abra o invent\xE1rio com I e clique duas vezes
+      sobre a arma...\""
+    - "Espero que voc\xEA tenha uma arma para equipar, espertinho."
   highlight: {fileID: 0}
 --- !u!114 &114770270407029116
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1272765010411166}
   m_Enabled: 1
@@ -172,12 +175,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98644d7860d27c746aa9355e01f6b9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: "Drag\xE3o Dorminhoco"
+  characterName: "Srta. Hera\\nGuia tur\xEDstica"
   namePanel: {fileID: 0}
 --- !u!212 &212888455517476396
 SpriteRenderer:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1272765010411166}
   m_Enabled: 1
@@ -209,7 +212,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b5f9e0273c83c66498d28a4a66fcb2c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b38ca49fb6ab55d42b16f64d9665aee5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -219,3 +222,4 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+  m_SpriteSortPoint: 0

@@ -1,0 +1,16 @@
+This font works great with Construct2 Sprite Font object.
+Font is ready to use. No gimmicks needed. 
+Available in 3 colors:
+- 1) Black
+- 2) White
+- 3) Gold
+Made by onixgames.com
+
+
+Important settings:
+
+Character widht: 16
+Character height: 17
+Character Set: @ABCDEFGHIJKLMNOPQRSTUVWXYZ[£]{}€!"#$%&'()*+,-.^0123456789:;<=>?/abcdefghijklmnopqrstuvwxyz
+
+

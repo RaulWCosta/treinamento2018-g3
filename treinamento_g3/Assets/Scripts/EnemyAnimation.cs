@@ -9,11 +9,12 @@ public class EnemyAnimation : MonoBehaviour {
     Animator animator;
     Transform sprite;
     public bool flipped = false;
-    public NavMeshAgent agent;
+    NavMeshAgent agent;
     float deathTime;
     private float deathDuration = 3;
     private float timeforAlpha = 1;
     bool dead = false;
+    EnemyAttack enemyAttack;
 
 
 
@@ -22,12 +23,18 @@ public class EnemyAnimation : MonoBehaviour {
         sprite = this.gameObject.transform.Find("Sprite");
         animator = sprite.GetComponent<Animator>();
         agent = gameObject.GetComponent<NavMeshAgent>();        //Get the agent of the Enemy
+        enemyAttack = GetComponent<EnemyAttack>();
+
     }
 	
 	// Update is called once per frame
 	void Update () {
         //turn dragon on and off
         //call flip sprite if necessary
+        if (enemyAttack.MeleeEnemy)
+            animator.SetBool("ranged", false);
+        else
+            animator.SetBool("ranged", true);
         //if enemy is moving
         if (agent.velocity != Vector3.zero)
         {
@@ -94,7 +101,6 @@ public class EnemyAnimation : MonoBehaviour {
     //Runs damage animation
     public void DamageAnimation()
     {
-        Debug.Log("I1m hit");
         animator.SetTrigger("attacked");
     }
 
