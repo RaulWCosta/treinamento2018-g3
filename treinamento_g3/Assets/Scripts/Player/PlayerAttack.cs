@@ -22,8 +22,6 @@ public class PlayerAttack : MonoBehaviour {
         //if this is a ranged weapon
         //BulletExit should be an empty GameObject placed at where the bullet should first appear on the gun
         bulletExitPosition = transform.Find("BulletExit");
-       
-      
 
     }
 	
@@ -62,17 +60,17 @@ public class PlayerAttack : MonoBehaviour {
 
     void OnTriggerStay(Collider other)
     {
-    
+        Debug.Log("Colliders collided");
         //if attacking and collider has tag Enemy
         if (meleeWeapon && other.tag == "Enemy" && !attacked)
         {
+            Debug.Log("Enemy attacked");
             
             //if attack is in progress
             if (weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
             {
                 //make enemy take damage
                 other.GetComponent<EnemyController>().ReceivedDamage(equippedWeaponProperties.weaponDamage);
-
                 attacked = true; //already attacked the enemy
             }
         }

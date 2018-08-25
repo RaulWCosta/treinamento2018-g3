@@ -49,12 +49,14 @@ public class SelectNPC : MonoBehaviour {
     //activates highlight on mouseover
     private void OnMouseOver()
     {
-        HighlightOn();
+        if(enabled)
+            HighlightOn();
     }
 
     //disactivates highlight on mouseexit
     private void OnMouseExit()
     {
-        HighlightOff();
+        if(enabled)
+            HighlightOff();
     }
 }

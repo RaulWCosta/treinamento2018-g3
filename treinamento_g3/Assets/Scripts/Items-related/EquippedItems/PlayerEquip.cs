@@ -50,9 +50,12 @@ public class PlayerEquip : MonoBehaviour {
         //get weapon from inventory
         //spawn gameObject stored in currentItem
         if (equipmentManager)
-            if(equipmentManager.currentEquipment[currentSlot])
+            if (equipmentManager.currentEquipment[currentSlot])
+            {
                 currentItem = Instantiate(equipmentManager.currentEquipment[currentSlot].item, spawnPoint.transform.position, spawnPoint.transform.rotation, this.transform);
-       
+                    
+            }
+
     }
 
     /**
