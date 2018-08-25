@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -55,7 +55,6 @@ public class EnemyAttack : MonoBehaviour
         if (DamageTimer < Time.time && gameObject.GetComponent<EnemyController>().dead)
         {
             Player.GetComponent<PlayerController>().TakeDamage(Damage);
-            Player.GetComponent<PlayerController>().hpCurrent -= Damage;
             DamageTimer = Time.time + DamageCooldown;
         }
     }
@@ -79,3 +78,4 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 }
+

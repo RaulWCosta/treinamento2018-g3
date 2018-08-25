@@ -82,7 +82,7 @@ public class PlayerAttack : MonoBehaviour {
         //instantiate shot out of bullet exit
         GameObject bullet = Instantiate(bulletPrefab, bulletExitPosition.position, bulletExitPosition.rotation);
         bullet.transform.localScale = transform.localScale;
-
+       
      
         //shot should have the damage and the range of the weapon
         bullet.GetComponent<ProjectileControl>().InitiateBulletParameters(equippedWeaponProperties.bulletSpeed ,
