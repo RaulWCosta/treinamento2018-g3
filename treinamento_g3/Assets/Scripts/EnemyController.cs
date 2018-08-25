@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System.Collections;
-=======
-﻿using System.Collections;
->>>>>>> elisa
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
