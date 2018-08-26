@@ -165,10 +165,14 @@ MonoBehaviour:
   IdleTimer: 1
   PreFireTimer: 0.7
   PosFireTimer: 0.2
-  Velocity: 12
-  Damage: 4
+  Velocity: 20
+  DamageRanged: 0
+  DamageMeele: 0
   Range: 50
-  ProjectileSpeed: 4
+  ProjectileSpeed: 15
+  MeeleRange: 2
+  HP: 0
+  MaxHp: 30
 --- !u!195 &195485329526887004
 NavMeshAgent:
   m_ObjectHideFlags: 1

@@ -169,7 +169,7 @@ public class EnemyController : MonoBehaviour
             DetectedPlayer = false;
             HuntingPlayer = false;
             dead = true;
-            Agent.destination = transform.position;
+            Agent.isStopped = true;
 
         }
         //call damage animation
