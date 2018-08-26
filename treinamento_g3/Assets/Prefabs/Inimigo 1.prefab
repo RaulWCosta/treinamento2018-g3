@@ -305,7 +305,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flipped: 0
-  agent: {fileID: 0}
 --- !u!114 &114654767427088558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -328,7 +327,9 @@ MonoBehaviour:
   HuntingPlayer: 0
   Patrol: 0
   Idle: 1
-  drops: []
+  dead: 0
+  drops:
+  - {fileID: 11400000, guid: d46d7f67fa19ee64b8498ec8d87c5190, type: 2}
 --- !u!114 &114691836801969496
 MonoBehaviour:
   m_ObjectHideFlags: 1
