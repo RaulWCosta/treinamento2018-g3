@@ -25,13 +25,18 @@ public class BossController : MonoBehaviour {
     public float PreFireTimer;
     public float PosFireTimer;
     public float Velocity;
-    public float Damage;
+    public float DamageRanged;
+    public float DamageMeele;
     public float Range;
     public float ProjectileSpeed;
+    public float MeeleRange;
+    public float HP;
+    public float MaxHp;
     
 
     void Start ()
     {
+        HP = MaxHp;
         Player = GameObject.FindWithTag("Player");
         Agent = gameObject.GetComponent<NavMeshAgent>();
         Agent.speed = Velocity;
@@ -39,12 +44,23 @@ public class BossController : MonoBehaviour {
         Shot = false;
         GotPlayerPosition = false;
         LastFireTime = 0;
-        ShotCounter = 0;
+        ShotCounter = 1;
 	}
 	
 	void Update ()
     {
-		if(Idle)
+        float Distance = (Player.transform.position - gameObject.transform.position).magnitude;
+        if (MeeleRange > Distance)
+        {
+            Agent.isStopped = true;
+            Agent.destination = gameObject.transform.position;
+        }
+        else
+        {
+            Agent.isStopped = false;
+        }
+
+        if (Idle)
         {
             if(!GotPlayerPosition)
             {
@@ -52,7 +68,6 @@ public class BossController : MonoBehaviour {
                 PlayerPos = Player.transform.position;
                 GotPlayerPosition = true;
             }
-            
         }
 
         if(Dash)
@@ -69,8 +84,9 @@ public class BossController : MonoBehaviour {
                 Moved = false;
                 Dash = false;
                 Fire = true;
-                ShotCounter = 0;
+                ShotCounter = 1;
             }
+
         }
 
         if(Fire)
@@ -89,21 +105,28 @@ public class BossController : MonoBehaviour {
                 ShotCounter++;
                 GameObject Bullet;
                 Shot = false;
-                print("ola");
-                Bullet = Instantiate(Projectile,ShotSpawn.transform.position,Quaternion.Euler(new Vector3(90f,0f,0f)));
-                Bullet.GetComponent<BossProjectile>().InitiateProjectile(Range, ProjectileSpeed, Damage);
+                Bullet = Instantiate(Projectile,ShotSpawn.transform.position,WeaponAxis.transform.rotation * Quaternion.Euler(new Vector3(90f,0f,0f)));
+                Bullet.GetComponent<BossProjectile>().InitiateProjectile(Range, ProjectileSpeed, DamageRanged);
             }
 
             if(ShotCounter > ShotNumber)
             {
-                ShotCounter = 0;
+                ShotCounter = 1;
                 Fire = false;
                 Idle = true;
+                GotPlayerPosition = false;
                 WeaponAxis.SetActive(false);
             }
-
         }
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            Player.GetComponent<PlayerController>().TakeDamage(DamageMeele);
+        }
+    }
 
     IEnumerator Timer(float Time,int Type)
     {
@@ -117,5 +140,23 @@ public class BossController : MonoBehaviour {
         {
             Shot = true;
         }
+    }
+
+    public void ReceivedDamage(float DamageTaken)                           //Function to damage the enemy
+    {
+        HP -= DamageTaken;
+        if (HP <= 0)
+        {
+            //call death animation
+           // enemyAnimation.DeathAnimation();
+            Idle = false;
+            Fire = false;
+            Dash = false;
+            Agent.isStopped = true;
+            //disactivates enemies
+
+        }
+        //call damage animation
+        //enemyAnimation.DamageAnimation();
     }
 }

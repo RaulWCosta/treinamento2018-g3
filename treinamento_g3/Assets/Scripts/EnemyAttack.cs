@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,7 +32,7 @@ public class EnemyAttack : MonoBehaviour
             if (Dist < Range && gameObject.GetComponent<EnemyController>().DetectedPlayer)                                   //Ataque o joagador caso ele esteja dentro do raio de ataque e esteja vendo o jogador
             {
                 RangedAttack();      
-                if(Dist < 0.9f)
+                if(Dist <  Range * 0.2f)
                 {
                     gameObject.GetComponent<EnemyController>().Agent.isStopped = true;
                 }
@@ -41,8 +40,10 @@ public class EnemyAttack : MonoBehaviour
         }
         else if(MeleeEnemy)                                      //Caso for um inimigo corpo a corpo 
         {
+            
             float Dist;
             Dist = Distance(gameObject.transform.position, Player.transform.position);
+            
             if (Dist < Range)                                   //Ataque o joagador caso ele esteja dentro do raio de ataque
             {
                 MeleeAttack();
@@ -53,7 +54,7 @@ public class EnemyAttack : MonoBehaviour
 
     public void MeleeAttack()
     {
-        if (DamageTimer < Time.time && gameObject.GetComponent<EnemyController>().dead == false)
+        if (DamageTimer < Time.time && !gameObject.GetComponent<EnemyController>().dead)
         {
             Player.GetComponent<PlayerController>().TakeDamage(Damage);
             DamageTimer = Time.time + DamageCooldown;

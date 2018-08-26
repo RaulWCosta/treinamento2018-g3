@@ -363,6 +363,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 20.621468
       objectReference: {fileID: 0}
+    - target: {fileID: 1321330705272246, guid: c7424fe56da06354fa984aec623c51b8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7424fe56da06354fa984aec623c51b8, type: 2}
   m_IsPrefabAsset: 0
@@ -593,6 +597,16 @@ Prefab:
         type: 2}
       propertyPath: m_Size.x
       value: 1.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114198707098168610, guid: 695c5509350bf51488d3d041b14952a6,
+        type: 2}
+      propertyPath: MeleeEnemy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114198707098168610, guid: 695c5509350bf51488d3d041b14952a6,
+        type: 2}
+      propertyPath: Range
+      value: 1.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 695c5509350bf51488d3d041b14952a6, type: 2}
