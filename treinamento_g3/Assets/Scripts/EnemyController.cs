@@ -26,7 +26,7 @@ public class EnemyController : MonoBehaviour
     private Vector3 PatrolPosition;                             //A posição atual que será o destino de patrulha do inimigo
     private Vector3 TargetPosition;                             //A posição do alvo do inimigo, o ultimo valor de posição do jogador que o inimigo se lembra
     private EnemyAnimation enemyAnimation;
-    private bool dead;
+    public bool dead;
     public Item[] drops;                                        //Items dropáveis
 
     void Start()
@@ -102,7 +102,7 @@ public class EnemyController : MonoBehaviour
                 else Agent.destination = TargetPosition;
             }
         }
-        
+
     }
 
     public Vector3 GeometricPath(Vector3 Position)
@@ -169,6 +169,6 @@ public class EnemyController : MonoBehaviour
     public void Drop()
     {
         if (Random.Range(0.0f, 2.0f) > 1.5f)
-            Instantiate(drops[Random.Range(0, drops.Length)].item, this.transform.position, Quaternion.Euler(90, 0, 0));
+            Instantiate(drops[Random.Range(0, drops.Length-1)].item, this.transform.position, Quaternion.Euler(90, 0, 0));
     }
 }
