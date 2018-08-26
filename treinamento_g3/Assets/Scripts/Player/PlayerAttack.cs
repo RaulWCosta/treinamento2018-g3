@@ -60,7 +60,6 @@ public class PlayerAttack : MonoBehaviour {
 
     void OnTriggerStay(Collider other)
     {
-        Debug.Log("Colliders collided");
         //if attacking and collider has tag Enemy
         if (meleeWeapon && other.tag == "Enemy" && !attacked)
         {
@@ -83,7 +82,7 @@ public class PlayerAttack : MonoBehaviour {
         //instantiate shot out of bullet exit
         GameObject bullet = Instantiate(bulletPrefab, bulletExitPosition.position, bulletExitPosition.rotation);
         bullet.transform.localScale = transform.localScale;
-
+       
      
         //shot should have the damage and the range of the weapon
         bullet.GetComponent<ProjectileControl>().InitiateBulletParameters(equippedWeaponProperties.bulletSpeed ,

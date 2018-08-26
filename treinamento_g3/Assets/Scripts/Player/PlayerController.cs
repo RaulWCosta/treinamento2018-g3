@@ -57,8 +57,6 @@ public class PlayerController : MonoBehaviour
         {
             LevelUp();
         }
-
-      
     }
 
     public void GainHp(float amount)
