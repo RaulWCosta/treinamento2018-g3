@@ -25,7 +25,7 @@ public class EnemyAttack : MonoBehaviour
 
     private void Update()
     {
-        if (!MeleeEnemy)                                        //Caso for um inimigo de ataque à distância 
+        if (!MeleeEnemy && !gameObject.GetComponent<EnemyController>().dead)                                        //Caso for um inimigo de ataque à distância 
         {
             float Dist;
             Dist = Distance(gameObject.transform.position, Player.transform.position);
@@ -38,7 +38,7 @@ public class EnemyAttack : MonoBehaviour
                 }
             }
         }
-        else if(MeleeEnemy)                                      //Caso for um inimigo corpo a corpo 
+        else if(MeleeEnemy && !gameObject.GetComponent<EnemyController>().dead)                                      //Caso for um inimigo corpo a corpo 
         {
             
             float Dist;

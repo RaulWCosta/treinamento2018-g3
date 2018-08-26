@@ -27,10 +27,10 @@ public class BossController : MonoBehaviour {
     public float PosFireTimer;
     public float Velocity;
     public float DamageRanged;
-    public float DamageMeele;
+    public float DamageMelee;
     public float Range;
     public float ProjectileSpeed;
-    public float MeeleRange;
+    public float MeleeRange;
     public float HP;
     public float MaxHp;
     public float HitTimer;
@@ -53,12 +53,12 @@ public class BossController : MonoBehaviour {
 	void Update ()
     {
         float Distance = (Player.transform.position - gameObject.transform.position).magnitude;
-        if (MeeleRange > Distance)
+        if (MeleeRange > Distance)
         {
             if (LastHitTime + HitTimer < Time.time)
             {
                 LastHitTime = Time.time;
-                Player.GetComponent<PlayerController>().TakeDamage(DamageMeele);
+                Player.GetComponent<PlayerController>().TakeDamage(DamageMelee);
             }
             Agent.isStopped = true;
             WeaponAxis.SetActive(false);

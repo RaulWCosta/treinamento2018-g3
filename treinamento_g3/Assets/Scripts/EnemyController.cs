@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     public GameObject Vision;
     public NavMeshAgent Agent;                                              //O agente do inimigo, entidade que controla a movimentação do inimigo no navmesh
     public Transform Target;                                                //O "Alvo" a posição atual do jogador
+    public float MemoryTime;
     public float HP;                                                        //Vida do inimigo
     public float Velocity;                                                  //Velocidade do inimigo
     public float HuntingTime;                                               //O tempo que o inimigo continuará perseguindo o jogador caso ele o perca de vista
@@ -44,6 +45,7 @@ public class EnemyController : MonoBehaviour
         Player = GameObject.FindWithTag("Player");                          //Find the player with the tag "Player                          //O alvo é a posição do jogador
         Agent = gameObject.GetComponent<NavMeshAgent>();                    //Get the agent of the Enemy
         Agent.speed = Velocity;
+        Agent.destination = gameObject.transform.position;
         enemyAnimation = gameObject.GetComponent<EnemyAnimation>();
     }
 
@@ -51,11 +53,26 @@ public class EnemyController : MonoBehaviour
     {
         if (!dead)
         {
+            if(gameObject.GetComponent<EnemyAttack>().MeleeEnemy)
+            {
+                if ((Player.transform.position - gameObject.transform.position).magnitude > gameObject.GetComponent<EnemyAttack>().Range && Agent.isStopped == true)
+                {
+                    Agent.isStopped = false;
+                }
+            }
+            else
+            {
+                if ((Player.transform.position - gameObject.transform.position).magnitude > gameObject.GetComponent<EnemyAttack>().Range * 0.2f && Agent.isStopped == true)
+                {
+                    Agent.isStopped = false;
+                }
+            }
+
             if (Idle)
             {
                 Collider[] ColliderList;
                 ColliderList = Physics.OverlapSphere(gameObject.transform.position, DetectRadius); //Faz um cast esférico com raio DetectRadius
-                Agent.avoidancePriority = Random.Range(40, 50);     //Enqunto parado o agente inimigo tem prioridade menor para os que estão em movimento
+                Agent.avoidancePriority = Random.Range(40, 50);     //Enquanto parado o agente inimigo tem prioridade menor para os que estão em movimento
                 foreach (Collider element in ColliderList)
                 {
                     if (element.gameObject.tag == "Player")
@@ -150,8 +167,8 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator Memory()
     {
-        yield return new WaitForSeconds(HuntingTime/2);
-        if (!DetectedPlayer && HuntingStart + HuntingTime/2 < Time.time) MemoryController = false;
+        yield return new WaitForSeconds(MemoryTime);
+        if (!DetectedPlayer && HuntingStart + MemoryTime < Time.time) MemoryController = false;
     }
 
     public void ReceivedDamage(float DamageTaken)                           //Function to damage the enemy
@@ -161,7 +178,7 @@ public class EnemyController : MonoBehaviour
         {
             //call death animation
             enemyAnimation.DeathAnimation();
-
+            gameObject.GetComponent<BoxCollider>().enabled = false;
             //disactivates enemies
             Destroy(Vision);
             Idle = false;
@@ -173,6 +190,7 @@ public class EnemyController : MonoBehaviour
 
         }
         //call damage animation
+        DetectedPlayer = true;
         enemyAnimation.DamageAnimation();
     }
 
