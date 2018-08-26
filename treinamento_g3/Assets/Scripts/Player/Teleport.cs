@@ -7,7 +7,7 @@ public class Teleport : MonoBehaviour {
     public bool invencible;
     private float teleportRange;
     private float timeBetweenDodges;
-    private Vector3 teleport;
+    private Vector3 teleport = new Vector3(0f,0f,0f);
     private bool teleporting;
     private Animator animator;
     private float realTeleportRange;
@@ -30,15 +30,16 @@ public class Teleport : MonoBehaviour {
             Invoke("NotInvencible", timeBetweenDodges / 2);                                                                               //Tempo pra deixar de ficar invencível
             Invoke("AllowTeleport", timeBetweenDodges);                                                                                   //Tempo pra permitir o teletransporte novamente
         }
-        Debug.DrawRay(this.transform.position, new Vector3(Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal")), Color.yellow);
+        Debug.DrawRay(this.transform.position, new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")), Color.green);
     }
 
     void Dodge()
     {
-        teleport = Vector3.right * Input.GetAxis("Horizontal") * realTeleportRange;
-        transform.position += teleport;
-        teleport = Vector3.forward * Input.GetAxis("Vertical") * realTeleportRange;
-        transform.position += teleport;
+        teleport += Vector3.right * Input.GetAxis("Horizontal");
+        teleport += Vector3.forward * Input.GetAxis("Vertical");
+        teleport.Normalize();
+        teleport *= realTeleportRange;
+        transform.Translate(teleport);
         animator.SetBool("walk", false);
     }
 
@@ -54,9 +55,13 @@ public class Teleport : MonoBehaviour {
     float RayCast()
     {
         RaycastHit ray;
-        Vector3 direction = new Vector3(Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal"));
-        if (Physics.Raycast(this.transform.position, direction, out ray, teleportRange, 2, QueryTriggerInteraction.Ignore))
+        Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+        if (Physics.Raycast(this.transform.position, direction, out ray, Mathf.Infinity, 1 << 2, QueryTriggerInteraction.Ignore))
+        {
+            Debug.Log(ray.distance);
             return ray.distance;
-        return 3f;
+        }
+        Debug.Log("No ray 3");
+            return 3f;
     }
 }
