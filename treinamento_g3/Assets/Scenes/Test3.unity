@@ -904,6 +904,26 @@ Prefab:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 114983362562773086, guid: 4c1e65eac8dab3e41bd31c335e2d6b28,
+        type: 2}
+      propertyPath: Acceleration
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983362562773086, guid: 4c1e65eac8dab3e41bd31c335e2d6b28,
+        type: 2}
+      propertyPath: Velocity
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983362562773086, guid: 4c1e65eac8dab3e41bd31c335e2d6b28,
+        type: 2}
+      propertyPath: IdleTimer
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983362562773086, guid: 4c1e65eac8dab3e41bd31c335e2d6b28,
+        type: 2}
+      propertyPath: FireInterval
+      value: 1.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c1e65eac8dab3e41bd31c335e2d6b28, type: 2}
   m_IsPrefabAsset: 0

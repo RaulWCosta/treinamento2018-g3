@@ -55,7 +55,13 @@ public class BossController : MonoBehaviour {
         float Distance = (Player.transform.position - gameObject.transform.position).magnitude;
         if (MeeleRange > Distance)
         {
+            if (LastHitTime + HitTimer < Time.time)
+            {
+                LastHitTime = Time.time;
+                Player.GetComponent<PlayerController>().TakeDamage(DamageMeele);
+            }
             Agent.isStopped = true;
+            WeaponAxis.SetActive(false);
             Agent.destination = gameObject.transform.position;
         }
         else
@@ -123,13 +129,14 @@ public class BossController : MonoBehaviour {
         }
 	}
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        print("ola querido amigo");
+    }
+
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Player" && LastHitTime + HitTimer < Time.time)
-        {
-            LastHitTime = Time.time;
-            Player.GetComponent<PlayerController>().TakeDamage(DamageMeele);
-        }
+        
     }
 
     IEnumerator Timer(float Time,int Type)
