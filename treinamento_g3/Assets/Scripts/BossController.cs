@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class BossController : MonoBehaviour {
 
+    private float LastHitTime;
     private float LastFireTime;
     private bool Moved;
     private bool Shot;
@@ -32,10 +33,12 @@ public class BossController : MonoBehaviour {
     public float MeeleRange;
     public float HP;
     public float MaxHp;
+    public float HitTimer;
     
 
     void Start ()
     {
+        LastHitTime = 0;
         HP = MaxHp;
         Player = GameObject.FindWithTag("Player");
         Agent = gameObject.GetComponent<NavMeshAgent>();
@@ -120,10 +123,11 @@ public class BossController : MonoBehaviour {
         }
 	}
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionStay(Collision collision)
     {
-        if(other.tag == "Player")
+        if (collision.gameObject.tag == "Player" && LastHitTime + HitTimer < Time.time)
         {
+            LastHitTime = Time.time;
             Player.GetComponent<PlayerController>().TakeDamage(DamageMeele);
         }
     }
@@ -136,7 +140,7 @@ public class BossController : MonoBehaviour {
             Idle = false;
             Dash = true;
         }
-        else if(Type == 1)
+        else
         {
             Shot = true;
         }
