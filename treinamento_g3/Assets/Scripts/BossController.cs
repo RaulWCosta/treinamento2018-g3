@@ -8,6 +8,7 @@ public class BossController : MonoBehaviour {
     private float LastFireTime;
     private bool Moved;
     private bool Shot;
+    private bool GotPlayerPosition;
     private Vector3 PlayerPos;
     private NavMeshAgent Agent;
     private GameObject Player;
@@ -15,6 +16,7 @@ public class BossController : MonoBehaviour {
     public int ShotNumber;
     public GameObject WeaponAxis;
     public GameObject ShotSpawn;
+    public GameObject Projectile;
     public bool Dash;
     public bool Fire;
     public bool Idle;
@@ -23,6 +25,9 @@ public class BossController : MonoBehaviour {
     public float PreFireTimer;
     public float PosFireTimer;
     public float Velocity;
+    public float Damage;
+    public float Range;
+    public float ProjectileSpeed;
     
 
     void Start ()
@@ -32,6 +37,7 @@ public class BossController : MonoBehaviour {
         Agent.speed = Velocity;
         Idle = true;
         Shot = false;
+        GotPlayerPosition = false;
         LastFireTime = 0;
         ShotCounter = 0;
 	}
@@ -40,8 +46,13 @@ public class BossController : MonoBehaviour {
     {
 		if(Idle)
         {
-            StartCoroutine(Timer(IdleTimer,0));
-            PlayerPos = Player.transform.position;
+            if(!GotPlayerPosition)
+            {
+                StartCoroutine(Timer(IdleTimer, 0));
+                PlayerPos = Player.transform.position;
+                GotPlayerPosition = true;
+            }
+            
         }
 
         if(Dash)
@@ -67,19 +78,20 @@ public class BossController : MonoBehaviour {
             WeaponAxis.SetActive(true);
             WeaponAxis.transform.LookAt(Player.transform);
 
-            
             if(LastFireTime + FireInterval < Time.time)
             {
                 StartCoroutine(Timer(PreFireTimer, 1));
                 LastFireTime = Time.time;
-                ShotCounter++;
             }
 
             if (Shot)
             {
+                ShotCounter++;
                 GameObject Bullet;
                 Shot = false;
-               // Bullet = Instantiate();
+                print("ola");
+                Bullet = Instantiate(Projectile,ShotSpawn.transform.position,Quaternion.Euler(new Vector3(90f,0f,0f)));
+                Bullet.GetComponent<BossProjectile>().InitiateProjectile(Range, ProjectileSpeed, Damage);
             }
 
             if(ShotCounter > ShotNumber)
@@ -87,6 +99,7 @@ public class BossController : MonoBehaviour {
                 ShotCounter = 0;
                 Fire = false;
                 Idle = true;
+                WeaponAxis.SetActive(false);
             }
 
         }
