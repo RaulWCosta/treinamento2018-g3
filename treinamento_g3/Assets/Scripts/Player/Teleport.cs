@@ -22,7 +22,7 @@ public class Teleport : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Quando apertar o shift esquerdo, esquiva
-        if (Input.GetKeyDown(KeyCode.LeftShift) && teleporting == false && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) && (realTeleportRange = RayCast()) > 0)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && teleporting == false && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) && (realTeleportRange = RayCast()) > 1)
         {
             teleporting = true;                                                                                                           //Esa varíávle impede que o teleporte possa ser feito varias vezes
             invencible = true;                                                                                                            //Fica invencível
@@ -30,6 +30,7 @@ public class Teleport : MonoBehaviour {
             Invoke("NotInvencible", timeBetweenDodges / 2);                                                                               //Tempo pra deixar de ficar invencível
             Invoke("AllowTeleport", timeBetweenDodges);                                                                                   //Tempo pra permitir o teletransporte novamente
         }
+        Debug.DrawRay(this.transform.position, new Vector3(Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal")), Color.yellow);
     }
 
     void Dodge()
@@ -53,11 +54,9 @@ public class Teleport : MonoBehaviour {
     float RayCast()
     {
         RaycastHit ray;
-        Vector3 rotation = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-        Vector3 direction = Quaternion.Euler(rotation) * gameObject.transform.forward;
-        if (Physics.Raycast(this.transform.position, direction, out ray, teleportRange, 2))
+        Vector3 direction = new Vector3(Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal"));
+        if (Physics.Raycast(this.transform.position, direction, out ray, teleportRange, 2, QueryTriggerInteraction.Ignore))
             return ray.distance;
         return 3f;
-        
     }
 }

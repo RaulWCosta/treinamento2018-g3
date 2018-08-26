@@ -11,8 +11,6 @@ public class EquipmentManager : MonoBehaviour {
     //Player script responsible for updating the weapon on the player
     [HideInInspector]
     public PlayerEquip playerEquip;
-    //Equipped items pannel
-    private GameObject equipmentUI;
     public int slotIndex;
     //Reference to the quantity of equipment slots
     int numSlots;
@@ -37,7 +35,6 @@ public class EquipmentManager : MonoBehaviour {
     private void Start()
     {
         itemsParent = this.gameObject.transform.GetChild(0).transform;
-        equipmentUI = this.gameObject.transform.GetChild(0).gameObject;
         //Here it gets the number of equipment slots
         numSlots = System.Enum.GetNames(typeof(EquipmentSlotIndex)).Length;
         //an array with the size of equipment slots

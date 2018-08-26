@@ -158,6 +158,8 @@ public class EnemyController : MonoBehaviour
             HuntingPlayer = false;
             dead = true;
             Agent.destination = transform.position;
+            Drop();
+            this.GetComponent<Collider>().isTrigger = true;
 
         }
         //call damage animation
@@ -166,7 +168,7 @@ public class EnemyController : MonoBehaviour
 
     public void Drop()
     {
-        if (Random.Range(1, 2) > 1)
-            Instantiate(drops[Random.Range(0, drops.Length)], this.transform.position, this.transform.rotation);
+        if (Random.Range(0.0f, 2.0f) > 1.5f)
+            Instantiate(drops[Random.Range(0, drops.Length)].item, this.transform.position, Quaternion.Euler(90, 0, 0));
     }
 }
