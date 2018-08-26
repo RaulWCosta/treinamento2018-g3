@@ -7,7 +7,7 @@ public class Teleport : MonoBehaviour {
     public bool invencible;
     private float teleportRange;
     private float timeBetweenDodges;
-    private Vector3 teleport = new Vector3(0f,0f,0f);
+    private Vector3 teleport;
     private bool teleporting;
     private Animator animator;
     private float realTeleportRange;
@@ -35,7 +35,7 @@ public class Teleport : MonoBehaviour {
 
     void Dodge()
     {
-        teleport += Vector3.right * Input.GetAxis("Horizontal");
+        teleport = Vector3.right * Input.GetAxis("Horizontal");
         teleport += Vector3.forward * Input.GetAxis("Vertical");
         teleport.Normalize();
         teleport *= realTeleportRange;
@@ -56,7 +56,7 @@ public class Teleport : MonoBehaviour {
     {
         RaycastHit ray;
         Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
-        if (Physics.Raycast(this.transform.position, direction, out ray, Mathf.Infinity, 1 << 2, QueryTriggerInteraction.Ignore))
+        if (Physics.Raycast(this.transform.position, direction, out ray, teleportRange))
         {
             Debug.Log(ray.distance);
             return ray.distance;
