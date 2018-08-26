@@ -16,6 +16,7 @@ public class ElevatorEnding : MonoBehaviour {
         boss = GameObject.Find("Boss");
         doorAnimator = GetComponent<Animator>();
         doorCollider = GetComponent<Collider>();
+        menumanager = GameObject.Find("MenuManager").GetComponent<MenuManager>();
     }
 	
 	// Update is called once per frame
@@ -32,6 +33,7 @@ public class ElevatorEnding : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
+            menumanager.LoadPlayerWin();
             //close elevator door and wait for animation
         }
     }
