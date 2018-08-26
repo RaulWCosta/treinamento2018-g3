@@ -29,9 +29,7 @@ public class InventoryUI : MonoBehaviour {
 	void Update () {
         //If you press "i", the inventory is hidden
         if (Input.GetKeyDown("i"))
-        {
-            inventoryUI.enabled = !inventoryUI.enabled;
-        }
+            OpenClose_Inventory();
 	}
 
     //Maintain the inventory panel updated
@@ -47,5 +45,9 @@ public class InventoryUI : MonoBehaviour {
             else
                 slots[i].ClearSlot();
         }
+    }
+    public void OpenClose_Inventory()
+    {
+        inventoryUI.enabled = !inventoryUI.enabled;
     }
 }

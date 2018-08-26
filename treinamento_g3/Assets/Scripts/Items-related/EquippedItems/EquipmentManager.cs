@@ -5,14 +5,12 @@ using UnityEngine;
 public class EquipmentManager : MonoBehaviour {
 
     //An transform for refering to the parent of all items slots
-    public Transform itemsParent;
+    private Transform itemsParent;
     //An array refering to all equipped items
     public Weapons[] currentEquipment;
     //Player script responsible for updating the weapon on the player
     [HideInInspector]
     public PlayerEquip playerEquip;
-    //Equipped items pannel
-    private GameObject equipmentUI;
     public int slotIndex;
     //Reference to the quantity of equipment slots
     int numSlots;
@@ -36,7 +34,7 @@ public class EquipmentManager : MonoBehaviour {
 
     private void Start()
     {
-        equipmentUI = this.gameObject.transform.GetChild(0).gameObject;
+        itemsParent = this.gameObject.transform.GetChild(0).transform;
         //Here it gets the number of equipment slots
         numSlots = System.Enum.GetNames(typeof(EquipmentSlotIndex)).Length;
         //an array with the size of equipment slots

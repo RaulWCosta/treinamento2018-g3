@@ -1,4 +1,5 @@
-﻿﻿using System.Collections;
+﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -52,7 +53,7 @@ public class EnemyAttack : MonoBehaviour
 
     public void MeleeAttack()
     {
-        if (DamageTimer < Time.time && gameObject.GetComponent<EnemyController>().dead)
+        if (DamageTimer < Time.time && gameObject.GetComponent<EnemyController>().dead == false)
         {
             Player.GetComponent<PlayerController>().TakeDamage(Damage);
             DamageTimer = Time.time + DamageCooldown;
@@ -78,4 +79,3 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 }
-
