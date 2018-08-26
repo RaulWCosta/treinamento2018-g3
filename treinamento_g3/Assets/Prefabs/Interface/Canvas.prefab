@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 95607980742763304}
   m_Layer: 5
   m_Name: DialoguePanel
-  m_TagString: Untagged
+  m_TagString: Dialogue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
