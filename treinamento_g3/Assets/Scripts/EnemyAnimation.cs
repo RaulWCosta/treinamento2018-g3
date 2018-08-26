@@ -15,7 +15,7 @@ public class EnemyAnimation : MonoBehaviour {
     private float timeforAlpha = 1;
     bool dead = false;
     EnemyAttack enemyAttack;
-
+    EnemyController enemyController;
 
 
     // Use this for initialization
@@ -24,6 +24,7 @@ public class EnemyAnimation : MonoBehaviour {
         animator = sprite.GetComponent<Animator>();
         agent = gameObject.GetComponent<NavMeshAgent>();        //Get the agent of the Enemy
         enemyAttack = GetComponent<EnemyAttack>();
+        enemyController = GetComponent<EnemyController>();
 
     }
 	
@@ -56,7 +57,10 @@ public class EnemyAnimation : MonoBehaviour {
         else
         {
             //turns off walking animation
-            animator.SetBool("turnedOn", false);
+            if (!enemyController.HuntingPlayer)
+                animator.SetBool("turnedOn", false);
+            
+
         }
 
         //wait after enemy is dead for destroying it
