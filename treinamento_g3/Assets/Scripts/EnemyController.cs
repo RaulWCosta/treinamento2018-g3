@@ -32,7 +32,6 @@ public class EnemyController : MonoBehaviour
     public Item[] drops;                                        //Items dropáveis
     public bool dead;
     private EnemyAnimation enemyAnimation;
-    public Item[] drops;                                        //Items dropáveis
 
     void Start()
     {
