@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-
     public bool MeleeEnemy;                                     //Booleana que mostra se o inimigo é corpo a corpo ou a distância
     public float Damage;                                        //Dano causado pelo inimigo
     public float Range;                                         //A distancia que o inimigo pode atacar
