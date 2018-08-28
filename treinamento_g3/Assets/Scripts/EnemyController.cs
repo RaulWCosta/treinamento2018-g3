@@ -32,6 +32,7 @@ public class EnemyController : MonoBehaviour
     public Item[] drops;                                        //Items dropáveis
     public bool dead;
     private EnemyAnimation enemyAnimation;
+    public Item[] drops;                                        //Items dropáveis
 
     void Start()
     {
@@ -126,6 +127,7 @@ public class EnemyController : MonoBehaviour
             }
 
         }
+        
     }
     Vector3 CartesianCoords(float Radius,float Angle)
      {
@@ -196,7 +198,7 @@ public class EnemyController : MonoBehaviour
 
     public void Drop()
     {
-        if (Random.Range(1, 2) > 1)
-            Instantiate(drops[Random.Range(0, drops.Length)], this.transform.position, this.transform.rotation);
+        if (Random.Range(0.0f, 2.0f) > 1.5f)
+            Instantiate(drops[Random.Range(0, drops.Length-1)].item, this.transform.position, Quaternion.Euler(90, 0, 0));
     }
 }

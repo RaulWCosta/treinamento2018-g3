@@ -12,16 +12,28 @@ public class DialogueManager : MonoBehaviour {
     private Queue<string> sentences;
     private string dialogueName;
     public Dialogue.DialogueType type;
-    public Text nameText;
-    public GameObject dialogueText;
-    public Animator dialogueBox;
-    public GameObject shopOptions;
+    private GameObject dialoguePanel;
+    private Text nameText;
+    private GameObject dialogueText;
+    private Animator dialogueBox;
+    private GameObject shopOptions;
 
     private bool shopDialogueOpen = false;
 
 	// Use this for initialization
 	void Start () {
         sentences = new Queue<string>();
+        dialoguePanel = GameObject.FindGameObjectWithTag("Dialogue");
+        dialogueBox = dialoguePanel.GetComponent<Animator>();
+        for (int i = 0; i < dialoguePanel.transform.childCount; i++)
+        {
+            if (dialoguePanel.transform.GetChild(i).name == "Name")
+                nameText = dialoguePanel.transform.GetChild(i).GetComponent<Text>();
+            else if (dialoguePanel.transform.GetChild(i).name == "ShopOptions")
+                shopOptions = dialoguePanel.transform.GetChild(i).gameObject;  
+            else if (dialoguePanel.transform.GetChild(i).name == "DialogueText")
+                dialogueText = dialoguePanel.transform.GetChild(i).gameObject;
+        }
 	}
 
     //Starts or continues dialogue
