@@ -11,7 +11,7 @@ public class MenuManager: MonoBehaviour
 
     public void LoadGame()
     {
-        SceneManager.LoadScene("dungeonTest");
+        SceneManager.LoadScene("Dungeon");
     }
 
     public void LoadCredits()

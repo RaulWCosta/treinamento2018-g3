@@ -35,7 +35,8 @@ public class BossController : MonoBehaviour {
     public float HP;
     public float MaxHp;
     public float HitTimer;
-    
+    public bool WaitingDash;
+    public bool Dead;
 
     void Start ()
     {
@@ -50,6 +51,7 @@ public class BossController : MonoBehaviour {
         GotPlayerPosition = false;
         LastFireTime = 0;
         ShotCounter = 1;
+        Dead = false;
 	}
 	
 	void Update ()
@@ -77,6 +79,7 @@ public class BossController : MonoBehaviour {
             {
                 if (!GotPlayerPosition)
                 {
+                    WaitingDash = true;
                     StartCoroutine(Timer(IdleTimer, 0));
                     PlayerPos = Player.transform.position;
                     GotPlayerPosition = true;
@@ -141,6 +144,7 @@ public class BossController : MonoBehaviour {
         {
             Idle = false;
             Dash = true;
+            WaitingDash = false;
         }
         else
         {
@@ -159,6 +163,7 @@ public class BossController : MonoBehaviour {
             Fire = false;
             Dash = false;
             Agent.isStopped = true;
+            Dead = true;
             //disactivates enemies
 
         }

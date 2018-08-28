@@ -63,7 +63,6 @@ public class PlayerAttack : MonoBehaviour {
         //if attacking and collider has tag Enemy
         if (meleeWeapon && other.tag == "Enemy" && !attacked)
         {
-            Debug.Log("Enemy attacked");
             
             //if attack is in progress
             if (weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))

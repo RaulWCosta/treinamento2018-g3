@@ -56,7 +56,6 @@ public class EnemyAttack : MonoBehaviour
     {
         if (DamageTimer < Time.time && !gameObject.GetComponent<EnemyController>().dead)
         {
-            print("ola");
             Player.GetComponent<PlayerController>().TakeDamage(Damage);
             DamageTimer = Time.time + DamageCooldown;
         }
@@ -81,4 +80,3 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 }
-
