@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114433709857620964}
   - component: {fileID: 212201178855683368}
   - component: {fileID: 136078241213495138}
+  - component: {fileID: 95211748830312584}
   m_Layer: 0
   m_Name: BossProjectile
   m_TagString: Untagged
@@ -42,6 +43,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!95 &95211748830312584
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1772314352304590}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c60c8e2e23286eb41b90735f983ca24d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114433709857620964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -101,7 +120,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 17dc772970fb042438278d9cc1c767d9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f81b3abf85449740b1e91a5f0a599c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
