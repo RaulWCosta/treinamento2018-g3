@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 65195939290879192}
   - component: {fileID: 114983362562773086}
   - component: {fileID: 114635461948324530}
+  - component: {fileID: 54049721422077066}
   m_Layer: 8
   m_Name: OPoderosoChefao
   m_TagString: Enemy
@@ -72,7 +73,7 @@ GameObject:
   - component: {fileID: 212046117281739416}
   - component: {fileID: 95700367188166070}
   m_Layer: 8
-  m_Name: GameObject
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,6 +134,21 @@ Transform:
   m_Father: {fileID: 4769443461679336}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!54 &54049721422077066
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1014574665087940}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &65195939290879192
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -154,7 +170,7 @@ Animator:
   m_GameObject: {fileID: 1848999494258482}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4fc1d2d6dd490e14fa322cca40f5aa59, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -174,6 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9af577d8af93de41974c21aaf1de667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flipped: 0
 --- !u!114 &114983362562773086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -189,22 +206,25 @@ MonoBehaviour:
   WeaponAxis: {fileID: 1460562837448570}
   ShotSpawn: {fileID: 1736935348176588}
   Projectile: {fileID: 1772314352304590, guid: 84744149da7967f498fe637f298cef47, type: 2}
+  PlayerInZone: 0
   Dash: 0
   Fire: 0
   Idle: 0
-  FireInterval: 1
-  IdleTimer: 1
+  FireInterval: 1.2
+  IdleTimer: 0.75
   PreFireTimer: 0.7
   PosFireTimer: 0.2
-  Velocity: 20
+  Velocity: 30
   DamageRanged: 0
-  DamageMeele: 0
+  DamageMelee: 0
   Range: 50
   ProjectileSpeed: 15
-  MeeleRange: 2
+  MeleeRange: 0
   HP: 0
   MaxHp: 30
   HitTimer: 0.7
+  WaitingDash: 0
+  Dead: 0
 --- !u!195 &195485329526887004
 NavMeshAgent:
   m_ObjectHideFlags: 1

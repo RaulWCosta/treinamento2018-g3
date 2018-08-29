@@ -34,7 +34,6 @@ public class BossProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        print("OLA");
         if (collision.tag != "Enemy")
         {
             if (collision.tag == "Wall")

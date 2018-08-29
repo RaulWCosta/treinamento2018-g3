@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-
     public bool MeleeEnemy;                                     //Booleana que mostra se o inimigo é corpo a corpo ou a distância
     public float Damage;                                        //Dano causado pelo inimigo
     public float Range;                                         //A distancia que o inimigo pode atacar
@@ -25,7 +24,7 @@ public class EnemyAttack : MonoBehaviour
 
     private void Update()
     {
-        if (!MeleeEnemy)                                        //Caso for um inimigo de ataque à distância 
+        if (!MeleeEnemy && !gameObject.GetComponent<EnemyController>().dead)                                        //Caso for um inimigo de ataque à distância 
         {
             float Dist;
             Dist = Distance(gameObject.transform.position, Player.transform.position);
@@ -38,7 +37,7 @@ public class EnemyAttack : MonoBehaviour
                 }
             }
         }
-        else if(MeleeEnemy)                                      //Caso for um inimigo corpo a corpo 
+        else if(MeleeEnemy && !gameObject.GetComponent<EnemyController>().dead)                                      //Caso for um inimigo corpo a corpo 
         {
             
             float Dist;

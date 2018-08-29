@@ -306,7 +306,9 @@ MonoBehaviour:
   HuntingPlayer: 0
   Patrol: 0
   Idle: 1
-  drops: []
+  dead: 0
+  drops:
+  - {fileID: 11400000, guid: d46d7f67fa19ee64b8498ec8d87c5190, type: 2}
 --- !u!114 &114889615240088620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -323,6 +325,7 @@ MonoBehaviour:
   Range: 0.9
   VisionRange: 10
   DamageCooldown: 0.5
+  ProjectileSpeed: 0
   RangedAttackObject: {fileID: 0}
   RangedAttackSpawner: {fileID: 0}
 --- !u!195 &195651305718141058

@@ -28,7 +28,7 @@ public class InventoryUI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //If you press "i", the inventory is hidden
-        if (Input.GetKeyDown("i"))
+        if (Input.GetKeyDown("q"))
             OpenClose_Inventory();
 	}
 

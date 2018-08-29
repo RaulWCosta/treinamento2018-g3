@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1272765010411166}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 3.18, y: 0.8, z: 5.01}
+  m_LocalPosition: {x: -19.41, y: 1.48, z: -3.17}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 4048291992731170}
@@ -128,7 +128,7 @@ TextMesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1633763139720888}
-  m_Text: Srta. Hera
+  m_Text: Srta. Elisa
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98644d7860d27c746aa9355e01f6b9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: "Srta. Hera\\nGuia tur\xEDstica"
+  characterName: "Srta. Elisa (Guia tur\xEDstica)"
   namePanel: {fileID: 0}
 --- !u!212 &212888455517476396
 SpriteRenderer:

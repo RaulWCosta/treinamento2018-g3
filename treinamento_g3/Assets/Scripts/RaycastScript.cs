@@ -19,8 +19,16 @@ public class RaycastScript : MonoBehaviour {
 	
 	void Update () {
         Vector3 Look;
-        Look = new Vector3(Agent.destination.x, 0f, Agent.destination.z);
-        gameObject.transform.LookAt(Look + new Vector3(Agent.velocity.x * 10,0f, Agent.velocity.z * 10));
+        if(!Enemy.GetComponent<EnemyController>().dead && !Agent.isStopped)
+        {
+            Look = new Vector3(Agent.destination.x, 0f, Agent.destination.z);
+            gameObject.transform.LookAt(Look + new Vector3(Agent.velocity.x * 10, 0f, Agent.velocity.z * 10));
+        }
+        else if(!Enemy.GetComponent<EnemyController>().dead)
+        {
+            gameObject.transform.LookAt(GameObject.FindWithTag("Player").transform);
+        }
+        
         
         Vector3 Rotatation;
         Vector3 Direction;
