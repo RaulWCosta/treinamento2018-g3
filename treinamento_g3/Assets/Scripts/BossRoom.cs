@@ -10,7 +10,8 @@ public class BossRoom : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
-            Boss.GetComponent<BossController>().PlayerInZone = true;
+            if(Boss != null)
+                Boss.GetComponent<BossController>().PlayerInZone = true;
         }
     }
 }
