@@ -5,9 +5,11 @@ using UnityEngine.AI;
 
 public class BossController : MonoBehaviour {
 
+    private float LastHitTime;
     private float LastFireTime;
     private bool Moved;
     private bool Shot;
+    private bool GotPlayerPosition;
     private Vector3 PlayerPos;
     private NavMeshAgent Agent;
     private GameObject Player;
@@ -15,6 +17,8 @@ public class BossController : MonoBehaviour {
     public int ShotNumber;
     public GameObject WeaponAxis;
     public GameObject ShotSpawn;
+    public GameObject Projectile;
+    public bool PlayerInZone;
     public bool Dash;
     public bool Fire;
     public bool Idle;
@@ -23,72 +27,113 @@ public class BossController : MonoBehaviour {
     public float PreFireTimer;
     public float PosFireTimer;
     public float Velocity;
-    
+    public float DamageRanged;
+    public float DamageMelee;
+    public float Range;
+    public float ProjectileSpeed;
+    public float MeleeRange;
+    public float HP;
+    public float MaxHp;
+    public float HitTimer;
+    public bool WaitingDash;
+    public bool Dead;
 
     void Start ()
     {
+        PlayerInZone = false;
+        LastHitTime = 0;
+        HP = MaxHp;
         Player = GameObject.FindWithTag("Player");
         Agent = gameObject.GetComponent<NavMeshAgent>();
         Agent.speed = Velocity;
         Idle = true;
         Shot = false;
+        GotPlayerPosition = false;
         LastFireTime = 0;
-        ShotCounter = 0;
+        ShotCounter = 1;
+        Dead = false;
 	}
 	
 	void Update ()
     {
-		if(Idle)
+        if(PlayerInZone)
         {
-            StartCoroutine(Timer(IdleTimer,0));
-            PlayerPos = Player.transform.position;
-        }
-
-        if(Dash)
-        {
-            Agent.destination = PlayerPos;
-            
-            if(Agent.velocity.magnitude != 0)
+            float Distance = (Player.transform.position - gameObject.transform.position).magnitude;
+            if (MeleeRange > Distance)
             {
-                Moved = true;
+                if (LastHitTime + HitTimer < Time.time)
+                {
+                    LastHitTime = Time.time;
+                    Player.GetComponent<PlayerController>().TakeDamage(DamageMelee);
+                }
+                Agent.isStopped = true;
+                WeaponAxis.SetActive(false);
+                Agent.destination = gameObject.transform.position;
             }
-            
-            if(Agent.velocity.magnitude == 0 && Moved)
+            else
             {
-                Moved = false;
-                Dash = false;
-                Fire = true;
-                ShotCounter = 0;
-            }
-        }
-
-        if(Fire)
-        {
-            WeaponAxis.SetActive(true);
-            WeaponAxis.transform.LookAt(Player.transform);
-
-            
-            if(LastFireTime + FireInterval < Time.time)
-            {
-                StartCoroutine(Timer(PreFireTimer, 1));
-                LastFireTime = Time.time;
-                ShotCounter++;
+                Agent.isStopped = false;
             }
 
-            if (Shot)
+            if (Idle)
             {
-                GameObject Bullet;
-                Shot = false;
-               // Bullet = Instantiate();
+                if (!GotPlayerPosition)
+                {
+                    WaitingDash = true;
+                    StartCoroutine(Timer(IdleTimer, 0));
+                    PlayerPos = Player.transform.position;
+                    GotPlayerPosition = true;
+                }
             }
 
-            if(ShotCounter > ShotNumber)
+            if (Dash)
             {
-                ShotCounter = 0;
-                Fire = false;
-                Idle = true;
+                Agent.destination = PlayerPos;
+
+                if (Agent.velocity.magnitude != 0)
+                {
+                    Moved = true;
+                }
+
+                if (Agent.velocity.magnitude == 0 && Moved)
+                {
+                    Moved = false;
+                    Dash = false;
+                    Fire = true;
+                    ShotCounter = 1;
+                }
+
             }
 
+            if (Fire)
+            {
+                WeaponAxis.SetActive(true);
+                WeaponAxis.transform.LookAt(Player.transform);
+
+                if (LastFireTime + FireInterval < Time.time)
+                {
+                    StartCoroutine(Timer(PreFireTimer, 1));
+                    LastFireTime = Time.time;
+                }
+
+                if (Shot)
+                {
+                    ShotCounter++;
+                    GameObject Bullet;
+                    Shot = false;
+                    Bullet = Instantiate(Projectile, ShotSpawn.transform.position, WeaponAxis.transform.rotation * Quaternion.Euler(new Vector3(90f, 0f, 0f)));
+                    Bullet.GetComponent<BossProjectile>().InitiateProjectile(Range, ProjectileSpeed, DamageRanged);
+                }
+
+                if (ShotCounter > ShotNumber)
+                {
+                    ShotCounter = 1;
+                    Fire = false;
+                    Idle = true;
+                    GotPlayerPosition = false;
+                    WeaponAxis.SetActive(false);
+                }
+            }
         }
 	}
 
@@ -99,10 +144,30 @@ public class BossController : MonoBehaviour {
         {
             Idle = false;
             Dash = true;
+            WaitingDash = false;
         }
-        else if(Type == 1)
+        else
         {
             Shot = true;
         }
+    }
+
+    public void ReceivedDamage(float DamageTaken)                           //Function to damage the enemy
+    {
+        HP -= DamageTaken;
+        if (HP <= 0)
+        {
+            //call death animation
+           // enemyAnimation.DeathAnimation();
+            Idle = false;
+            Fire = false;
+            Dash = false;
+            Agent.isStopped = true;
+            Dead = true;
+            //disactivates enemies
+
+        }
+        //call damage animation
+        //enemyAnimation.DamageAnimation();
     }
 }

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -6,40 +6,46 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     public GameObject Vision;
-    public NavMeshAgent Agent;                                  //O agente do inimigo, entidade que controla a movimentação do inimigo no navmesh
-    public Transform Target;                                    //O "Alvo" a posição atual do jogador
-    public float HP;                                            //Vida do inimigo
-    public float Velocity;                                      //Velocidade do inimigo
-    public float HuntingTime;                                   //O tempo que o inimigo continuará perseguindo o jogador caso ele o perca de vista
-    public float DetectRadius;                                  //Raio de visão para o inimigo enquanto ele está parado
-    public bool DetectedPlayer;                                 //Booleana que mostra se o inimigo viu o jogador
-    public bool HuntingPlayer;                                  //Booleana que mostra se o inimigo está atacando o jogador
-    public bool Patrol;                                         //Booleana que mostra se o inimigo está em modo de patrulha
-    public bool Idle;                                           //Booleana que mostra se o inimigo está em modo de descanço
-    private GameObject Player;                                  //O objeto do jogador
-    private float HuntingStart;                                 //O tempo inicial em que o inimigo perdeu de vista o jogador
-    private float PatrolChance;                                 //A probabilidade dos inimigos entrarem em modo de patrulha
-    private float PatrolWill;                                   //A varaiavel que armazena qual a vontade do inimigo patrulhar no momento
-    private float PatrolTimer;                                  //O tempo que o inimigo leva para tentar começar uma nova patrulha
-    private float LastPatrol;                                   //O tempo que iniciou a ultima patrulha
-    private bool MemoryController;                              //Booleana que controla se o inimigo lembra da posição do jogador 
-    private Vector3 PatrolPosition;                             //A posição atual que será o destino de patrulha do inimigo
-    private Vector3 TargetPosition;                             //A posição do alvo do inimigo, o ultimo valor de posição do jogador que o inimigo se lembra
-    private EnemyAnimation enemyAnimation;
-    public bool dead;
+    public NavMeshAgent Agent;                                              //O agente do inimigo, entidade que controla a movimentação do inimigo no navmesh
+    public Transform Target;                                                //O "Alvo" a posição atual do jogador
+    public float MemoryTime;
+    public float HP;                                                        //Vida do inimigo
+    public float Velocity;                                                  //Velocidade do inimigo
+    public float HuntingTime;                                               //O tempo que o inimigo continuará perseguindo o jogador caso ele o perca de vista
+    public float DetectRadius;                                              //Raio de visão para o inimigo enquanto ele está parado
+    public bool DetectedPlayer;                                             //Booleana que mostra se o inimigo viu o jogador
+    public bool HuntingPlayer;                                              //Booleana que mostra se o inimigo está atacando o jogador
+    public bool Patrol;                                                     //Booleana que mostra se o inimigo está em modo de patrulha
+    public bool Idle;                                                       //Booleana que mostra se o inimigo está em modo de descanço
+    private GameObject Player;                                              //O objeto do jogador
+    private float HuntingStart;                                             //O tempo inicial em que o inimigo perdeu de vista o jogador
+    private float PatrolChance;                                             //A probabilidade dos inimigos entrarem em modo de patrulha
+    private float PatrolTimer;                                              //O tempo que o inimigo leva para tentar começar uma nova patrulha
+    private float PatrolWill;                                               //A varaiavel que armazena qual a vontade do inimigo patrulhar no momento
+    private float LastPatrol;                                               //O tempo que iniciou a ultima patrulha
+    private bool SignedCorrection;
+    private bool MemoryController;                                          //Booleana que controla se o inimigo lembra da posição do jogador 
+    private Vector3 PatrolPosition;                                         //A posição atual que será o destino de patrulha do inimigo
+    private Vector3 TargetPosition;                                         //A posição do alvo do inimigo, o ultimo valor de posição do jogador que o inimigo se lembra
+    private Vector3 SignedDelta;
+    private Vector3 Delta;
     public Item[] drops;                                        //Items dropáveis
+    public bool dead;
+    private EnemyAnimation enemyAnimation;
 
     void Start()
     {
-        HuntingPlayer = false;                                  //Flags de estado inicial
+        HuntingPlayer = false;                                              //Flags de estado inicial
         DetectedPlayer = false;
+        SignedCorrection = false;
         Idle = true;
-        PatrolTimer = 7;                                        //Tempo que o inimigo leva até tentar patrulhar novamente 7 seg
-        PatrolChance = 850;                                     //Chance de iniciar patrulha 85%
+        PatrolTimer = 7;                                                    //Tempo que o inimigo leva até tentar patrulhar novamente 7 seg
+        PatrolChance = 850;                                                 //Chance de iniciar patrulha 85%
         LastPatrol = 0;
-        Player = GameObject.FindWithTag("Player");              //Find the player with the tag "Player                          //O alvo é a posição do jogador
-        Agent = gameObject.GetComponent<NavMeshAgent>();        //Get the agent of the Enemy
+        Player = GameObject.FindWithTag("Player");                          //Find the player with the tag "Player                          //O alvo é a posição do jogador
+        Agent = gameObject.GetComponent<NavMeshAgent>();                    //Get the agent of the Enemy
         Agent.speed = Velocity;
+        Agent.destination = gameObject.transform.position;
         enemyAnimation = gameObject.GetComponent<EnemyAnimation>();
     }
 
@@ -47,11 +53,26 @@ public class EnemyController : MonoBehaviour
     {
         if (!dead)
         {
+            if(gameObject.GetComponent<EnemyAttack>().MeleeEnemy)
+            {
+                if ((Player.transform.position - gameObject.transform.position).magnitude > gameObject.GetComponent<EnemyAttack>().Range && Agent.isStopped == true)
+                {
+                    Agent.isStopped = false;
+                }
+            }
+            else
+            {
+                if ((Player.transform.position - gameObject.transform.position).magnitude > gameObject.GetComponent<EnemyAttack>().Range * 0.2f && Agent.isStopped == true)
+                {
+                    Agent.isStopped = false;
+                }
+            }
+
             if (Idle)
             {
                 Collider[] ColliderList;
                 ColliderList = Physics.OverlapSphere(gameObject.transform.position, DetectRadius); //Faz um cast esférico com raio DetectRadius
-                Agent.avoidancePriority = Random.Range(40, 50);     //Enqunto parado o agente inimigo tem prioridade menor para os que estão em movimento
+                Agent.avoidancePriority = Random.Range(40, 50);     //Enquanto parado o agente inimigo tem prioridade menor para os que estão em movimento
                 foreach (Collider element in ColliderList)
                 {
                     if (element.gameObject.tag == "Player")
@@ -75,6 +96,7 @@ public class EnemyController : MonoBehaviour
             {
                 Agent.destination = PatrolPosition;
                 Agent.avoidancePriority = 5;
+                Agent.isStopped = false;
             }
 
             if (DetectedPlayer)                                                 //Caso o jogador foi encontrado
@@ -93,17 +115,25 @@ public class EnemyController : MonoBehaviour
             {
                 HuntingPlayer = false;                                          //Termina a caçada do jogador
                 Idle = true;
+                Agent.isStopped = false;
             }
 
             if (HuntingPlayer)                                                  //Se está caçando o jogador corre na direção dele
             {
                 Agent.speed = Velocity;
                 if (MemoryController) Agent.destination = Target.position;
-                else Agent.destination = TargetPosition;
+                else Agent.SetDestination(TargetPosition);
             }
-        }
 
+        }
+        
     }
+    Vector3 CartesianCoords(float Radius,float Angle)
+     {
+        Vector3 cartesian;
+        cartesian = new Vector3(Mathf.Sin(Angle) * Radius,0f, Mathf.Cos(Angle) * Radius);
+        return cartesian;
+     }
 
     public Vector3 GeometricPath(Vector3 Position)
     {
@@ -138,8 +168,8 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator Memory()
     {
-        yield return new WaitForSeconds(HuntingTime);
-        if (!DetectedPlayer) MemoryController = false;
+        yield return new WaitForSeconds(MemoryTime);
+        if (!DetectedPlayer && HuntingStart + MemoryTime < Time.time) MemoryController = false;
     }
 
     public void ReceivedDamage(float DamageTaken)                           //Function to damage the enemy
@@ -149,7 +179,7 @@ public class EnemyController : MonoBehaviour
         {
             //call death animation
             enemyAnimation.DeathAnimation();
-
+            gameObject.GetComponent<BoxCollider>().enabled = false;
             //disactivates enemies
             Destroy(Vision);
             Idle = false;
@@ -157,12 +187,11 @@ public class EnemyController : MonoBehaviour
             DetectedPlayer = false;
             HuntingPlayer = false;
             dead = true;
-            Agent.destination = transform.position;
-            Drop();
-            this.GetComponent<Collider>().isTrigger = true;
+            Agent.isStopped = true;
 
         }
         //call damage animation
+        DetectedPlayer = true;
         enemyAnimation.DamageAnimation();
     }
 

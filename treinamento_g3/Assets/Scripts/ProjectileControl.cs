@@ -9,10 +9,6 @@ public class ProjectileControl : MonoBehaviour {
     float damage;
     float distance=0;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -38,10 +34,15 @@ public class ProjectileControl : MonoBehaviour {
     {
         if(collision.tag != "Player" && collision.tag != "Weapon")
         {
+            print(collision.gameObject.name);
             //damage to enemy
-            if (collision.tag == "Enemy")
+            if (collision.tag == "Enemy" && collision.gameObject.name != "Boss")
             {
                 collision.GetComponent<EnemyController>().ReceivedDamage(damage);
+            }
+            else if(collision.gameObject.name == "Boss")
+            {
+                collision.GetComponent<BossController>().ReceivedDamage(damage);
             }
 
             //gets destroyed if it hits anything

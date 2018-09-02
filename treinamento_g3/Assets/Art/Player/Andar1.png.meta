@@ -15,8 +15,10 @@ TextureImporter:
     21300020: Andar1_10
     21300022: Andar1_11
     21300024: Andar1_12
+    21300026: Andar1_13
+    2186277476908879412: ImportLogs
   externalObjects: {}
-  serializedVersion: 5
+  serializedVersion: 7
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -34,6 +36,8 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -44,7 +48,7 @@ TextureImporter:
     serializedVersion: 2
     filterMode: 0
     aniso: -1
-    mipBias: -1
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: -1
@@ -120,7 +124,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2eaaf50568f964458142c2774c2c9c5
+      spriteID: 6ba9be573ea8eeb489f1fb818f8ad9fc
       vertices: []
       indices: 
       edges: []
@@ -140,7 +144,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3885ba8639a2cd14fb526d0d53d43dd2
+      spriteID: 838ecbef46b461f49a1e6c7daefab01b
       vertices: []
       indices: 
       edges: []
@@ -160,7 +164,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7cc1088c0430084fb8cb7560764e40e
+      spriteID: 601fa50544a11494f85240cafc4fa8fb
       vertices: []
       indices: 
       edges: []
@@ -180,7 +184,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5fd087706e0b85f4ca51f55321db888a
+      spriteID: 941023988768f814db4ab66ed5ef2260
       vertices: []
       indices: 
       edges: []
@@ -200,7 +204,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0caacb4ecce8d7d4c834bd2d14201a84
+      spriteID: c6d9161e7fc34dc4eac7a061dc3a6606
       vertices: []
       indices: 
       edges: []
@@ -220,7 +224,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6aa871d10c9cec1408c56b2696a6d9c3
+      spriteID: 77091acd714356e4ebcdcc270ad07261
       vertices: []
       indices: 
       edges: []
@@ -240,7 +244,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a35090527b2ff240a2ad17b572f7c44
+      spriteID: ce1b5bc909200f14abee3f671fadfb92
       vertices: []
       indices: 
       edges: []
@@ -260,7 +264,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d37fae1476d2244c8fde8f5f891fdee
+      spriteID: c6defe5e8bf92f542996107bd19215c1
       vertices: []
       indices: 
       edges: []
@@ -280,7 +284,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5078a659fd782a84ca7f0d255564751d
+      spriteID: ac399725901d7df4b81a36237c68941c
       vertices: []
       indices: 
       edges: []
@@ -300,7 +304,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d2eb20afb9e54a4897993df025b0b82
+      spriteID: 15dd2803cabcb7e44bac23c46c32b7a8
       vertices: []
       indices: 
       edges: []
@@ -320,7 +324,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1908a288166264543a786f1d53e2ea6b
+      spriteID: c165b0b48886877479eda696aeda2b1b
       vertices: []
       indices: 
       edges: []
@@ -340,7 +344,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8620faa007678a74eab63031fdc1fb84
+      spriteID: 5002119eab5c7e945b261635e48424ab
       vertices: []
       indices: 
       edges: []
@@ -360,7 +364,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 571f3263bce5189458ec25e123f38e4b
+      spriteID: c00fe199de1c9e943b126ead5b69aabb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Andar1_13
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b72debe4af129b74d9e8d63b30bb474a
       vertices: []
       indices: 
       edges: []
@@ -374,6 +398,8 @@ TextureImporter:
     edges: []
     weights: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

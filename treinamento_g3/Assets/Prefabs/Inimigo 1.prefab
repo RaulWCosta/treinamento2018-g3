@@ -104,7 +104,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1894652372486892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3102419, y: 0.8, z: 2.2782998}
+  m_LocalPosition: {x: -1.66, y: 0.62, z: 2.3809721}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4271639651391428}
@@ -145,14 +145,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1944077453413464}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.01087017, y: -0, z: -0, w: 0.99994093}
+  m_LocalPosition: {x: 0, y: 0.00000023841858, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4976008021456752}
   m_Father: {fileID: 4110427886525288}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.246, y: 0, z: 0}
 --- !u!4 &4976008021456752
 Transform:
   m_ObjectHideFlags: 1
@@ -216,7 +216,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.99999994, z: 1}
+  m_Size: {x: 1.13, y: 0.99999994, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95922258495935420
 Animator:
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MeleeEnemy: 0
   Damage: 5
-  Range: 9.5
+  Range: 8
   VisionRange: 20
   DamageCooldown: 0.5
   ProjectileSpeed: 4.5
@@ -327,9 +327,8 @@ MonoBehaviour:
   HuntingPlayer: 0
   Patrol: 0
   Idle: 1
+  drops: []
   dead: 0
-  drops:
-  - {fileID: 11400000, guid: d46d7f67fa19ee64b8498ec8d87c5190, type: 2}
 --- !u!114 &114691836801969496
 MonoBehaviour:
   m_ObjectHideFlags: 1
