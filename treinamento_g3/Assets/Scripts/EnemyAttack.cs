@@ -77,7 +77,6 @@ public class EnemyAttack : MonoBehaviour
             RangedAttackSpawner.transform.LookAt(Player.transform);
             if (audioSource!= null)
             {
-                Debug.Log("Attacking");
                 audioSource.Play();
             }
                 
