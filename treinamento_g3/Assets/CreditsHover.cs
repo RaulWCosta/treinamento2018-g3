@@ -12,7 +12,7 @@ public class CreditsHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 {
 
     Image image; //main image
-    Image name; //name image
+    Image nameText; //name image
     public Sprite mouseOff;
     public Sprite mouseOn;
 
@@ -21,22 +21,22 @@ public class CreditsHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         image = GetComponent<Image>();
 
         //get name
-        name = transform.GetChild(0).GetComponent<Image>();
+        nameText = transform.GetChild(0).GetComponent<Image>();
         //hide name
-        name.enabled = false;
+        nameText.enabled = false;
 	}
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         image.sprite = mouseOn;
-        name.enabled = true;
+        nameText.enabled = true;
       
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         image.sprite = mouseOff;
-        name.enabled = false;
+        nameText.enabled = false;
        
     }
 }

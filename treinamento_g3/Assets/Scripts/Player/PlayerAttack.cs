@@ -12,12 +12,14 @@ public class PlayerAttack : MonoBehaviour {
     bool attacked = false;
     Transform bulletExitPosition;
     WeaponProperties equippedWeaponProperties;
+    AudioSource audioSource;
 
 	// Use this for initialization
 	void Start () {
         equippedWeaponProperties = GetComponent<WeaponProperties>();
         meleeWeapon = equippedWeaponProperties.meleeWeapon;
         weaponAnimator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
         //if this is a ranged weapon
         //BulletExit should be an empty GameObject placed at where the bullet should first appear on the gun
@@ -32,6 +34,7 @@ public class PlayerAttack : MonoBehaviour {
         //left mouse click
         if (Input.GetMouseButton(0))
         {
+            
             //if player isn't already attacking
             if (weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
@@ -42,6 +45,8 @@ public class PlayerAttack : MonoBehaviour {
                 //if it's a ranged weapon, shoot
                 if (!meleeWeapon)
                     ShootWeapon();
+                else
+                    audioSource.Play();
             }
 
         }
@@ -68,7 +73,11 @@ public class PlayerAttack : MonoBehaviour {
             if (weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
             {
                 //make enemy take damage
-                other.GetComponent<EnemyController>().ReceivedDamage(equippedWeaponProperties.weaponDamage);
+                if (other.GetComponent<EnemyController>())
+                    other.GetComponent<EnemyController>().ReceivedDamage(equippedWeaponProperties.weaponDamage);
+                else
+                    if(other.GetComponent<BossController>())
+                        other.GetComponent<BossController>().ReceivedDamage(equippedWeaponProperties.weaponDamage);
                 attacked = true; //already attacked the enemy
             }
         }
@@ -78,6 +87,7 @@ public class PlayerAttack : MonoBehaviour {
 
     void ShootWeapon()
     {
+        audioSource.Play();
         //instantiate shot out of bullet exit
         GameObject bullet = Instantiate(bulletPrefab, bulletExitPosition.position, bulletExitPosition.rotation);
         bullet.transform.localScale = transform.localScale;

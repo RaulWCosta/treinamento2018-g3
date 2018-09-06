@@ -15,11 +15,13 @@ public class EnemyAttack : MonoBehaviour
     public GameObject RangedAttackSpawner;                      //O local aonde o inimigo irá utilizar para disparar os projéteis
     private GameObject Player;                                  //O objeto do jogador
     private GameObject Projectile;
+    private AudioSource audioSource;
 
     void Start()
     {
         Player = GameObject.FindWithTag("Player");              //Find the object with the tag "Player"
-        DamageTimer = 0;                                        //Reseta o contador de tempo        
+        DamageTimer = 0;                                        //Reseta o contador de tempo     
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -73,6 +75,13 @@ public class EnemyAttack : MonoBehaviour
         if (DamageTimer < Time.time)
         {
             RangedAttackSpawner.transform.LookAt(Player.transform);
+            if (audioSource!= null)
+            {
+                Debug.Log("Attacking");
+                audioSource.Play();
+            }
+                
+            
             DamageTimer = Time.time + DamageCooldown;
             Projectile = Instantiate(RangedAttackObject, RangedAttackSpawner.transform);
             Projectile.GetComponent<RangedEnemyProjectile>().InitiateProjectile(Range, ProjectileSpeed,Damage);
