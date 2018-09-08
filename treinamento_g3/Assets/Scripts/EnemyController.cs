@@ -46,6 +46,7 @@ public class EnemyController : MonoBehaviour
         Agent = gameObject.GetComponent<NavMeshAgent>();                    //Get the agent of the Enemy
         Agent.speed = Velocity;
         Agent.destination = gameObject.transform.position;
+        PatrolPosition = gameObject.transform.position;
         enemyAnimation = gameObject.GetComponent<EnemyAnimation>();
     }
 
@@ -123,10 +124,30 @@ public class EnemyController : MonoBehaviour
                 Agent.speed = Velocity;
                 if (MemoryController) Agent.destination = Target.position;
                 else Agent.SetDestination(TargetPosition);
+
+                RaycastHit Hit;
+                if (Physics.Raycast(gameObject.transform.position, Player.transform.position, out Hit, gameObject.GetComponent<EnemyAttack>().VisionRange))
+                {
+                    if (Hit.collider.gameObject.tag == "Player")
+                    {
+                        Agent.destination = Target.position;
+                    }
+                }
+
+                if (Agent.velocity.magnitude == 0 && (Player.transform.position - gameObject.transform.position).magnitude > gameObject.GetComponent<EnemyAttack>().Range)
+                {
+                    HuntingPlayer = false;
+                    Idle = true;
+                    Agent.isStopped = false;
+                }
             }
 
         }
-        
+        else
+        {
+            Agent.speed = 0f;
+            Agent.isStopped = true;
+        }
     }
     Vector3 CartesianCoords(float Radius,float Angle)
      {
@@ -143,7 +164,7 @@ public class EnemyController : MonoBehaviour
         ZCoord = Mathf.Ceil(Random.Range(-1, 2));
         vector = new Vector3(Random.Range(1, 10) * XCoord, 0f, Random.Range(1, 10) * ZCoord);
         Position = Position + vector;
-        return vector;
+        return Position;
     }
 
     IEnumerator StartPatrol()

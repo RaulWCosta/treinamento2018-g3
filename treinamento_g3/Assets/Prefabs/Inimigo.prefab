@@ -88,8 +88,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1478994714645480}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3102419, y: 0.8, z: 2.2782998}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -11.852315, y: 20.017357, z: -2.369543}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4504246116599510}
@@ -298,17 +298,18 @@ MonoBehaviour:
   Vision: {fileID: 1183221127468358}
   Agent: {fileID: 195651305718141058}
   Target: {fileID: 0}
+  MemoryTime: 0
   HP: 5
-  Velocity: 2.5
+  Velocity: 4
   HuntingTime: 8
   DetectRadius: 2
   DetectedPlayer: 0
   HuntingPlayer: 0
   Patrol: 0
   Idle: 1
-  dead: 0
   drops:
   - {fileID: 11400000, guid: d46d7f67fa19ee64b8498ec8d87c5190, type: 2}
+  dead: 0
 --- !u!114 &114889615240088620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -322,7 +323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MeleeEnemy: 1
   Damage: 5
-  Range: 0.9
+  Range: 1.4
   VisionRange: 10
   DamageCooldown: 0.5
   ProjectileSpeed: 0

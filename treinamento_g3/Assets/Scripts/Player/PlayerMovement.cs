@@ -67,7 +67,6 @@ public class PlayerMovement : MonoBehaviour {
             {
                 //else follows the player
                 this.transform.position = Vector3.MoveTowards(this.transform.position, selected.transform.position, speed);
-                //Debug.Log("Following...");
                 animator.SetBool("walk", true);
             }
         }

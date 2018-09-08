@@ -61,11 +61,15 @@ public class BossController : MonoBehaviour {
             float Distance = (Player.transform.position - gameObject.transform.position).magnitude;
             if (MeleeRange > Distance)
             {
+                print("ola");
                 if (LastHitTime + HitTimer < Time.time)
                 {
                     LastHitTime = Time.time;
                     Player.GetComponent<PlayerController>().TakeDamage(DamageMelee);
                 }
+                Dash = false;
+                Idle = true;
+                GotPlayerPosition = false;
                 Agent.isStopped = true;
                 WeaponAxis.SetActive(false);
                 Agent.destination = gameObject.transform.position;
@@ -109,6 +113,16 @@ public class BossController : MonoBehaviour {
             {
                 WeaponAxis.SetActive(true);
                 WeaponAxis.transform.LookAt(Player.transform);
+                if (WeaponAxis.transform.rotation.eulerAngles.y > 180 && WeaponAxis.transform.rotation.eulerAngles.y < 360)
+                {
+                    gameObject.GetComponent<BossAnimaton>().flipped = false;
+                }
+                else
+                {
+                    gameObject.GetComponent<BossAnimaton>().flipped = true;
+                }
+
+                gameObject.GetComponent<BossAnimaton>().FlipSprite();
 
                 if (LastFireTime + FireInterval < Time.time)
                 {

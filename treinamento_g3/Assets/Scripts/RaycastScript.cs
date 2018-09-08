@@ -43,7 +43,7 @@ public class RaycastScript : MonoBehaviour {
 
             if (Physics.Raycast(Enemy.transform.position, Direction, out Hit, Enemy.GetComponent<EnemyAttack>().VisionRange))
             {
-                Debug.DrawLine(gameObject.transform.position, Hit.point,Color.red,0.5f);
+               // Debug.DrawLine(gameObject.transform.position, Hit.point,Color.red,0.5f);
                 if (Hit.collider.gameObject.tag == "Player")
                 {
                     Enemy.GetComponent<EnemyController>().DetectedPlayer = true;
