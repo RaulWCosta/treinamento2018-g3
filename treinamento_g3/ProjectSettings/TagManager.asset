@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Wall
+  - Inventory
+  - Weapon
+  - Enemy
+  - NPC
+  - Dialogue
   layers:
   - Default
   - TransparentFX
