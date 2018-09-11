@@ -72,7 +72,7 @@ public class EnemyAttack : MonoBehaviour
 
     public void RangedAttack()
     {
-        if (DamageTimer < Time.time)
+        if (DamageTimer < Time.time && !gameObject.GetComponent<EnemyController>().dead)
         {
             RangedAttackSpawner.transform.LookAt(Player.transform);
             if (audioSource!= null)

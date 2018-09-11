@@ -104,7 +104,7 @@ public class BossAnimaton : MonoBehaviour {
     }
 
     //Flips sprite from left and right
-    void FlipSprite()
+    public void FlipSprite()
     {
         Vector3 scale = sprite.localScale;
 
@@ -133,3 +133,4 @@ public class BossAnimaton : MonoBehaviour {
         dead = true;
     }
 }
+

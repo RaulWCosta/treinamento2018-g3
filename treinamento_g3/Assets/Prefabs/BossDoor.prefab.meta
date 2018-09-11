@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 5a6d6778d96bb104b9183ea1a565805c
+=======
+guid: c7c993293df307441b6670a61454fb27
+>>>>>>> lucas_novo
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 100100000

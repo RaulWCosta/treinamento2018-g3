@@ -66,9 +66,8 @@ public class PlayerMovement : MonoBehaviour {
             else if (distanceToItem > delta * delta)
             {
                 //else follows the player
-               // this.transform.position = Vector3.MoveTowards(this.transform.position, selected.transform.position, speed);
-                //Debug.Log("Following...");
-                //animator.SetBool("walk", true);
+                this.transform.position = Vector3.MoveTowards(this.transform.position, selected.transform.position, speed);
+                animator.SetBool("walk", true);
             }
         }
 
