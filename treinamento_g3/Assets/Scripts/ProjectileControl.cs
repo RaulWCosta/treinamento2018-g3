@@ -34,7 +34,6 @@ public class ProjectileControl : MonoBehaviour {
     {
         if(collision.tag != "Player" && collision.tag != "Weapon")
         {
-            print(collision.gameObject.name);
             //damage to enemy
             if (collision.tag == "Enemy" && collision.gameObject.name != "Boss")
             {

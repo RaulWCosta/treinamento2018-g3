@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 0}
-  WeaponCooldown: 0.5
+  WeaponCooldown: 0.2
 --- !u!114 &114122379670536044
 MonoBehaviour:
   m_ObjectHideFlags: 1
