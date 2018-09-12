@@ -12,6 +12,8 @@ public class BossRoom : MonoBehaviour {
         {
             if(Boss != null)
                 Boss.GetComponent<BossController>().PlayerInZone = true;
+
+            Destroy(gameObject);
         }
     }
 }

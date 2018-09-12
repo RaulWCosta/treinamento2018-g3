@@ -13,6 +13,8 @@ public class PlayerAttack : MonoBehaviour {
     Transform bulletExitPosition;
     WeaponProperties equippedWeaponProperties;
     AudioSource audioSource;
+    public float WeaponCooldown;
+    private float LastAttack;
 
 	// Use this for initialization
 	void Start () {
@@ -36,12 +38,12 @@ public class PlayerAttack : MonoBehaviour {
         {
             
             //if player isn't already attacking
-            if (weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            if (weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && LastAttack + WeaponCooldown < Time.time)
             {
                 //turn on attack and reset "already attacked" bool
                 weaponAnimator.SetBool("attacking", true);
                 attacked = false;
-
+                LastAttack = Time.time;
                 //if it's a ranged weapon, shoot
                 if (!meleeWeapon)
                     ShootWeapon();

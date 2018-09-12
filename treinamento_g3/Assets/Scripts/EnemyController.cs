@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     public float Velocity;                                                  //Velocidade do inimigo
     public float HuntingTime;                                               //O tempo que o inimigo continuará perseguindo o jogador caso ele o perca de vista
     public float DetectRadius;                                              //Raio de visão para o inimigo enquanto ele está parado
+    public float MinimumEnemySpeed;
     public bool DetectedPlayer;                                             //Booleana que mostra se o inimigo viu o jogador
     public bool HuntingPlayer;                                              //Booleana que mostra se o inimigo está atacando o jogador
     public bool Patrol;                                                     //Booleana que mostra se o inimigo está em modo de patrulha
@@ -32,6 +33,8 @@ public class EnemyController : MonoBehaviour
     public Item[] drops;                                        //Items dropáveis
     public bool dead;
     private EnemyAnimation enemyAnimation;
+    public float PatrolCooldown;
+    private float LastPatrolCooldown;
 
     void Start()
     {
@@ -40,7 +43,7 @@ public class EnemyController : MonoBehaviour
         SignedCorrection = false;
         Idle = true;
         PatrolTimer = 7;                                                    //Tempo que o inimigo leva até tentar patrulhar novamente 7 seg
-        PatrolChance = 850;                                                 //Chance de iniciar patrulha 85%
+        PatrolChance = 500;                                                 //Chance de iniciar patrulha 85%
         LastPatrol = 0;
         Player = GameObject.FindWithTag("Player");                          //Find the player with the tag "Player                          //O alvo é a posição do jogador
         Agent = gameObject.GetComponent<NavMeshAgent>();                    //Get the agent of the Enemy
@@ -48,6 +51,7 @@ public class EnemyController : MonoBehaviour
         Agent.destination = gameObject.transform.position;
         PatrolPosition = gameObject.transform.position;
         enemyAnimation = gameObject.GetComponent<EnemyAnimation>();
+        LastPatrolCooldown = 0;
     }
 
     void Update()
@@ -98,6 +102,19 @@ public class EnemyController : MonoBehaviour
                 Agent.destination = PatrolPosition;
                 Agent.avoidancePriority = 5;
                 Agent.isStopped = false;
+                if(Agent.velocity.magnitude < MinimumEnemySpeed)
+                {
+                    if(LastPatrolCooldown + PatrolCooldown < Time.time)
+                    {
+                        LastPatrolCooldown = Time.time;
+                        Patrol = false;
+                        Idle = true;
+                    }
+                }
+                else
+                {
+                    LastPatrolCooldown = Time.time;
+                }
             }
 
             if (DetectedPlayer)                                                 //Caso o jogador foi encontrado
@@ -169,6 +186,7 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator StartPatrol()
     {
+        LastPatrolCooldown = Time.time;
         Idle = false;
         Patrol = true;
         Agent.speed = Velocity * 0.6f;

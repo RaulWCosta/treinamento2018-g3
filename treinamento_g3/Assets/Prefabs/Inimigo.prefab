@@ -89,7 +89,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1478994714645480}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.852315, y: 20.017357, z: -2.369543}
+  m_LocalPosition: {x: -13.99, y: 20.017357, z: 0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4504246116599510}
@@ -116,14 +116,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1183221127468358}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.70710677}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4293401999640278}
   m_Father: {fileID: 4076582257309176}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 0}
 --- !u!4 &4504246116599510
 Transform:
   m_ObjectHideFlags: 1
@@ -299,10 +299,11 @@ MonoBehaviour:
   Agent: {fileID: 195651305718141058}
   Target: {fileID: 0}
   MemoryTime: 0
-  HP: 5
+  HP: 7
   Velocity: 4
   HuntingTime: 8
   DetectRadius: 2
+  MinimumEnemySpeed: 0.4
   DetectedPlayer: 0
   HuntingPlayer: 0
   Patrol: 0
@@ -310,6 +311,7 @@ MonoBehaviour:
   drops:
   - {fileID: 11400000, guid: d46d7f67fa19ee64b8498ec8d87c5190, type: 2}
   dead: 0
+  PatrolCooldown: 4
 --- !u!114 &114889615240088620
 MonoBehaviour:
   m_ObjectHideFlags: 1

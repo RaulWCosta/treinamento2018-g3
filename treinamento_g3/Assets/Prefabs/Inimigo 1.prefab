@@ -105,7 +105,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1894652372486892}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25.8, y: 19.677357, z: 0.8}
+  m_LocalPosition: {x: 59.66, y: 19.677357, z: 0.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4271639651391428}
@@ -385,7 +385,7 @@ MonoBehaviour:
   Range: 8
   VisionRange: 20
   DamageCooldown: 1
-  ProjectileSpeed: 4.5
+  ProjectileSpeed: 12
   RangedAttackObject: {fileID: 1766688838521598, guid: c80631f81ace25e43bd720973131e2a7,
     type: 2}
   RangedAttackSpawner: {fileID: 1524796827291724}
@@ -417,15 +417,17 @@ MonoBehaviour:
   Target: {fileID: 0}
   MemoryTime: 0
   HP: 5
-  Velocity: 1.5
+  Velocity: 2
   HuntingTime: 4.5
   DetectRadius: 2
+  MinimumEnemySpeed: 0.4
   DetectedPlayer: 0
   HuntingPlayer: 0
   Patrol: 0
   Idle: 1
   drops: []
   dead: 0
+  PatrolCooldown: 4
 --- !u!114 &114691836801969496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -463,9 +465,9 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1.5
+  m_Speed: 2
   m_Acceleration: 8
-  avoidancePriority: 46
+  avoidancePriority: 45
   m_AngularSpeed: 0
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
